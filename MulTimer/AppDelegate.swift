@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		
+		
+		
+		// Load Code Manager if saved
+		if let savedTimerManager = TimerManagerArchive.loadTimerManager() {
+			MulTimerManager.shared = savedTimerManager
+		}
+		
+		// Load Settings if saved
+		if let settings = SettingsArchive.load() {
+			Settings.shared = settings
+		}
+		
 		return true
 	}
 

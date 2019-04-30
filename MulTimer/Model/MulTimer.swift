@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Timer {
+class MulTimer {
 	
 	//MARK: Properties
 	let created: Date
@@ -19,7 +19,7 @@ class Timer {
 	var active: Bool
 	var name: String
 	var id: String
-	var vibrationOn: Bool
+	var vibrationOnly: Bool
 	
 	init(name: String, durationTotal: Int, color: UIColor) {
 		self.name = name
@@ -27,11 +27,40 @@ class Timer {
 		self.color = color
 		self.durationLeft = durationTotal
 		self.active = true
-		self.id =
-		self.vibrationOn =
+		self.id = Utils.generateID()
+		self.vibrationOnly = Settings.shared.vibrationOnly
 		self.created = Date()
 	}
 	
+	func inc() {
+		durationLeft += 1
+	}
 	
+	func dec() {
+		if durationLeft > 0 {
+			durationLeft -= 1
+		}
+	}
+	
+	func reset() {
+		durationLeft = durationTotal
+		active = true
+	}
+	
+	func changeName(name: String) {
+		self.name = name
+	}
+	
+	func changeColor(color: UIColor) {
+		self.color = color
+	}
+	
+	func toggle() {
+		active = !active
+	}
+	
+	func setVibrationOnly(enabled: Bool) {
+		vibrationOnly = enabled
+	}
 	
 }

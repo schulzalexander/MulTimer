@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import StoreKit
 
 class Utils {
 	
@@ -15,7 +16,11 @@ class Utils {
 		return UUID().uuidString
 	}
 	
-	
+	static func secondsToTime(seconds: Int) -> String {
+		let secPart = seconds % 60
+		let minPart = (seconds - secPart) / 60
+		return "\(minPart):\(secPart)"
+	}
 	
 	static func requestAppStoreRating() {
 		let count = Settings.shared.openingCount

@@ -15,12 +15,14 @@
 		C90601C722789E9D00D40AE7 /* MulTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601C622789E9D00D40AE7 /* MulTimerTests.swift */; };
 		C90601D222789E9D00D40AE7 /* MulTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601D122789E9D00D40AE7 /* MulTimerUITests.swift */; };
 		C90601E42278B56D00D40AE7 /* TimerTableNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */; };
-		C90601E62278B85200D40AE7 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E52278B85200D40AE7 /* AddTimerViewController.swift */; };
 		C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */; };
-		C90601EA2278B9F900D40AE7 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E92278B9F900D40AE7 /* Timer.swift */; };
-		C90601EC2278BA0800D40AE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EB2278BA0800D40AE7 /* TimerManager.swift */; };
+		C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E92278B9F900D40AE7 /* MulTimer.swift */; };
+		C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */; };
 		C90601EE2278BDD200D40AE7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601ED2278BDD200D40AE7 /* Utils.swift */; };
 		C90601F02278BE1000D40AE7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EF2278BE1000D40AE7 /* Settings.swift */; };
+		C90601F22278BF3200D40AE7 /* SettingsArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F12278BF3200D40AE7 /* SettingsArchive.swift */; };
+		C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */; };
+		C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F52278DCAF00D40AE7 /* AlarmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +57,15 @@
 		C90601D122789E9D00D40AE7 /* MulTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulTimerUITests.swift; sourceTree = "<group>"; };
 		C90601D322789E9D00D40AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableNavigationViewController.swift; sourceTree = "<group>"; };
-		C90601E52278B85200D40AE7 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
 		C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerArchive.swift; sourceTree = "<group>"; };
-		C90601E92278B9F900D40AE7 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		C90601EB2278BA0800D40AE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		C90601E92278B9F900D40AE7 /* MulTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulTimer.swift; sourceTree = "<group>"; };
+		C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulTimerManager.swift; sourceTree = "<group>"; };
 		C90601ED2278BDD200D40AE7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C90601EF2278BE1000D40AE7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C90601F12278BF3200D40AE7 /* SettingsArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsArchive.swift; sourceTree = "<group>"; };
+		C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCollectionViewCell.swift; sourceTree = "<group>"; };
+		C90601F52278DCAF00D40AE7 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
+		C90601F72278E2E200D40AE7 /* MulTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MulTimer.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,7 @@
 		C90601B022789E9B00D40AE7 /* MulTimer */ = {
 			isa = PBXGroup;
 			children = (
+				C90601F72278E2E200D40AE7 /* MulTimer.entitlements */,
 				C90601E22278A11F00D40AE7 /* UI */,
 				C90601E12278A11000D40AE7 /* Storache */,
 				C90601E02278A0E700D40AE7 /* Other */,
@@ -145,8 +151,8 @@
 		C90601DF2278A0DD00D40AE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C90601E92278B9F900D40AE7 /* Timer.swift */,
-				C90601EB2278BA0800D40AE7 /* TimerManager.swift */,
+				C90601E92278B9F900D40AE7 /* MulTimer.swift */,
+				C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */,
 				C90601EF2278BE1000D40AE7 /* Settings.swift */,
 			);
 			path = Model;
@@ -156,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				C90601ED2278BDD200D40AE7 /* Utils.swift */,
+				C90601F52278DCAF00D40AE7 /* AlarmManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */,
+				C90601F12278BF3200D40AE7 /* SettingsArchive.swift */,
 			);
 			path = Storache;
 			sourceTree = "<group>";
@@ -173,7 +181,7 @@
 			children = (
 				C90601B322789E9B00D40AE7 /* TimerTableViewController.swift */,
 				C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */,
-				C90601E52278B85200D40AE7 /* AddTimerViewController.swift */,
+				C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -246,6 +254,11 @@
 				TargetAttributes = {
 					C90601AD22789E9B00D40AE7 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C90601C122789E9D00D40AE7 = {
 						CreatedOnToolsVersion = 10.1;
@@ -309,13 +322,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90601E62278B85200D40AE7 /* AddTimerViewController.swift in Sources */,
 				C90601E42278B56D00D40AE7 /* TimerTableNavigationViewController.swift in Sources */,
 				C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */,
-				C90601EA2278B9F900D40AE7 /* Timer.swift in Sources */,
+				C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */,
+				C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */,
+				C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */,
 				C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */,
-				C90601EC2278BA0800D40AE7 /* TimerManager.swift in Sources */,
+				C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */,
 				C90601F02278BE1000D40AE7 /* Settings.swift in Sources */,
+				C90601F22278BF3200D40AE7 /* SettingsArchive.swift in Sources */,
 				C90601B222789E9B00D40AE7 /* AppDelegate.swift in Sources */,
 				C90601EE2278BDD200D40AE7 /* Utils.swift in Sources */,
 			);
@@ -492,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MulTimer/MulTimer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WWSXM777M;
 				INFOPLIST_FILE = MulTimer/Info.plist;
@@ -510,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MulTimer/MulTimer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WWSXM777M;
 				INFOPLIST_FILE = MulTimer/Info.plist;

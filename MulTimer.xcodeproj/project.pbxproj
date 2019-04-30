@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		C90601B222789E9B00D40AE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601B122789E9B00D40AE7 /* AppDelegate.swift */; };
-		C90601B422789E9B00D40AE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601B322789E9B00D40AE7 /* ViewController.swift */; };
+		C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601B322789E9B00D40AE7 /* TimerTableViewController.swift */; };
 		C90601B722789E9B00D40AE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90601B522789E9B00D40AE7 /* Main.storyboard */; };
 		C90601B922789E9D00D40AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90601B822789E9D00D40AE7 /* Assets.xcassets */; };
 		C90601BC22789E9D00D40AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90601BA22789E9D00D40AE7 /* LaunchScreen.storyboard */; };
 		C90601C722789E9D00D40AE7 /* MulTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601C622789E9D00D40AE7 /* MulTimerTests.swift */; };
 		C90601D222789E9D00D40AE7 /* MulTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601D122789E9D00D40AE7 /* MulTimerUITests.swift */; };
+		C90601E42278B56D00D40AE7 /* TimerTableNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */; };
+		C90601E62278B85200D40AE7 /* AddTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E52278B85200D40AE7 /* AddTimerViewController.swift */; };
+		C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */; };
+		C90601EA2278B9F900D40AE7 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E92278B9F900D40AE7 /* Timer.swift */; };
+		C90601EC2278BA0800D40AE7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EB2278BA0800D40AE7 /* TimerManager.swift */; };
+		C90601EE2278BDD200D40AE7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601ED2278BDD200D40AE7 /* Utils.swift */; };
+		C90601F02278BE1000D40AE7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EF2278BE1000D40AE7 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,7 @@
 /* Begin PBXFileReference section */
 		C90601AE22789E9B00D40AE7 /* MulTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MulTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90601B122789E9B00D40AE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C90601B322789E9B00D40AE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C90601B322789E9B00D40AE7 /* TimerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
 		C90601B622789E9B00D40AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C90601B822789E9D00D40AE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C90601BB22789E9D00D40AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +54,13 @@
 		C90601CD22789E9D00D40AE7 /* MulTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MulTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90601D122789E9D00D40AE7 /* MulTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulTimerUITests.swift; sourceTree = "<group>"; };
 		C90601D322789E9D00D40AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableNavigationViewController.swift; sourceTree = "<group>"; };
+		C90601E52278B85200D40AE7 /* AddTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerViewController.swift; sourceTree = "<group>"; };
+		C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerArchive.swift; sourceTree = "<group>"; };
+		C90601E92278B9F900D40AE7 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		C90601EB2278BA0800D40AE7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		C90601ED2278BDD200D40AE7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C90601EF2278BE1000D40AE7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +111,11 @@
 		C90601B022789E9B00D40AE7 /* MulTimer */ = {
 			isa = PBXGroup;
 			children = (
+				C90601E22278A11F00D40AE7 /* UI */,
+				C90601E12278A11000D40AE7 /* Storache */,
+				C90601E02278A0E700D40AE7 /* Other */,
+				C90601DF2278A0DD00D40AE7 /* Model */,
 				C90601B122789E9B00D40AE7 /* AppDelegate.swift */,
-				C90601B322789E9B00D40AE7 /* ViewController.swift */,
 				C90601B522789E9B00D40AE7 /* Main.storyboard */,
 				C90601B822789E9D00D40AE7 /* Assets.xcassets */,
 				C90601BA22789E9D00D40AE7 /* LaunchScreen.storyboard */,
@@ -123,6 +140,42 @@
 				C90601D322789E9D00D40AE7 /* Info.plist */,
 			);
 			path = MulTimerUITests;
+			sourceTree = "<group>";
+		};
+		C90601DF2278A0DD00D40AE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C90601E92278B9F900D40AE7 /* Timer.swift */,
+				C90601EB2278BA0800D40AE7 /* TimerManager.swift */,
+				C90601EF2278BE1000D40AE7 /* Settings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C90601E02278A0E700D40AE7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				C90601ED2278BDD200D40AE7 /* Utils.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		C90601E12278A11000D40AE7 /* Storache */ = {
+			isa = PBXGroup;
+			children = (
+				C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */,
+			);
+			path = Storache;
+			sourceTree = "<group>";
+		};
+		C90601E22278A11F00D40AE7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C90601B322789E9B00D40AE7 /* TimerTableViewController.swift */,
+				C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */,
+				C90601E52278B85200D40AE7 /* AddTimerViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +309,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90601B422789E9B00D40AE7 /* ViewController.swift in Sources */,
+				C90601E62278B85200D40AE7 /* AddTimerViewController.swift in Sources */,
+				C90601E42278B56D00D40AE7 /* TimerTableNavigationViewController.swift in Sources */,
+				C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */,
+				C90601EA2278B9F900D40AE7 /* Timer.swift in Sources */,
+				C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */,
+				C90601EC2278BA0800D40AE7 /* TimerManager.swift in Sources */,
+				C90601F02278BE1000D40AE7 /* Settings.swift in Sources */,
 				C90601B222789E9B00D40AE7 /* AppDelegate.swift in Sources */,
+				C90601EE2278BDD200D40AE7 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

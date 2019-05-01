@@ -23,6 +23,8 @@
 		C90601F22278BF3200D40AE7 /* SettingsArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F12278BF3200D40AE7 /* SettingsArchive.swift */; };
 		C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */; };
 		C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F52278DCAF00D40AE7 /* AlarmManager.swift */; };
+		C91D3778227A02D900C21512 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3777227A02D900C21512 /* Extensions.swift */; };
+		C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCollectionViewCell.swift; sourceTree = "<group>"; };
 		C90601F52278DCAF00D40AE7 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
 		C90601F72278E2E200D40AE7 /* MulTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MulTimer.entitlements; sourceTree = "<group>"; };
+		C91D3777227A02D900C21512 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C91D3779227A09E500C21512 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 			children = (
 				C90601ED2278BDD200D40AE7 /* Utils.swift */,
 				C90601F52278DCAF00D40AE7 /* AlarmManager.swift */,
+				C91D3777227A02D900C21512 /* Extensions.swift */,
+				C91D3779227A09E500C21512 /* ColorPicker.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -323,12 +329,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90601E42278B56D00D40AE7 /* TimerTableNavigationViewController.swift in Sources */,
+				C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */,
 				C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */,
 				C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */,
 				C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */,
 				C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */,
 				C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */,
 				C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */,
+				C91D3778227A02D900C21512 /* Extensions.swift in Sources */,
 				C90601F02278BE1000D40AE7 /* Settings.swift in Sources */,
 				C90601F22278BF3200D40AE7 /* SettingsArchive.swift in Sources */,
 				C90601B222789E9B00D40AE7 /* AppDelegate.swift in Sources */,

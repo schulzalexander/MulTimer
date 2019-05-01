@@ -9,41 +9,45 @@
 import Foundation
 import UIKit
 
-class MulTimer {
+class MulTimer: NSObject, NSCoding {
 	
 	//MARK: Properties
 	let created: Date
 	var durationTotal: Int
-	var durationLeft: Int
+	var lastResumed: Date
+	var durationLeftAtLastResume: Int
 	var color: UIColor
 	var active: Bool
 	var name: String
 	var id: String
 	var vibrationOnly: Bool
 	
+	struct PropertyKeys {
+		static let created = "created"
+		static let durationTotal = "durationTotal"
+		static let durationLeftAtLastResume = "durationLeft"
+		static let color = "color"
+		static let active = "active"
+		static let name = "name"
+		static let id = "id"
+		static let vibrationOnly = "vibrationOnly"
+		static let lastResumed = "lastResumed"
+	}
+	
 	init(name: String, durationTotal: Int, color: UIColor) {
 		self.name = name
 		self.durationTotal = durationTotal
 		self.color = color
-		self.durationLeft = durationTotal
+		self.durationLeftAtLastResume = durationTotal
 		self.active = true
 		self.id = Utils.generateID()
 		self.vibrationOnly = Settings.shared.vibrationOnly
 		self.created = Date()
-	}
-	
-	func inc() {
-		durationLeft += 1
-	}
-	
-	func dec() {
-		if durationLeft > 0 {
-			durationLeft -= 1
-		}
+		self.lastResumed = self.created
 	}
 	
 	func reset() {
-		durationLeft = durationTotal
+		durationLeftAtLastResume = durationTotal
 		active = true
 	}
 	
@@ -57,10 +61,55 @@ class MulTimer {
 	
 	func toggle() {
 		active = !active
+		if !active {
+			// Timer has been paused
+			let durationSinceLastResume = Date().timeIntervalSince(lastResumed)
+			durationLeftAtLastResume -= Int(floor(durationSinceLastResume))
+		} else {
+			//Timer has been resumed
+			lastResumed = Date()
+		}
 	}
 	
 	func setVibrationOnly(enabled: Bool) {
 		vibrationOnly = enabled
 	}
 	
+	func getTimeLeft() -> Int {
+		let durationSinceLastResume = Date().timeIntervalSince(lastResumed)
+		return max(durationLeftAtLastResume - Int(floor(durationSinceLastResume)), 0)
+	}
+	
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(created, forKey: PropertyKeys.created)
+		aCoder.encode(durationTotal, forKey: PropertyKeys.durationTotal)
+		aCoder.encode(durationLeftAtLastResume, forKey: PropertyKeys.durationLeftAtLastResume)
+		aCoder.encode(color, forKey: PropertyKeys.color)
+		aCoder.encode(active, forKey: PropertyKeys.active)
+		aCoder.encode(name, forKey: PropertyKeys.name)
+		aCoder.encode(id, forKey: PropertyKeys.id)
+		aCoder.encode(vibrationOnly, forKey: PropertyKeys.vibrationOnly)
+		aCoder.encode(lastResumed, forKey: PropertyKeys.lastResumed)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		guard let created = aDecoder.decodeObject(forKey: PropertyKeys.created) as? Date,
+			let color = aDecoder.decodeObject(forKey: PropertyKeys.color) as? UIColor,
+			let name = aDecoder.decodeObject(forKey: PropertyKeys.name) as? String,
+			let id = aDecoder.decodeObject(forKey: PropertyKeys.id) as? String,
+			let lastResumed = aDecoder.decodeObject(forKey: PropertyKeys.lastResumed) as? Date else {
+				fatalError("Error while loading MulTimer object.")
+		}
+		self.created = created
+		self.lastResumed = lastResumed
+		self.durationTotal = aDecoder.decodeInteger(forKey: PropertyKeys.durationTotal)
+		self.durationLeftAtLastResume = aDecoder.decodeInteger(forKey: PropertyKeys.durationLeftAtLastResume)
+		self.color = color
+		self.active = aDecoder.decodeBool(forKey: PropertyKeys.active)
+		self.name = name
+		self.id = id
+		self.vibrationOnly = aDecoder.decodeBool(forKey: PropertyKeys.vibrationOnly)
+	}
+	
 }
+

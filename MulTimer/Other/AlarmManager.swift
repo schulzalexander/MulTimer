@@ -33,7 +33,7 @@ class AlarmManager {
 				content.title = "MulTimer"
 				content.sound = timer.vibrationOnly ? nil : UNNotificationSound.default
 				
-				let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.init(exactly: timer.durationLeft) ?? 0, repeats: false)
+				let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.init(exactly: timer.durationLeftAtLastResume) ?? 0, repeats: false)
 				let request = UNNotificationRequest(identifier: timer.id, content: content, trigger: trigger)
 				
 				UNUserNotificationCenter.current().add(request) { (error) in

@@ -8,15 +8,20 @@
 
 import Foundation
 
-class MulTimerManager {
+class MulTimerManager: NSObject, NSCoding {
 	
 	//MARK: Properties
 	
 	static var shared: MulTimerManager = MulTimerManager()
 	private var timers: [MulTimer]
 	
-	private init() {
+	struct PropertyKeys {
+		static let timers = "timers"
+	}
+	
+	private override init() {
 		timers = [MulTimer]()
+		super.init()
 	}
 	
 	func timerCount() -> Int {
@@ -34,6 +39,24 @@ class MulTimerManager {
 				break
 			}
 		}
+		TimerManagerArchive.saveTimerManager()
+	}
+	
+	func addTimer(timer: MulTimer) {
+		timers.append(timer)
+		TimerManagerArchive.saveTimerManager()
+	}
+	
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(timers, forKey: PropertyKeys.timers)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		guard let timers = aDecoder.decodeObject(forKey: PropertyKeys.timers) as? [MulTimer] else {
+			fatalError("Error while decoding MulTimerManager object.")
+		}
+		self.timers = timers
 	}
 	
 }
+

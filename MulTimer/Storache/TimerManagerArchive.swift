@@ -21,7 +21,7 @@ class TimerManagerArchive {
 	}
 	
 	static func saveTimerManager() {
-		NSKeyedArchiver.setClassName("TimerManager", for: MulTimerManager.self)
+		NSKeyedArchiver.setClassName("MulTimerManager", for: MulTimerManager.self)
 		let success = NSKeyedArchiver.archiveRootObject(MulTimerManager.shared, toFile: timerManagerDir().path)
 		if !success {
 			fatalError("Error while saving task manager!")
@@ -29,7 +29,7 @@ class TimerManagerArchive {
 	}
 	
 	static func loadTimerManager() -> MulTimerManager? {
-		NSKeyedUnarchiver.setClass(MulTimerManager.self, forClassName: "TimerManager")
+		NSKeyedUnarchiver.setClass(MulTimerManager.self, forClassName: "MulTimerManager")
 		return NSKeyedUnarchiver.unarchiveObject(withFile: timerManagerDir().path) as? MulTimerManager
 	}
 }

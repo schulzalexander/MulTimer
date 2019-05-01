@@ -19,7 +19,9 @@ class Utils {
 	static func secondsToTime(seconds: Int) -> String {
 		let secPart = seconds % 60
 		let minPart = (seconds - secPart) / 60
-		return "\(minPart):\(secPart)"
+		var temp = minPart < 10 ? "0\(minPart):" : "\(minPart):"
+		temp += secPart < 10 ? "0\(secPart)" : "\(secPart)"
+		return temp
 	}
 	
 	static func requestAppStoreRating() {

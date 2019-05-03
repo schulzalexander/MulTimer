@@ -202,6 +202,7 @@ class TimerTableViewController: UIViewController {
 			}
 			if cell.timer.active {
 				cell.timeLabel.text = Utils.secondsToTime(seconds: cell.timer.getTimeLeft())
+				cell.updateTimeBar()
 			}
 		}
 	}
@@ -260,14 +261,22 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 		}
 		cell.timer.toggle()
 		if cell.timer.active {
-			UIView.animate(withDuration: 0.2) {
+			UIView.animate(withDuration: 0.2, animations: {
 				cell.playImageView.layer.opacity = 0
-				cell.timeLabel.layer.opacity = 1
+				cell.deleteButton.layer.opacity = 0
+			}) { (res) in
+				UIView.animate(withDuration: 0.2, animations: {
+					cell.timeLabel.layer.opacity = 1
+				})
 			}
 		} else {
-			UIView.animate(withDuration: 0.2) {
-				cell.playImageView.layer.opacity = 1
+			UIView.animate(withDuration: 0.2, animations: {
 				cell.timeLabel.layer.opacity = 0
+				cell.deleteButton.layer.opacity = 1
+			}) { (res) in
+				UIView.animate(withDuration: 0.2, animations: {
+					cell.playImageView.layer.opacity = 1
+				})
 			}
 		}
 		

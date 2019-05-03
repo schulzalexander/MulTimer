@@ -80,6 +80,10 @@ class MulTimer: NSObject, NSCoding {
 		return max(durationLeftAtLastResume - Int(floor(durationSinceLastResume)), 0)
 	}
 	
+	func percentageDone() -> CGFloat {
+		return 1 - (CGFloat(getTimeLeft()) / CGFloat(durationTotal))
+	}
+	
 	func encode(with aCoder: NSCoder) {
 		aCoder.encode(created, forKey: PropertyKeys.created)
 		aCoder.encode(durationTotal, forKey: PropertyKeys.durationTotal)

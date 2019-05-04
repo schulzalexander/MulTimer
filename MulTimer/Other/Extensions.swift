@@ -17,9 +17,9 @@ extension UITextField {
 		let toolbar: UIToolbar = UIToolbar()
 		toolbar.barStyle = .default
 		toolbar.items = [
-			UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+			UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: onCancel.target, action: onCancel.action),
 			UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-			UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
+			UIBarButtonItem(title: NSLocalizedString("Continue", comment: ""), style: .done, target: onDone.target, action: onDone.action)
 		]
 		toolbar.sizeToFit()
 		

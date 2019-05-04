@@ -1,0 +1,30 @@
+
+/* Class = "UITextField"; placeholder = "name (optional)"; ObjectID = "03E-Ad-pWm"; */
+"03E-Ad-pWm.placeholder" = "name (optional)";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "3hT-dI-8jF"; */
+"3hT-dI-8jF.text" = ":";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "6dV-hv-Vy1"; */
+"6dV-hv-Vy1.text" = "00:00";
+
+/* Class = "UILabel"; text = "Saved Timers"; ObjectID = "NxM-zi-AaU"; */
+"NxM-zi-AaU.text" = "Saved Timers";
+
+/* Class = "UIButton"; normalTitle = "×"; ObjectID = "XOU-pH-8hH"; */
+"XOU-pH-8hH.normalTitle" = "×";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cz4-Q5-8Gn"; */
+"cz4-Q5-8Gn.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "00"; ObjectID = "np2-nS-sbq"; */
+"np2-nS-sbq.placeholder" = "00";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "rLT-gh-hfJ"; */
+"rLT-gh-hfJ.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "New Timer"; ObjectID = "utQ-km-z2M"; */
+"utQ-km-z2M.normalTitle" = "New Timer";
+
+/* Class = "UITextField"; placeholder = "00"; ObjectID = "vAV-xf-ILP"; */
+"vAV-xf-ILP.placeholder" = "00";

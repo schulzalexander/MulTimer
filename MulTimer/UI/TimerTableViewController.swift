@@ -27,7 +27,7 @@ class TimerTableViewController: UIViewController {
 	
 	var addButton: UIButton!
 	@IBOutlet weak var savedLabel: UILabel!
-	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var savedTimerTableView: UITableView!
 	@IBOutlet weak var newTimerButton: UIButton!
 	@IBOutlet weak var timerNameTextField: UITextField!
 	
@@ -73,7 +73,7 @@ class TimerTableViewController: UIViewController {
 		
 		self.savedLabel.layer.opacity = 0
 		self.newTimerButton.layer.opacity = 0
-		self.tableView.layer.opacity = 0
+		self.savedTimerTableView.layer.opacity = 0
 		self.timerNameTextField.layer.opacity = 0
 		self.timeInputContainerView.layer.opacity = 0
 		
@@ -111,7 +111,7 @@ class TimerTableViewController: UIViewController {
 				self.view.layoutIfNeeded()
 				self.savedLabel.layer.opacity = 1
 				self.newTimerButton.layer.opacity = 1
-				self.tableView.layer.opacity = 1
+				self.savedTimerTableView.layer.opacity = 1
 			}
 		} else {
 			self.addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
@@ -121,7 +121,7 @@ class TimerTableViewController: UIViewController {
 				self.view.layoutIfNeeded()
 				self.savedLabel.layer.opacity = 0
 				self.newTimerButton.layer.opacity = 0
-				self.tableView.layer.opacity = 0
+				self.savedTimerTableView.layer.opacity = 0
 				self.timerNameTextField.layer.opacity = 0
 			}
 		}
@@ -166,8 +166,9 @@ class TimerTableViewController: UIViewController {
 			self.view.layoutIfNeeded()
 			self.savedLabel.layer.opacity = 0
 			self.newTimerButton.layer.opacity = 0
-			self.tableView.layer.opacity = 0
+			self.savedTimerTableView.layer.opacity = 0
 			self.timerNameTextField.layer.opacity = 0
+			self.timeInputContainerView.layer.opacity = 0
 		}
 		
 		addTimerContainerHidden = true
@@ -187,7 +188,6 @@ class TimerTableViewController: UIViewController {
 			self.timerNameTextField.becomeFirstResponder()
 			timerCreationPhase = .EnterName
 		case .EnterName:
-			//TODO: add timer to collectionview
 			timerNameTextField.resignFirstResponder()
 		default:
 			return
@@ -236,7 +236,7 @@ class TimerTableViewController: UIViewController {
 extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return MulTimerManager.shared.timerCount()
+		return MulTimerManager.shared.visibleTimerCount()
 	}
 	
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -251,7 +251,7 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimerCollectionViewCell", for: indexPath) as? TimerCollectionViewCell else {
 			fatalError("Failed to dequeue collectionView cell!")
 		}
-		cell.timer = MulTimerManager.shared.getTimers()[indexPath.row]
+		cell.timer = MulTimerManager.shared.getVisibleTimers()[indexPath.row]
 		return cell
 	}
 	
@@ -259,27 +259,48 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 		guard let cell = collectionView.cellForItem(at: indexPath) as? TimerCollectionViewCell else {
 			fatalError("Error while retreiving TimerCollectionViewCell!")
 		}
+		// Do nothing if the timer is already due
+		guard cell.timer.getTimeLeft() > 0 else {
+			return
+		}
 		cell.timer.toggle()
+		cell.isUserInteractionEnabled = false
 		if cell.timer.active {
 			UIView.animate(withDuration: 0.2, animations: {
 				cell.playImageView.layer.opacity = 0
 				cell.deleteButton.layer.opacity = 0
-			}) { (res) in
+			}) { (res1) in
 				UIView.animate(withDuration: 0.2, animations: {
 					cell.timeLabel.layer.opacity = 1
-				})
+				}) { (res2) in
+					cell.isUserInteractionEnabled = true
+				}
 			}
 		} else {
 			UIView.animate(withDuration: 0.2, animations: {
 				cell.timeLabel.layer.opacity = 0
 				cell.deleteButton.layer.opacity = 1
-			}) { (res) in
+			}) { (res1) in
 				UIView.animate(withDuration: 0.2, animations: {
 					cell.playImageView.layer.opacity = 1
-				})
+				}) { (res2) in
+					cell.isUserInteractionEnabled = true
+				}
 			}
 		}
-		
+	}
+	
+	func getGridIndexForTimer(timer: MulTimer) -> IndexPath? {
+		for i in 0..<MulTimerManager.shared.visibleTimerCount() {
+			let index = IndexPath(row: i, section: 0)
+			guard let cell = collectionView.cellForItem(at: index) as? TimerCollectionViewCell else {
+				continue
+			}
+			if cell.timer.id == timer.id {
+				return index
+			}
+		}
+		return nil
 	}
 	
 }
@@ -301,7 +322,10 @@ extension TimerTableViewController: UITextFieldDelegate {
 			let seconds = Int(secondsInputTextField.text ?? "") ?? 0
 			let newTimer = MulTimer(name: name, durationTotal: minutes * 60 + seconds, color: ColorPicker.nextColor())
 			
-			MulTimerManager.shared.addTimer(timer: newTimer)
+			MulTimerManager.shared.addVisibleTimer(timer: newTimer)
+			if name.count > 0 {
+				MulTimerManager.shared.addSavedTimer(timer: newTimer)
+			}
 			
 			timerCreationPhase = .NotActive
 			
@@ -312,5 +336,24 @@ extension TimerTableViewController: UITextFieldDelegate {
 		textField.resignFirstResponder()
 		return true
 	}
+	
+}
+
+extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return MulTimerManager.shared.savedTimerCount()
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = savedTimerTableView.dequeueReusableCell(withIdentifier: "SavedTimerTableViewCell", for: indexPath) as? SavedTimerTableViewCell else {
+			fatalError("Failed to dequeue tableView cell!")
+		}
+		
+		cell.timer = MulTimerManager.shared.getSavedTimers()[indexPath.row]
+		
+		return cell
+	}
+	
 	
 }

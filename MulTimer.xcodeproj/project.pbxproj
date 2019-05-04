@@ -25,6 +25,8 @@
 		C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F52278DCAF00D40AE7 /* AlarmManager.swift */; };
 		C91D3778227A02D900C21512 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3777227A02D900C21512 /* Extensions.swift */; };
 		C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
+		C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
+		C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,11 @@
 		C90601F72278E2E200D40AE7 /* MulTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MulTimer.entitlements; sourceTree = "<group>"; };
 		C91D3777227A02D900C21512 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C91D3779227A09E500C21512 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTimerTableViewCell.swift; sourceTree = "<group>"; };
+		C9FCD1F9227DFE1C001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		C9FCD1FA227DFE1D001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C9FCD1FC227DFE2B001AA4D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C9FCD1FE227DFE2D001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +137,7 @@
 				C90601B822789E9D00D40AE7 /* Assets.xcassets */,
 				C90601BA22789E9D00D40AE7 /* LaunchScreen.storyboard */,
 				C90601BD22789E9D00D40AE7 /* Info.plist */,
+				C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */,
 			);
 			path = MulTimer;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				C90601B322789E9B00D40AE7 /* TimerTableViewController.swift */,
 				C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */,
 				C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */,
+				C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -283,6 +292,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = C90601A522789E9B00D40AE7;
 			productRefGroup = C90601AF22789E9B00D40AE7 /* Products */;
@@ -302,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90601BC22789E9D00D40AE7 /* LaunchScreen.storyboard in Resources */,
+				C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */,
 				C90601B922789E9D00D40AE7 /* Assets.xcassets in Resources */,
 				C90601B722789E9B00D40AE7 /* Main.storyboard in Resources */,
 			);
@@ -335,6 +346,7 @@
 				C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */,
 				C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */,
 				C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */,
+				C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */,
 				C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */,
 				C91D3778227A02D900C21512 /* Extensions.swift in Sources */,
 				C90601F02278BE1000D40AE7 /* Settings.swift in Sources */,
@@ -380,6 +392,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C90601B622789E9B00D40AE7 /* Base */,
+				C9FCD1F9227DFE1C001AA4D0 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -388,8 +401,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				C90601BB22789E9D00D40AE7 /* Base */,
+				C9FCD1FA227DFE1D001AA4D0 /* de */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9FCD1FC227DFE2B001AA4D0 /* en */,
+				C9FCD1FE227DFE2D001AA4D0 /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -399,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -460,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -526,7 +551,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -545,7 +570,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

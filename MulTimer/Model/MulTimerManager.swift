@@ -13,49 +13,75 @@ class MulTimerManager: NSObject, NSCoding {
 	//MARK: Properties
 	
 	static var shared: MulTimerManager = MulTimerManager()
-	private var timers: [MulTimer]
+	private var visibleTimers: [MulTimer]
+	private var savedTimers: [MulTimer]
 	
 	struct PropertyKeys {
-		static let timers = "timers"
+		static let visibleTimers = "visibleTimers"
+		static let savedTimers = "savedTimers"
 	}
 	
 	private override init() {
-		timers = [MulTimer]()
+		visibleTimers = [MulTimer]()
+		savedTimers = [MulTimer]()
 		super.init()
 	}
 	
-	func timerCount() -> Int {
-		return timers.count
+	func visibleTimerCount() -> Int {
+		return visibleTimers.count
 	}
 	
-	func getTimers() -> [MulTimer] {
-		return timers
+	func savedTimerCount() -> Int {
+		return savedTimers.count
+	}
+	
+	func getVisibleTimers() -> [MulTimer] {
+		return visibleTimers
+	}
+	
+	func getSavedTimers() -> [MulTimer] {
+		return savedTimers
 	}
 	
 	func deleteTimer(id: String) {
-		for i in 0..<timers.count {
-			if timers[i].id == id {
-				timers.remove(at: i)
+		for i in 0..<visibleTimers.count {
+			if visibleTimers[i].id == id {
+				visibleTimers.remove(at: i)
+				break
+			}
+		}
+		for i in 0..<savedTimers.count {
+			if savedTimers[i].id == id {
+				savedTimers.remove(at: i)
 				break
 			}
 		}
 		TimerManagerArchive.saveTimerManager()
 	}
 	
-	func addTimer(timer: MulTimer) {
-		timers.append(timer)
+	func addVisibleTimer(timer: MulTimer) {
+		visibleTimers.append(timer)
+		TimerManagerArchive.saveTimerManager()
+		AlarmManager.addAlarm(timer: timer)
+	}
+	
+	func addSavedTimer(timer: MulTimer) {
+		savedTimers.append(timer)
 		TimerManagerArchive.saveTimerManager()
 	}
 	
 	func encode(with aCoder: NSCoder) {
-		aCoder.encode(timers, forKey: PropertyKeys.timers)
+		aCoder.encode(visibleTimers, forKey: PropertyKeys.visibleTimers)
+		aCoder.encode(savedTimers, forKey: PropertyKeys.savedTimers)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
-		guard let timers = aDecoder.decodeObject(forKey: PropertyKeys.timers) as? [MulTimer] else {
+		guard let visibleTimers = aDecoder.decodeObject(forKey: PropertyKeys.visibleTimers) as? [MulTimer],
+			let savedTimers = aDecoder.decodeObject(forKey: PropertyKeys.savedTimers) as? [MulTimer] else {
 			fatalError("Error while decoding MulTimerManager object.")
 		}
-		self.timers = timers
+		self.visibleTimers = visibleTimers
+		self.savedTimers = savedTimers
 	}
 	
 }

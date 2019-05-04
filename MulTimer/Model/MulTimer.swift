@@ -65,9 +65,11 @@ class MulTimer: NSObject, NSCoding {
 			// Timer has been paused
 			let durationSinceLastResume = Date().timeIntervalSince(lastResumed)
 			durationLeftAtLastResume -= Int(floor(durationSinceLastResume))
+			AlarmManager.removeAlarm(id: id)
 		} else {
 			//Timer has been resumed
 			lastResumed = Date()
+			AlarmManager.addAlarm(timer: self)
 		}
 	}
 	

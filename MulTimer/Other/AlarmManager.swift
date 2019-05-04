@@ -13,7 +13,7 @@ class AlarmManager {
 	
 	static func addAlarm(timer: MulTimer) {
 		let center = UNUserNotificationCenter.current()
-		let options: UNAuthorizationOptions = [.alert, .sound];
+		let options: UNAuthorizationOptions = [.alert, .sound, .badge];
 		
 		center.requestAuthorization(options: options) { (granted, error) in
 			if !granted {
@@ -32,8 +32,8 @@ class AlarmManager {
 				content.body = timer.name
 				content.title = "MulTimer"
 				content.sound = timer.vibrationOnly ? nil : UNNotificationSound.default
-				
-				let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.init(exactly: timer.durationLeftAtLastResume) ?? 0, repeats: false)
+				content.badge = 1
+				let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.init(exactly: timer.getTimeLeft()) ?? 0, repeats: false)
 				let request = UNNotificationRequest(identifier: timer.id, content: content, trigger: trigger)
 				
 				UNUserNotificationCenter.current().add(request) { (error) in

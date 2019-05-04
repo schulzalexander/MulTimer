@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MulTimer
+
+  Created by Alexander Schulz on 04.05.19.
+  Copyright © 2019 Alexander Schulz. All rights reserved.
+*/
+
+
+"Continue" = "Weiter";
+"Cancel" = "Cancel";

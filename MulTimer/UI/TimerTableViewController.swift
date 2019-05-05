@@ -35,7 +35,7 @@ class TimerTableViewController: UIViewController {
 	@IBOutlet weak var minuteInputTextField: UITextField!
 	@IBOutlet weak var secondsInputTextField: UITextField!
 	
-	
+	//MARK: Methos
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -46,6 +46,8 @@ class TimerTableViewController: UIViewController {
 		
 		collectionView.delegate = self
 		collectionView.dataSource = self
+		savedTimerTableView.delegate = self
+		savedTimerTableView.dataSource = self
 		
 		timer = Timer.scheduledTimer(timeInterval: 1.0,
 									 target: self,
@@ -92,7 +94,7 @@ class TimerTableViewController: UIViewController {
 		let width: CGFloat = 75
 		let height: CGFloat = 75
 		let screenBounds = UIScreen.main.bounds
-		let frame = CGRect(x: (screenBounds.width - width) / 2 , y: screenBounds.height - 20 - height, width: width, height: height)
+		let frame = CGRect(x: (screenBounds.width - width) / 2 , y: screenBounds.height - 30 - height, width: width, height: height)
 		addButton = UIButton(frame: frame)
 		addButton.backgroundColor = .white
 		let title = NSAttributedString(string: "+", attributes: [NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter", size: 45)!])
@@ -117,6 +119,9 @@ class TimerTableViewController: UIViewController {
 				self.savedLabel.layer.opacity = 1
 				self.newTimerButton.layer.opacity = 1
 				self.savedTimerTableView.layer.opacity = 1
+				
+				self.addTimerContainer.layer.shadowColor = UIColor.black.cgColor
+				self.addTimerContainer.layer.shadowRadius = 5
 			}
 		} else {
 			self.addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
@@ -128,6 +133,9 @@ class TimerTableViewController: UIViewController {
 				self.newTimerButton.layer.opacity = 0
 				self.savedTimerTableView.layer.opacity = 0
 				self.timerNameTextField.layer.opacity = 0
+				
+				self.addTimerContainer.layer.shadowColor = UIColor.lightGray.cgColor
+				self.addTimerContainer.layer.shadowRadius = 2
 			}
 		}
 		addTimerContainerHidden = !addTimerContainerHidden
@@ -206,8 +214,15 @@ class TimerTableViewController: UIViewController {
 				continue
 			}
 			if cell.timer.active {
-				cell.timeLabel.text = Utils.secondsToTime(seconds: cell.timer.getTimeLeft())
+				let timeLeft = cell.timer.getTimeLeft()
+				cell.timeLabel.text = Utils.secondsToTime(seconds: timeLeft)
 				cell.updateTimeBar()
+				if timeLeft == 0 && !cell.timer.finished {
+					cell.timer.finished = true
+					cell.playImageView.image = UIImage(named: "CheckMark")
+					cell.timerDidFinish()
+					TimerManagerArchive.saveTimer(timer: cell.timer)
+				}
 			}
 		}
 	}
@@ -229,6 +244,23 @@ class TimerTableViewController: UIViewController {
 			self.present(viewController, animated: true, completion: nil)
 		}
 	}*/
+	
+	private func startTimer(timer: MulTimer) {
+		if MulTimerManager.shared.isTimerSaved(id: timer.id) {
+			MulTimerManager.shared.updateTimerState(id: timer.id, state: .visible)
+		} else {
+			MulTimerManager.shared.addNewTimer(timer: timer, state: .visible)
+		}
+		
+		timerCreationPhase = .NotActive
+		
+		collectionView.reloadData()
+		savedTimerTableView.reloadData()
+		
+		resetAddTimerContainer()
+		
+		AlarmManager.addAlarm(timer: timer)
+	}
 	
 	private func showTutorial() {
 		guard let tutorial = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController") as? TutorialPageViewController else {
@@ -274,8 +306,18 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 		guard let cell = collectionView.cellForItem(at: indexPath) as? TimerCollectionViewCell else {
 			fatalError("Error while retreiving TimerCollectionViewCell!")
 		}
-		// Do nothing if the timer is already due
-		guard cell.timer.getTimeLeft() > 0 else {
+		// Delete the cell if the timer is already due
+		if cell.timer.finished {
+			// If timer is saved, we keep it in storage and just delete from visible timers
+			if cell.timer.name.count > 0 {
+				MulTimerManager.shared.updateTimerState(id: cell.timer.id, state: .saved)
+			} else {
+				MulTimerManager.shared.deleteTimer(id: cell.timer.id)
+			}
+			
+			collectionView.deleteItems(at: [indexPath])
+			savedTimerTableView.reloadData()
+			
 			return
 		}
 		cell.timer.toggle()
@@ -337,17 +379,7 @@ extension TimerTableViewController: UITextFieldDelegate {
 			let seconds = Int(secondsInputTextField.text ?? "") ?? 0
 			let newTimer = MulTimer(name: name, durationTotal: minutes * 60 + seconds, color: ColorPicker.nextColor())
 			
-			MulTimerManager.shared.addVisibleTimer(timer: newTimer)
-			if name.count > 0 {
-				MulTimerManager.shared.addSavedTimer(timer: newTimer)
-			}
-			
-			timerCreationPhase = .NotActive
-			
-			collectionView.reloadData()
-			savedTimerTableView.reloadData()
-			
-			resetAddTimerContainer()
+			startTimer(timer: newTimer)
 		}
 		textField.resignFirstResponder()
 		return true
@@ -357,8 +389,18 @@ extension TimerTableViewController: UITextFieldDelegate {
 
 extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 	
+	func updateTableViewEmptyMessage(count: Int) {
+		if count == 0 {
+			savedTimerTableView.setEmptyMessage(NSLocalizedString("SavedTimerTableViewEmptyMessage", comment: ""))
+		} else {
+			savedTimerTableView.removeEmptyMessage()
+		}
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return MulTimerManager.shared.savedTimerCount()
+		let count = MulTimerManager.shared.savedTimerCount()
+		updateTableViewEmptyMessage(count: count)
+		return count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -371,5 +413,33 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 	
+	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		return UIView()
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 70
+	}
+	
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		guard let cell = tableView.cellForRow(at: indexPath) as? SavedTimerTableViewCell else {
+			fatalError("Failed to retreive cell for saved timer!")
+		}
+		if (editingStyle == UITableViewCell.EditingStyle.delete) {
+			MulTimerManager.shared.deleteTimer(id: cell.timer.id)
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let cell = tableView.cellForRow(at: indexPath) as? SavedTimerTableViewCell else {
+			fatalError("Failed to retreive cell for saved timer!")
+		}
+		cell.timer.reset()
+		startTimer(timer: cell.timer)
+	}
 	
 }

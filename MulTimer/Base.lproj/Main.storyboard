@@ -182,15 +182,8 @@
                                             <constraint firstAttribute="height" constant="50" id="zJB-MF-7WO"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yl-8n-kIf" userLabel="Seperator">
-                                        <rect key="frame" x="56.5" y="140" width="262.5" height="2"/>
-                                        <color key="backgroundColor" white="0.86762450057077611" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="2" id="nfO-0Q-dEQ"/>
-                                        </constraints>
-                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recently Used" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxM-zi-AaU">
-                                        <rect key="frame" x="10" y="182" width="365" height="30"/>
+                                        <rect key="frame" x="10" y="130" width="365" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bSQ-Ob-kd3"/>
@@ -200,14 +193,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="owO-au-fxG">
-                                        <rect key="frame" x="0.0" y="212" width="375" height="255"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="160" width="375" height="307"/>
+                                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SavedTimerTableViewCell" id="6le-ng-Tkh" customClass="SavedTimerTableViewCell" customModule="MulTimer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SavedTimerTableViewCell" rowHeight="70" id="6le-ng-Tkh" customClass="SavedTimerTableViewCell" customModule="MulTimer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6le-ng-Tkh" id="A1M-9b-rDH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -217,21 +210,18 @@
                                 <color key="backgroundColor" red="0.97636479139328003" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="2XZ-c5-h7p" firstAttribute="centerX" secondItem="utQ-km-z2M" secondAttribute="centerX" id="3gN-9w-S8i"/>
-                                    <constraint firstItem="7Yl-8n-kIf" firstAttribute="width" secondItem="utQ-km-z2M" secondAttribute="width" multiplier="0.7" id="8sF-vg-mPF"/>
                                     <constraint firstItem="03E-Ad-pWm" firstAttribute="centerX" secondItem="utQ-km-z2M" secondAttribute="centerX" id="8uz-vi-Cn6"/>
-                                    <constraint firstItem="7Yl-8n-kIf" firstAttribute="centerX" secondItem="cSX-Nx-bbO" secondAttribute="centerX" id="BlC-tx-BR2"/>
+                                    <constraint firstItem="NxM-zi-AaU" firstAttribute="top" secondItem="utQ-km-z2M" secondAttribute="bottom" constant="30" id="9Vm-E8-d4G"/>
                                     <constraint firstAttribute="trailing" secondItem="utQ-km-z2M" secondAttribute="trailing" id="C4X-sZ-ujW"/>
                                     <constraint firstItem="03E-Ad-pWm" firstAttribute="centerY" secondItem="utQ-km-z2M" secondAttribute="centerY" id="D0w-OD-Df4"/>
                                     <constraint firstAttribute="trailing" secondItem="owO-au-fxG" secondAttribute="trailing" id="ED9-Y0-doP"/>
                                     <constraint firstItem="NxM-zi-AaU" firstAttribute="leading" secondItem="cSX-Nx-bbO" secondAttribute="leading" constant="10" id="Elp-XL-0ff"/>
-                                    <constraint firstItem="7Yl-8n-kIf" firstAttribute="top" secondItem="utQ-km-z2M" secondAttribute="bottom" constant="40" id="GEV-hR-kNR"/>
                                     <constraint firstItem="owO-au-fxG" firstAttribute="top" secondItem="NxM-zi-AaU" secondAttribute="bottom" id="I0R-wL-fOZ"/>
                                     <constraint firstItem="owO-au-fxG" firstAttribute="leading" secondItem="cSX-Nx-bbO" secondAttribute="leading" id="J05-c9-bZF"/>
                                     <constraint firstAttribute="trailing" secondItem="NxM-zi-AaU" secondAttribute="trailing" id="KUb-78-RxY"/>
                                     <constraint firstItem="utQ-km-z2M" firstAttribute="leading" secondItem="cSX-Nx-bbO" secondAttribute="leading" id="Leg-fT-0bK"/>
                                     <constraint firstItem="utQ-km-z2M" firstAttribute="top" secondItem="cSX-Nx-bbO" secondAttribute="top" id="QQl-kQ-L9g"/>
                                     <constraint firstAttribute="bottom" secondItem="owO-au-fxG" secondAttribute="bottom" id="j4H-6L-coU"/>
-                                    <constraint firstItem="NxM-zi-AaU" firstAttribute="top" secondItem="7Yl-8n-kIf" secondAttribute="bottom" constant="40" id="kej-wB-pl9"/>
                                     <constraint firstItem="2XZ-c5-h7p" firstAttribute="centerY" secondItem="utQ-km-z2M" secondAttribute="centerY" id="zTE-KE-KKh"/>
                                 </constraints>
                             </view>

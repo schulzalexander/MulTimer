@@ -10,6 +10,10 @@ import Foundation
 
 class MulTimerManager: NSObject, NSCoding {
 	
+	enum TimerState {
+		case visible, saved
+	}
+	
 	//MARK: Properties
 	
 	static var shared: MulTimerManager = MulTimerManager()
@@ -61,12 +65,7 @@ class MulTimerManager: NSObject, NSCoding {
 	}
 	
 	func deleteTimer(id: String) {
-		for i in 0..<visibleTimers.count {
-			if visibleTimers[i] == id {
-				visibleTimers.remove(at: i)
-				break
-			}
-		}
+		removeTimerFromVisibles(id: id)
 		for i in 0..<savedTimers.count {
 			if savedTimers[i] == id {
 				savedTimers.remove(at: i)
@@ -76,6 +75,42 @@ class MulTimerManager: NSObject, NSCoding {
 		allTimers.removeValue(forKey: id)
 		TimerManagerArchive.saveTimerManager()
 		TimerManagerArchive.deleteTimer(id: id)
+	}
+	
+	private func removeTimerFromVisibles(id: String) {
+		for i in 0..<visibleTimers.count {
+			if visibleTimers[i] == id {
+				visibleTimers.remove(at: i)
+				break
+			}
+		}
+	}
+	
+	private func removeTimerFromSaved(id: String) {
+		for i in 0..<savedTimers.count {
+			if savedTimers[i] == id {
+				savedTimers.remove(at: i)
+				break
+			}
+		}
+	}
+	
+	func isTimerSaved(id: String) -> Bool {
+		for i in 0..<savedTimers.count {
+			if savedTimers[i] == id {
+				return true
+			}
+		}
+		return false
+	}
+	
+	func isTimerVisible(id: String) -> Bool {
+		for i in 0..<visibleTimers.count {
+			if visibleTimers[i] == id {
+				return true
+			}
+		}
+		return false
 	}
 	
 	func deleteAllTimers() {
@@ -88,15 +123,25 @@ class MulTimerManager: NSObject, NSCoding {
 		TimerManagerArchive.saveTimerManager()
 	}
 	
-	func addVisibleTimer(timer: MulTimer) {
-		visibleTimers.append(timer.id)
-		allTimers[timer.id] = timer
+	func updateTimerState(id: String, state: TimerState) {
+		switch state {
+		case .saved:
+			removeTimerFromVisibles(id: id)
+			savedTimers.append(id)
+		case .visible:
+			removeTimerFromSaved(id: id)
+			visibleTimers.append(id)
+		}
 		TimerManagerArchive.saveTimerManager()
-		AlarmManager.addAlarm(timer: timer)
 	}
 	
-	func addSavedTimer(timer: MulTimer) {
-		savedTimers.append(timer.id)
+	func addNewTimer(timer: MulTimer, state: TimerState) {
+		switch state {
+		case .visible:
+			visibleTimers.append(timer.id)
+		case .saved:
+			savedTimers.append(timer.id)
+		}
 		allTimers[timer.id] = timer
 		TimerManagerArchive.saveTimerManager()
 	}

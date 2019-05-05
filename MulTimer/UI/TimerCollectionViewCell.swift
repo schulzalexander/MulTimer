@@ -15,6 +15,12 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		didSet {
 			nameLabel.text = timer.name
 			
+			if timer.finished {
+				playImageView.image = UIImage(named: "CheckMark")
+			} else {
+				playImageView.image = UIImage(named: "PlayButton")
+			}
+			
 			initOpacities()
 			
 			// Set up the circular time bar
@@ -39,7 +45,7 @@ class TimerCollectionViewCell: UICollectionViewCell {
 			shapeLayer.fillColor = UIColor.clear.cgColor
 			shapeLayer.lineWidth = lineWidth
 			shapeLayer.lineCap = CAShapeLayerLineCap.round
-			shapeLayer.strokeColor = UIColor.red.cgColor
+			shapeLayer.strokeColor = timer.color.cgColor
 			shapeLayer.strokeEnd = 0
 			
 			timePresentationContainer.layer.addSublayer(shapeLayer)
@@ -69,6 +75,12 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		
 	}
 	
+	func timerDidFinish() {
+		UIView.animate(withDuration: 0.5) {
+			self.playImageView.layer.opacity = 1
+			self.timeLabel.layer.opacity = 0
+		}
+	}
 	
 	func updateTimeBar() {
 		guard timer != nil else {
@@ -89,7 +101,11 @@ class TimerCollectionViewCell: UICollectionViewCell {
 			fatalError("Timer is nil for selected collectionView cell for deletion!")
 		}
 		
-		MulTimerManager.shared.deleteTimer(id: timer.id)
+		if timer.name.count > 0 {
+			MulTimerManager.shared.updateTimerState(id: timer.id, state: .saved)
+		} else {
+			MulTimerManager.shared.deleteTimer(id: timer.id)
+		}
 		AlarmManager.removeAlarm(id: timer.id)
 		
 		guard let collecionView = superview as? UICollectionView,
@@ -98,7 +114,9 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		}
 		if let index = collectionViewController.getGridIndexForTimer(timer: timer) {
 			collecionView.deleteItems(at: [index])
+			collectionViewController.savedTimerTableView.reloadData()
 			collectionViewController.updateCollectionViewEmptyMessage(count: collecionView.visibleCells.count)
+			collectionViewController.updateTableViewEmptyMessage(count: collectionViewController.savedTimerTableView.visibleCells.count)
 		}
 	}
 	
@@ -136,10 +154,15 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		guard let timer = timer else {
 			return
 		}
-		if timer.active {
-			setComponentsActive()
+		if timer.finished {
+			timeLabel.layer.opacity = 0
+			playImageView.layer.opacity = 1
 		} else {
-			setComponentsPaused()
+			if timer.active {
+				setComponentsActive()
+			} else {
+				setComponentsPaused()
+			}
 		}
 	}
 	

@@ -8,8 +8,11 @@
 
 
 "Continue" = "Weiter";
-"Cancel" = "Cancel";
+"Cancel" = "Abbrechen";
 
+//MARK: Timer Collection View
+"TimerCollectionViewEmptyMessage" = "Keine Aktiven Timer";
+"SavedTimerTableViewEmptyMessage" = "Keine Gespeicherten Timer Übrig";
 
 //MARK: Settings
 "Warning" = "Warnung";

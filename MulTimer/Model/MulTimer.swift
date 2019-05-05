@@ -21,6 +21,7 @@ class MulTimer: NSObject, NSCoding {
 	var name: String
 	var id: String
 	var vibrationOnly: Bool
+	var finished: Bool
 	
 	struct PropertyKeys {
 		static let created = "created"
@@ -32,6 +33,7 @@ class MulTimer: NSObject, NSCoding {
 		static let id = "id"
 		static let vibrationOnly = "vibrationOnly"
 		static let lastResumed = "lastResumed"
+		static let finished = "finished"
 	}
 	
 	init(name: String, durationTotal: Int, color: UIColor) {
@@ -44,11 +46,14 @@ class MulTimer: NSObject, NSCoding {
 		self.vibrationOnly = Settings.shared.vibrationOnly
 		self.created = Date()
 		self.lastResumed = self.created
+		self.finished = false
 	}
 	
 	func reset() {
 		durationLeftAtLastResume = durationTotal
 		active = true
+		finished = false
+		lastResumed = Date()
 	}
 	
 	func changeName(name: String) {
@@ -101,6 +106,7 @@ class MulTimer: NSObject, NSCoding {
 		aCoder.encode(id, forKey: PropertyKeys.id)
 		aCoder.encode(vibrationOnly, forKey: PropertyKeys.vibrationOnly)
 		aCoder.encode(lastResumed, forKey: PropertyKeys.lastResumed)
+		aCoder.encode(finished, forKey: PropertyKeys.finished)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -120,6 +126,7 @@ class MulTimer: NSObject, NSCoding {
 		self.name = name
 		self.id = id
 		self.vibrationOnly = aDecoder.decodeBool(forKey: PropertyKeys.vibrationOnly)
+		self.finished = aDecoder.decodeBool(forKey: PropertyKeys.finished)
 	}
 	
 }

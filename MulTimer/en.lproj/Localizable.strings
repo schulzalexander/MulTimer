@@ -9,6 +9,9 @@
 "Continue" = "Continue";
 "Cancel" = "Cancel";
 
+//MARK: Timer Collection View
+"TimerCollectionViewEmptyMessage" = "No Active Timers";
+"SavedTimerTableViewEmptyMessage" = "No Saved Timers Left";
 
 //MARK: Settings
 "Warning" = "Warning";

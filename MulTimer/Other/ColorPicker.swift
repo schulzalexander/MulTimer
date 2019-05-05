@@ -11,10 +11,11 @@ import UIKit
 
 class ColorPicker {
 	
-	let colors: [UIColor] = [.yellow, .green, .blue, .red]
+	static let colors: [UIColor] = [.yellow, .green, .blue, .red]
 	
 	static func nextColor() -> UIColor {
-		return .green
+		let index = Int.random(in: 0..<colors.count)
+		return colors[index]
 	}
 	
 }

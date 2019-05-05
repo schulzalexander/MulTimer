@@ -71,6 +71,7 @@ class MulTimer: NSObject, NSCoding {
 			lastResumed = Date()
 			AlarmManager.addAlarm(timer: self)
 		}
+		TimerManagerArchive.saveTimer(timer: self)
 	}
 	
 	func setVibrationOnly(enabled: Bool) {
@@ -78,8 +79,12 @@ class MulTimer: NSObject, NSCoding {
 	}
 	
 	func getTimeLeft() -> Int {
-		let durationSinceLastResume = Date().timeIntervalSince(lastResumed)
-		return max(durationLeftAtLastResume - Int(floor(durationSinceLastResume)), 0)
+		if active {
+			let durationSinceLastResume = Date().timeIntervalSince(lastResumed)
+			return max(durationLeftAtLastResume - Int(floor(durationSinceLastResume)), 0)
+		} else {
+			return durationLeftAtLastResume
+		}
 	}
 	
 	func percentageDone() -> CGFloat {

@@ -39,6 +39,11 @@ class TimerTableViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		if #available(iOS 11.0, *) {
+			self.navigationController?.navigationBar.prefersLargeTitles = true
+			self.navigationItem.largeTitleDisplayMode = .automatic
+		}
+		
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		
@@ -330,6 +335,7 @@ extension TimerTableViewController: UITextFieldDelegate {
 			timerCreationPhase = .NotActive
 			
 			collectionView.reloadData()
+			savedTimerTableView.reloadData()
 			
 			resetAddTimerContainer()
 		}

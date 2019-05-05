@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
+		TimerManagerArchive.createArchiveBaseDirectories()
+		
 		UNUserNotificationCenter.current().delegate = self
 		
 		// Load Code Manager if saved

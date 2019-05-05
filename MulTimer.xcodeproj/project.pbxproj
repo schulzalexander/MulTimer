@@ -25,6 +25,7 @@
 		C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F52278DCAF00D40AE7 /* AlarmManager.swift */; };
 		C91D3778227A02D900C21512 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3777227A02D900C21512 /* Extensions.swift */; };
 		C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
+		C9445AC3227ECF2800671B36 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445AC2227ECF2800671B36 /* SettingsTableViewController.swift */; };
 		C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		C90601F72278E2E200D40AE7 /* MulTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MulTimer.entitlements; sourceTree = "<group>"; };
 		C91D3777227A02D900C21512 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C91D3779227A09E500C21512 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		C9445AC2227ECF2800671B36 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTimerTableViewCell.swift; sourceTree = "<group>"; };
 		C9FCD1F9227DFE1C001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		C9FCD1FA227DFE1D001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */,
 				C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */,
 				C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */,
+				C9445AC2227ECF2800671B36 /* SettingsTableViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */,
 				C91D3778227A02D900C21512 /* Extensions.swift in Sources */,
 				C90601F02278BE1000D40AE7 /* Settings.swift in Sources */,
+				C9445AC3227ECF2800671B36 /* SettingsTableViewController.swift in Sources */,
 				C90601F22278BF3200D40AE7 /* SettingsArchive.swift in Sources */,
 				C90601B222789E9B00D40AE7 /* AppDelegate.swift in Sources */,
 				C90601EE2278BDD200D40AE7 /* Utils.swift in Sources */,

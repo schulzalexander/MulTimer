@@ -8,3 +8,9 @@
 
 "Continue" = "Continue";
 "Cancel" = "Cancel";
+
+
+//MARK: Settings
+"Warning" = "Warning";
+"Reset" = "Reset";
+"ContentResetAlertMessage" = "All content will be deleted and cannot be restored!";

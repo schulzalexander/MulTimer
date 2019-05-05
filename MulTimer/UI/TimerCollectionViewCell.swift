@@ -14,7 +14,37 @@ class TimerCollectionViewCell: UICollectionViewCell {
 	var timer: MulTimer! {
 		didSet {
 			nameLabel.text = timer.name
-			playImageView.layer.opacity = 0.0
+			
+			initOpacities()
+			
+			// Set up the circular time bar
+			// -> we need 2 paths, 1 for the underlying ring and one for showing the colored progress bar
+			let path = UIBezierPath(arcCenter: timePresentationContainer.center, radius: cellBackground.frame.width * 0.4, startAngle: CGFloat.pi * 1.5, endAngle: -CGFloat.pi / 2, clockwise: false).cgPath
+			let lineWidth: CGFloat = 10
+			
+			// Create background track
+			trackLayer = CAShapeLayer()
+			trackLayer.path = path
+			
+			trackLayer.fillColor = UIColor.clear.cgColor
+			trackLayer.lineWidth = lineWidth
+			trackLayer.strokeColor = UIColor.lightGray.cgColor
+			
+			timePresentationContainer.layer.addSublayer(trackLayer)
+			
+			// Create progress bar
+			shapeLayer = CAShapeLayer()
+			shapeLayer.path = path
+			
+			shapeLayer.fillColor = UIColor.clear.cgColor
+			shapeLayer.lineWidth = lineWidth
+			shapeLayer.lineCap = CAShapeLayerLineCap.round
+			shapeLayer.strokeColor = UIColor.red.cgColor
+			shapeLayer.strokeEnd = 0
+			
+			timePresentationContainer.layer.addSublayer(shapeLayer)
+			
+			updateTimeBar()
 		}
 	}
 	var shapeLayer: CAShapeLayer!
@@ -32,44 +62,16 @@ class TimerCollectionViewCell: UICollectionViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
-		initOpacities()
 		// Create rounded cell with shadow
 		initCellBackground()
 		// Create circular delete button in the upper left corner of the cell
 		initDeleteButton()
 		
-		
-		// Set up the circular time bar
-		// -> we need 2 paths, 1 for the underlying ring and one for showing the colored progress bar
-		let path = UIBezierPath(arcCenter: timePresentationContainer.center, radius: cellBackground.frame.width * 0.4, startAngle: CGFloat.pi * 1.5, endAngle: -CGFloat.pi / 2, clockwise: false).cgPath
-		let lineWidth: CGFloat = 10
-		
-		// Create background track
-		trackLayer = CAShapeLayer()
-		trackLayer.path = path
-		
-		trackLayer.fillColor = UIColor.clear.cgColor
-		trackLayer.lineWidth = lineWidth
-		trackLayer.strokeColor = UIColor.lightGray.cgColor
-		
-		timePresentationContainer.layer.addSublayer(trackLayer)
-		
-		// Create progress bar
-		shapeLayer = CAShapeLayer()
-		shapeLayer.path = path
-		
-		shapeLayer.fillColor = UIColor.clear.cgColor
-		shapeLayer.lineWidth = lineWidth
-		shapeLayer.lineCap = CAShapeLayerLineCap.round
-		shapeLayer.strokeColor = UIColor.red.cgColor
-		shapeLayer.strokeEnd = 0
-		
-		timePresentationContainer.layer.addSublayer(shapeLayer)
 	}
 	
 	
 	func updateTimeBar() {
-		guard timer != nil, timer.active else {
+		guard timer != nil else {
 			return
 		}
 		let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -116,20 +118,28 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		deleteButton.layer.opacity = 0
 	}
 	
+	func setComponentsPaused() {
+		nameLabel.layer.opacity = 0
+		timeLabel.layer.opacity = 0
+		playImageView.layer.opacity = 1
+		deleteButton.layer.opacity = 1
+	}
+	
+	func setComponentsActive() {
+		nameLabel.layer.opacity = 1
+		timeLabel.layer.opacity = 1
+		playImageView.layer.opacity = 0
+		deleteButton.layer.opacity = 0
+	}
+	
 	private func initOpacities() {
 		guard let timer = timer else {
 			return
 		}
 		if timer.active {
-			nameLabel.layer.opacity = 1
-			timeLabel.layer.opacity = 1
-			playImageView.layer.opacity = 0
-			deleteButton.layer.opacity = 0
+			setComponentsActive()
 		} else {
-			nameLabel.layer.opacity = 0
-			timeLabel.layer.opacity = 0
-			playImageView.layer.opacity = 1
-			deleteButton.layer.opacity = 1
+			setComponentsPaused()
 		}
 	}
 	

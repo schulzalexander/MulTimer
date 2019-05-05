@@ -9,3 +9,9 @@
 
 "Continue" = "Weiter";
 "Cancel" = "Cancel";
+
+
+//MARK: Settings
+"Warning" = "Warnung";
+"Reset" = "Zurücksetzen";
+"ContentResetAlertMessage" = "Der komplette Inhalt wird gelöscht und kann nicht wiederhergestellt werden!";

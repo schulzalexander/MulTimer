@@ -31,7 +31,7 @@ class AlarmManager {
 				let content = UNMutableNotificationContent()
 				content.body = timer.name
 				content.title = "MulTimer"
-				content.sound = timer.vibrationOnly ? nil : UNNotificationSound.default
+				content.sound = timer.vibrationOnly || Settings.shared.vibrationOnly ? nil : UNNotificationSound.default
 				content.badge = 1
 				let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.init(exactly: timer.getTimeLeft()) ?? 0, repeats: false)
 				let request = UNNotificationRequest(identifier: timer.id, content: content, trigger: trigger)
@@ -42,6 +42,15 @@ class AlarmManager {
 						return
 					}
 				}
+			}
+		}
+	}
+	
+	static func updateAllAlarms() {
+		for timer in MulTimerManager.shared.getVisibleTimers() {
+			if timer.active {
+				removeAlarm(id: timer.id)
+				addAlarm(timer: timer)
 			}
 		}
 	}

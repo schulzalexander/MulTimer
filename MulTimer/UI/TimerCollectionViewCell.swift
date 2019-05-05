@@ -23,38 +23,12 @@ class TimerCollectionViewCell: UICollectionViewCell {
 			
 			initOpacities()
 			
-			// Set up the circular time bar
-			// -> we need 2 paths, 1 for the underlying ring and one for showing the colored progress bar
-			let path = UIBezierPath(arcCenter: timePresentationContainer.center, radius: cellBackground.frame.width * 0.4, startAngle: CGFloat.pi * 1.5, endAngle: -CGFloat.pi / 2, clockwise: false).cgPath
-			let lineWidth: CGFloat = 10
-			
-			// Create background track
-			trackLayer = CAShapeLayer()
-			trackLayer.path = path
-			
-			trackLayer.fillColor = UIColor.clear.cgColor
-			trackLayer.lineWidth = lineWidth
-			trackLayer.strokeColor = UIColor.lightGray.cgColor
-			
-			timePresentationContainer.layer.addSublayer(trackLayer)
-			
-			// Create progress bar
-			shapeLayer = CAShapeLayer()
-			shapeLayer.path = path
-			
-			shapeLayer.fillColor = UIColor.clear.cgColor
-			shapeLayer.lineWidth = lineWidth
-			shapeLayer.lineCap = CAShapeLayerLineCap.round
 			shapeLayer.strokeColor = timer.color.cgColor
-			shapeLayer.strokeEnd = 0
-			
-			timePresentationContainer.layer.addSublayer(shapeLayer)
-			
 			updateTimeBar()
 		}
 	}
-	var shapeLayer: CAShapeLayer!
-	var trackLayer: CAShapeLayer!
+	var shapeLayer: CAShapeLayer = CAShapeLayer()
+	var trackLayer: CAShapeLayer = CAShapeLayer()
 	var shownPercentage: CGFloat? // Percentage that is currently shown by the timebar
 	
 	//MARK: Outlets
@@ -72,7 +46,12 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		initCellBackground()
 		// Create circular delete button in the upper left corner of the cell
 		initDeleteButton()
+	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
 		
+		setupTimeBar()
 	}
 	
 	func timerDidFinish() {
@@ -164,6 +143,29 @@ class TimerCollectionViewCell: UICollectionViewCell {
 				setComponentsPaused()
 			}
 		}
+	}
+	
+	func setupTimeBar() {
+		// Set up the circular time bar
+		// -> we need 2 paths, 1 for the underlying ring and one for showing the colored progress bar
+		let path = UIBezierPath(arcCenter: timePresentationContainer.center, radius: cellBackground.frame.width * 0.4, startAngle: CGFloat.pi * 1.5, endAngle: -CGFloat.pi / 2, clockwise: false).cgPath
+		let lineWidth: CGFloat = 10
+		
+		trackLayer.path = path
+		trackLayer.fillColor = UIColor.clear.cgColor
+		trackLayer.lineWidth = lineWidth
+		trackLayer.strokeColor = UIColor.lightGray.cgColor
+		
+		timePresentationContainer.layer.addSublayer(trackLayer)
+		
+		// Create progress bar
+		shapeLayer.path = path
+		shapeLayer.fillColor = UIColor.clear.cgColor
+		shapeLayer.lineWidth = lineWidth
+		shapeLayer.lineCap = CAShapeLayerLineCap.round
+		shapeLayer.strokeEnd = 0
+		
+		timePresentationContainer.layer.addSublayer(shapeLayer)
 	}
 	
 }

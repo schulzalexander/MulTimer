@@ -39,13 +39,9 @@ class TimerTableViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		if #available(iOS 11.0, *) {
-			self.navigationController?.navigationBar.prefersLargeTitles = true
-			self.navigationItem.largeTitleDisplayMode = .automatic
-		}
-		
 		collectionView.delegate = self
 		collectionView.dataSource = self
+		collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height / 2, right: 0)
 		savedTimerTableView.delegate = self
 		savedTimerTableView.dataSource = self
 		
@@ -66,6 +62,15 @@ class TimerTableViewController: UIViewController {
 		Settings.shared.openingCount += 1
 		SettingsArchive.save()
 		Utils.requestAppStoreRating()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		
+		if #available(iOS 11.0, *) {
+			self.navigationController?.navigationBar.prefersLargeTitles = true
+			self.navigationItem.largeTitleDisplayMode = .automatic
+		}
+		
 	}
 
 	private func initAddTimerContainer() {
@@ -182,6 +187,9 @@ class TimerTableViewController: UIViewController {
 			self.savedTimerTableView.layer.opacity = 0
 			self.timerNameTextField.layer.opacity = 0
 			self.timeInputContainerView.layer.opacity = 0
+			
+			self.addTimerContainer.layer.shadowRadius = 2
+			self.addTimerContainer.layer.shadowColor = UIColor.lightGray.cgColor
 		}
 		
 		addTimerContainerHidden = true
@@ -270,7 +278,7 @@ class TimerTableViewController: UIViewController {
 	}
 }
 
-extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	
 	func updateCollectionViewEmptyMessage(count: Int) {
 		if count == 0 {
@@ -290,8 +298,10 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 		return 1
 	}
 	
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return CGSize(width: 150, height: 150)
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let width = (view.frame.width - 60) / 2
+		let height = width + 30
+		return CGSize(width: width, height: height)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -299,6 +309,7 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 			fatalError("Failed to dequeue collectionView cell!")
 		}
 		cell.timer = MulTimerManager.shared.getVisibleTimers()[indexPath.row]
+		cell.setupTimeBar()
 		return cell
 	}
 	

@@ -14,7 +14,13 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
 
     }
-
+	
+	@IBAction func switchVibration(_ sender: UISwitch) {
+		Settings.shared.vibrationOnly = sender.isOn
+		SettingsArchive.save()
+		AlarmManager.updateAllAlarms()
+	}
+	
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

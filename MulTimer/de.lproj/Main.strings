@@ -9,7 +9,7 @@
 "6dV-hv-Vy1.text" = "00:00";
 
 /* Class = "UILabel"; text = "Saved Timers"; ObjectID = "NxM-zi-AaU"; */
-"NxM-zi-AaU.text" = "Saved Timers";
+"NxM-zi-AaU.text" = "Recently Used";
 
 /* Class = "UIButton"; normalTitle = "×"; ObjectID = "XOU-pH-8hH"; */
 "XOU-pH-8hH.normalTitle" = "×";

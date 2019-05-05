@@ -34,6 +34,10 @@ class MulTimerManager: NSObject, NSCoding {
 		super.init()
 	}
 	
+	func getTimer(id: String) -> MulTimer? {
+		return allTimers[id]
+	}
+	
 	func visibleTimerCount() -> Int {
 		return visibleTimers.count
 	}

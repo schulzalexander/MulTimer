@@ -231,17 +231,27 @@ class TimerTableViewController: UIViewController {
 	}*/
 	
 	private func showTutorial() {
-		/*guard let tutorial = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController") as? TutorialPageViewController else {
+		guard let tutorial = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController") as? TutorialPageViewController else {
 			fatalError("Failed to start tutorial on first app start!")
 		}
-		present(tutorial, animated: true, completion: nil)*/
+		present(tutorial, animated: true, completion: nil)
 	}
 }
 
 extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
+	func updateCollectionViewEmptyMessage(count: Int) {
+		if count == 0 {
+			collectionView.setEmptyMessage(NSLocalizedString("TimerCollectionViewEmptyMessage", comment: ""))
+		} else {
+			collectionView.removeEmptyMessage()
+		}
+	}
+	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return MulTimerManager.shared.visibleTimerCount()
+		let count = MulTimerManager.shared.visibleTimerCount()
+		updateCollectionViewEmptyMessage(count: count)
+		return count
 	}
 	
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -296,7 +306,7 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 	}
 	
 	func getGridIndexForTimer(timer: MulTimer) -> IndexPath? {
-		for i in 0..<MulTimerManager.shared.visibleTimerCount() {
+		for i in 0..<collectionView.visibleCells.count {
 			let index = IndexPath(row: i, section: 0)
 			guard let cell = collectionView.cellForItem(at: index) as? TimerCollectionViewCell else {
 				continue

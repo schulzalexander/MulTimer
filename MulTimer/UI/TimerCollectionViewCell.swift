@@ -90,7 +90,6 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		}
 		
 		MulTimerManager.shared.deleteTimer(id: timer.id)
-		TimerManagerArchive.saveTimerManager()
 		AlarmManager.removeAlarm(id: timer.id)
 		
 		guard let collecionView = superview as? UICollectionView,
@@ -99,6 +98,7 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		}
 		if let index = collectionViewController.getGridIndexForTimer(timer: timer) {
 			collecionView.deleteItems(at: [index])
+			collectionViewController.updateCollectionViewEmptyMessage(count: collecionView.visibleCells.count)
 		}
 	}
 	

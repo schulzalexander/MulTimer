@@ -30,3 +30,41 @@ extension UITextField {
 	func doneButtonTapped() { self.resignFirstResponder() }
 	func cancelButtonTapped() { self.resignFirstResponder() }
 }
+
+extension UICollectionView {
+	
+	func setEmptyMessage(_ text: String) {
+		let label = UILabel(frame: self.frame)
+		label.text = text
+		label.textColor = .darkGray
+		label.textAlignment = .center
+		label.numberOfLines = 0
+		label.font = label.font.withSize(16)
+		label.sizeToFit()
+		self.backgroundView = label
+	}
+	
+	func removeEmptyMessage() {
+		backgroundView = nil
+	}
+	
+}
+
+extension UITableView {
+	
+	func setEmptyMessage(_ text: String) {
+		let label = UILabel(frame: self.frame)
+		label.text = text
+		label.textColor = .darkGray
+		label.textAlignment = .center
+		label.numberOfLines = 0
+		label.font = label.font.withSize(16)
+		label.sizeToFit()
+		self.backgroundView = label
+	}
+	
+	func removeEmptyMessage() {
+		backgroundView = nil
+	}
+	
+}

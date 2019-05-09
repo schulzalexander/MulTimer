@@ -82,10 +82,10 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		
 		if timer.name.count > 0 {
 			MulTimerManager.shared.updateTimerState(id: timer.id, state: .saved)
+			AlarmManager.removeAlarm(id: timer.id)
 		} else {
 			MulTimerManager.shared.deleteTimer(id: timer.id)
 		}
-		AlarmManager.removeAlarm(id: timer.id)
 		
 		guard let collecionView = superview as? UICollectionView,
 			let collectionViewController = collecionView.delegate as? TimerTableViewController else {
@@ -113,6 +113,7 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		deleteButton.layer.borderWidth = 2
 		deleteButton.layer.borderColor = UIColor.lightGray.cgColor
 		deleteButton.layer.opacity = 0
+		deleteButton.clipsToBounds = true
 	}
 	
 	func setComponentsPaused() {

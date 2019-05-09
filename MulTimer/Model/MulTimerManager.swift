@@ -77,6 +77,7 @@ class MulTimerManager: NSObject, NSCoding {
 			}
 		}
 		allTimers.removeValue(forKey: id)
+		AlarmManager.removeAlarm(id: id)
 		TimerManagerArchive.saveTimerManager()
 		TimerManagerArchive.deleteTimer(id: id)
 	}

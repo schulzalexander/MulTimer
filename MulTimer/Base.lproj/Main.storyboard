@@ -86,15 +86,14 @@
                                                         <constraint firstItem="yPQ-r7-sxs" firstAttribute="width" secondItem="33D-30-cgQ" secondAttribute="width" id="zJ3-tA-gzj"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-pH-8hH">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-pH-8hH">
                                                     <rect key="frame" x="120" y="0.0" width="30" height="30"/>
                                                     <color key="backgroundColor" red="1" green="0.66587577458400615" blue="0.65728071221202244" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="7w7-yA-kPr"/>
                                                         <constraint firstAttribute="height" constant="30" id="zcf-7p-EbZ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                    <state key="normal" title="×">
+                                                    <state key="normal" image="DeleteButton">
                                                         <color key="titleColor" red="0.53493813451776651" green="0.53493813451776651" blue="0.53493813451776651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
@@ -584,6 +583,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DeleteButton" width="30" height="30"/>
         <image name="PlayButton" width="200" height="200"/>
         <image name="PrivacyPolicyIcon" width="100" height="100"/>
         <image name="RateIcon" width="100" height="100"/>

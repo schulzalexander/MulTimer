@@ -204,6 +204,7 @@ class TimerTableViewController: UIViewController {
 			self.addTimerContainer.layer.shadowColor = UIColor.lightGray.cgColor
 		}
 		
+		dismissView.isHidden = true
 		addTimerContainerHidden = true
 		rotateAddButton()
 	}

@@ -1,6 +1,6 @@
 
 /* Class = "UITextField"; placeholder = "name (optional)"; ObjectID = "03E-Ad-pWm"; */
-"03E-Ad-pWm.placeholder" = "name (optional)";
+"03E-Ad-pWm.placeholder" = "Name (optional)";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "3hT-dI-8jF"; */
 "3hT-dI-8jF.text" = ":";
@@ -9,7 +9,7 @@
 "6dV-hv-Vy1.text" = "00:00";
 
 /* Class = "UILabel"; text = "Saved Timers"; ObjectID = "NxM-zi-AaU"; */
-"NxM-zi-AaU.text" = "Recently Used";
+"NxM-zi-AaU.text" = "Zuletzt Genutzt";
 
 /* Class = "UIButton"; normalTitle = "×"; ObjectID = "XOU-pH-8hH"; */
 "XOU-pH-8hH.normalTitle" = "×";
@@ -24,7 +24,22 @@
 "rLT-gh-hfJ.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "New Timer"; ObjectID = "utQ-km-z2M"; */
-"utQ-km-z2M.normalTitle" = "New Timer";
+"utQ-km-z2M.normalTitle" = "Neuer Timer";
 
 /* Class = "UITextField"; placeholder = "00"; ObjectID = "vAV-xf-ILP"; */
 "vAV-xf-ILP.placeholder" = "00";
+
+/* Navigation Item */
+"94Q-cJ-gfu.title" = "Timer";
+
+/* SETTINGS */
+
+/* UIViewController */
+"tUq-7e-yei.title" = "Einstellungen";
+
+/* Labels */
+"bde-ha-tQb.text" = "Nur Vibration";
+"WWd-7y-2nG.text" = "Kompletter Inhalt";
+"KU1-bT-foh.text" = "Tutorial wiederholen";
+"0xa-dB-gUB.text" = "Datenschutzerklärung";
+"bCE-k1-RSw.text" = "Diese App bewerten";

@@ -25,6 +25,7 @@ class TimerTableViewController: UIViewController {
 	@IBOutlet weak var addTimerShownAnchor: NSLayoutConstraint!
 	@IBOutlet weak var addTimerHiddenAnchor: NSLayoutConstraint!
 	
+	var dismissView: UIView!
 	var addButton: UIButton!
 	@IBOutlet weak var savedLabel: UILabel!
 	@IBOutlet weak var savedTimerTableView: UITableView!
@@ -52,6 +53,7 @@ class TimerTableViewController: UIViewController {
 									 repeats: true)
 		initAddButton()
 		initAddTimerContainer()
+		initDismissView()
 		
 		// Show the tutorial if this is the first start
 		if Settings.shared.firstAppStart {
@@ -114,8 +116,17 @@ class TimerTableViewController: UIViewController {
 		view.addSubview(addButton)
 	}
 	
+	private func initDismissView() {
+		dismissView = UIView(frame: view.frame)
+		dismissView.isHidden = true
+		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addButtonPressed(_:)))
+		dismissView.addGestureRecognizer(gestureRecognizer)
+		view.insertSubview(dismissView, belowSubview: addTimerContainer)
+	}
+	
 	@objc private func addButtonPressed(_ sender: UIButton) {
 		if addTimerContainerHidden {
+			self.dismissView.isHidden = false
 			self.addTimerContainer.backgroundColor = .white
 			UIView.animate(withDuration: 0.3) {
 				self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultLow
@@ -129,6 +140,7 @@ class TimerTableViewController: UIViewController {
 				self.addTimerContainer.layer.shadowRadius = 5
 			}
 		} else {
+			self.dismissView.isHidden = true
 			self.addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
 			UIView.animate(withDuration: 0.3) {
 				self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultHigh
@@ -442,6 +454,7 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 		}
 		if (editingStyle == UITableViewCell.EditingStyle.delete) {
 			MulTimerManager.shared.deleteTimer(id: cell.timer.id)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
 		}
 	}
 	

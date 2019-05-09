@@ -68,8 +68,8 @@ class SavedTimerTableViewCell: UITableViewCell {
 		
 		contentView.addSubview(colorIndicator)
 		colorIndicator.translatesAutoresizingMaskIntoConstraints = false
-		colorIndicator.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-		colorIndicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+		colorIndicator.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+		colorIndicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
 		colorIndicator.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 30).isActive = true
 		colorIndicator.widthAnchor.constraint(equalToConstant: 8).isActive = true
 	}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingsTableViewController: UITableViewController {
 	
@@ -107,11 +108,14 @@ class SettingsTableViewController: UITableViewController {
 	//MARK: Other section
 	
 	private func rateApp() {
+		if #available(iOS 10.3, *) {
+			SKStoreReviewController.requestReview()
+		}/*
 		guard let url = URL(string: "itms-apps://itunes.apple.com/us/app/apple-store/id1437286642?mt=8"),
 			UIApplication.shared.canOpenURL(url) else {
 				return
 		}
-		UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		UIApplication.shared.open(url, options: [:], completionHandler: nil)*/
 	}
 
 }

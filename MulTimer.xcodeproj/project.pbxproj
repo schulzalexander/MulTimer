@@ -36,6 +36,7 @@
 		C9BCDA78228711AE00C53606 /* Short_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7622870F5C00C53606 /* Short_1.mp3 */; };
 		C9BCDA7B22872F4D00C53606 /* Long_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7922872F4D00C53606 /* Long_1.mp3 */; };
 		C9BCDA7C22872F4D00C53606 /* Short_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */; };
+		C9BCDA7E2287482D00C53606 /* AuthorizationRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCDA7D2287482D00C53606 /* AuthorizationRequestViewController.swift */; };
 		C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		C9BCDA7622870F5C00C53606 /* Short_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Short_1.mp3; sourceTree = "<group>"; };
 		C9BCDA7922872F4D00C53606 /* Long_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Long_1.mp3; sourceTree = "<group>"; };
 		C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Short_2.mp3; sourceTree = "<group>"; };
+		C9BCDA7D2287482D00C53606 /* AuthorizationRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestViewController.swift; sourceTree = "<group>"; };
 		C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTimerTableViewCell.swift; sourceTree = "<group>"; };
 		C9FCD1F9227DFE1C001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		C9FCD1FA227DFE1D001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				C90601E32278B56D00D40AE7 /* TimerTableNavigationViewController.swift */,
 				C90601F32278C4EE00D40AE7 /* TimerCollectionViewCell.swift */,
 				C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */,
+				C9BCDA7D2287482D00C53606 /* AuthorizationRequestViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			files = (
 				C90601E42278B56D00D40AE7 /* TimerTableNavigationViewController.swift in Sources */,
 				C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */,
+				C9BCDA7E2287482D00C53606 /* AuthorizationRequestViewController.swift in Sources */,
 				C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */,
 				C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */,
 				C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */,

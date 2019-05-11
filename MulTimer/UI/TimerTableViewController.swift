@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class TimerTableViewController: UIViewController {
 	
@@ -126,37 +127,56 @@ class TimerTableViewController: UIViewController {
 	
 	@objc private func addButtonPressed(_ sender: UIButton) {
 		if addTimerContainerHidden {
-			self.dismissView.isHidden = false
-			self.addTimerContainer.backgroundColor = .white
-			UIView.animate(withDuration: 0.3) {
-				self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultLow
-				self.addTimerShownAnchor.priority = UILayoutPriority.defaultHigh
-				self.view.layoutIfNeeded()
-				self.savedLabel.layer.opacity = 1
-				self.newTimerButton.layer.opacity = 1
-				self.savedTimerTableView.layer.opacity = 1
-				
-				self.addTimerContainer.layer.shadowColor = UIColor.black.cgColor
-				self.addTimerContainer.layer.shadowRadius = 5
+			let center = UNUserNotificationCenter.current()
+			center.getNotificationSettings { (settings) in
+				DispatchQueue.main.async {
+					if settings.authorizationStatus != .authorized {
+						self.showRequestForNotificationAuthorization()
+					} else {
+						self.openAddTimerContainer()
+						self.addTimerContainerHidden = !self.addTimerContainerHidden
+						self.rotateAddButton()
+					}
+				}
 			}
 		} else {
-			self.dismissView.isHidden = true
-			self.addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
-			UIView.animate(withDuration: 0.3) {
-				self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultHigh
-				self.addTimerShownAnchor.priority = UILayoutPriority.defaultLow
-				self.view.layoutIfNeeded()
-				self.savedLabel.layer.opacity = 0
-				self.newTimerButton.layer.opacity = 0
-				self.savedTimerTableView.layer.opacity = 0
-				self.timerNameTextField.layer.opacity = 0
-				
-				self.addTimerContainer.layer.shadowColor = UIColor.lightGray.cgColor
-				self.addTimerContainer.layer.shadowRadius = 2
-			}
+			closeAddTimerContainer()
+			addTimerContainerHidden = !addTimerContainerHidden
+			rotateAddButton()
 		}
-		addTimerContainerHidden = !addTimerContainerHidden
-		rotateAddButton()
+	}
+	
+	private func openAddTimerContainer() {
+		self.dismissView.isHidden = false
+		self.addTimerContainer.backgroundColor = .white
+		UIView.animate(withDuration: 0.3) {
+			self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultLow
+			self.addTimerShownAnchor.priority = UILayoutPriority.defaultHigh
+			self.view.layoutIfNeeded()
+			self.savedLabel.layer.opacity = 1
+			self.newTimerButton.layer.opacity = 1
+			self.savedTimerTableView.layer.opacity = 1
+			
+			self.addTimerContainer.layer.shadowColor = UIColor.black.cgColor
+			self.addTimerContainer.layer.shadowRadius = 5
+		}
+	}
+	
+	private func closeAddTimerContainer() {
+		self.dismissView.isHidden = true
+		self.addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
+		UIView.animate(withDuration: 0.3) {
+			self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultHigh
+			self.addTimerShownAnchor.priority = UILayoutPriority.defaultLow
+			self.view.layoutIfNeeded()
+			self.savedLabel.layer.opacity = 0
+			self.newTimerButton.layer.opacity = 0
+			self.savedTimerTableView.layer.opacity = 0
+			self.timerNameTextField.layer.opacity = 0
+			
+			self.addTimerContainer.layer.shadowColor = UIColor.lightGray.cgColor
+			self.addTimerContainer.layer.shadowRadius = 2
+		}
 	}
 	
 	private func rotateAddButton() {
@@ -289,6 +309,25 @@ class TimerTableViewController: UIViewController {
 		}
 		present(tutorial, animated: true, completion: nil)
 	}
+	
+	private func showRequestForNotificationAuthorization() {
+		guard let requestController = storyboard?.instantiateViewController(withIdentifier: "AuthorizationRequestViewController") as? AuthorizationRequestViewController else {
+			fatalError("Failed to start tutorial on first app start!")
+		}
+		requestController.delegate = self
+		present(requestController, animated: true, completion: nil)
+	}
+	
+}
+
+extension TimerTableViewController: AuthorizationRequestDelegate {
+	
+	func userDidGrantAuthorization() {
+		addTimerContainerHidden = !addTimerContainerHidden
+		rotateAddButton()
+		openAddTimerContainer()
+	}
+	
 }
 
 extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

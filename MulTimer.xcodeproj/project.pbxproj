@@ -25,11 +25,17 @@
 		C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F52278DCAF00D40AE7 /* AlarmManager.swift */; };
 		C91D3778227A02D900C21512 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3777227A02D900C21512 /* Extensions.swift */; };
 		C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
+		C92886432286AC9000D2B17E /* SoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886422286AC9000D2B17E /* SoundTableViewController.swift */; };
+		C92886452286ACB000D2B17E /* SoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886442286ACB000D2B17E /* SoundTableViewCell.swift */; };
+		C92886472286B04100D2B17E /* AlarmSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886462286B04100D2B17E /* AlarmSound.swift */; };
 		C9445AC3227ECF2800671B36 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445AC2227ECF2800671B36 /* SettingsTableViewController.swift */; };
 		C9445AC5227ED55100671B36 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445AC4227ED55100671B36 /* TutorialPageViewController.swift */; };
 		C9445AC7227ED5E600671B36 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */; };
 		C9445ACB227ED82300671B36 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACA227ED82300671B36 /* TutorialPage.swift */; };
 		C9445ACD227ED84B00671B36 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACC227ED84B00671B36 /* TutorialViewController.swift */; };
+		C9BCDA78228711AE00C53606 /* Short_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7622870F5C00C53606 /* Short_1.mp3 */; };
+		C9BCDA7B22872F4D00C53606 /* Long_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7922872F4D00C53606 /* Long_1.mp3 */; };
+		C9BCDA7C22872F4D00C53606 /* Short_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */; };
 		C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -77,11 +83,17 @@
 		C90601F72278E2E200D40AE7 /* MulTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MulTimer.entitlements; sourceTree = "<group>"; };
 		C91D3777227A02D900C21512 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C91D3779227A09E500C21512 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		C92886422286AC9000D2B17E /* SoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewController.swift; sourceTree = "<group>"; };
+		C92886442286ACB000D2B17E /* SoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewCell.swift; sourceTree = "<group>"; };
+		C92886462286B04100D2B17E /* AlarmSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSound.swift; sourceTree = "<group>"; };
 		C9445AC2227ECF2800671B36 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C9445AC4227ED55100671B36 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		C9445ACA227ED82300671B36 /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		C9445ACC227ED84B00671B36 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		C9BCDA7622870F5C00C53606 /* Short_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Short_1.mp3; sourceTree = "<group>"; };
+		C9BCDA7922872F4D00C53606 /* Long_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Long_1.mp3; sourceTree = "<group>"; };
+		C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Short_2.mp3; sourceTree = "<group>"; };
 		C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTimerTableViewCell.swift; sourceTree = "<group>"; };
 		C9FCD1F9227DFE1C001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		C9FCD1FA227DFE1D001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -137,6 +149,7 @@
 		C90601B022789E9B00D40AE7 /* MulTimer */ = {
 			isa = PBXGroup;
 			children = (
+				C9BCDA772287109B00C53606 /* Sounds */,
 				C90601F72278E2E200D40AE7 /* MulTimer.entitlements */,
 				C90601E22278A11F00D40AE7 /* UI */,
 				C90601E12278A11000D40AE7 /* Storache */,
@@ -176,6 +189,7 @@
 				C90601E92278B9F900D40AE7 /* MulTimer.swift */,
 				C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */,
 				C90601EF2278BE1000D40AE7 /* Settings.swift */,
+				C92886462286B04100D2B17E /* AlarmSound.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,6 +232,8 @@
 			children = (
 				C9445AC2227ECF2800671B36 /* SettingsTableViewController.swift */,
 				C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */,
+				C92886422286AC9000D2B17E /* SoundTableViewController.swift */,
+				C92886442286ACB000D2B17E /* SoundTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -230,6 +246,16 @@
 				C9445ACC227ED84B00671B36 /* TutorialViewController.swift */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		C9BCDA772287109B00C53606 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C9BCDA7922872F4D00C53606 /* Long_1.mp3 */,
+				C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */,
+				C9BCDA7622870F5C00C53606 /* Short_1.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,10 +368,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9BCDA7B22872F4D00C53606 /* Long_1.mp3 in Resources */,
+				C9BCDA7C22872F4D00C53606 /* Short_2.mp3 in Resources */,
 				C90601BC22789E9D00D40AE7 /* LaunchScreen.storyboard in Resources */,
 				C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */,
 				C90601B922789E9D00D40AE7 /* Assets.xcassets in Resources */,
 				C90601B722789E9B00D40AE7 /* Main.storyboard in Resources */,
+				C9BCDA78228711AE00C53606 /* Short_1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,13 +407,16 @@
 				C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */,
 				C9445AC7227ED5E600671B36 /* PrivacyPolicyViewController.swift in Sources */,
 				C9445AC5227ED55100671B36 /* TutorialPageViewController.swift in Sources */,
+				C92886452286ACB000D2B17E /* SoundTableViewCell.swift in Sources */,
 				C9445ACD227ED84B00671B36 /* TutorialViewController.swift in Sources */,
+				C92886432286AC9000D2B17E /* SoundTableViewController.swift in Sources */,
 				C9445ACB227ED82300671B36 /* TutorialPage.swift in Sources */,
 				C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */,
 				C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */,
 				C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */,
 				C91D3778227A02D900C21512 /* Extensions.swift in Sources */,
 				C90601F02278BE1000D40AE7 /* Settings.swift in Sources */,
+				C92886472286B04100D2B17E /* AlarmSound.swift in Sources */,
 				C9445AC3227ECF2800671B36 /* SettingsTableViewController.swift in Sources */,
 				C90601F22278BF3200D40AE7 /* SettingsArchive.swift in Sources */,
 				C90601B222789E9B00D40AE7 /* AppDelegate.swift in Sources */,

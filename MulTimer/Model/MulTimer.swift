@@ -22,6 +22,7 @@ class MulTimer: NSObject, NSCoding {
 	var id: String
 	var vibrationOnly: Bool
 	var finished: Bool
+	var sound: AlarmSound?
 	
 	struct PropertyKeys {
 		static let created = "created"
@@ -34,6 +35,7 @@ class MulTimer: NSObject, NSCoding {
 		static let vibrationOnly = "vibrationOnly"
 		static let lastResumed = "lastResumed"
 		static let finished = "finished"
+		static let sound = "sound"
 	}
 	
 	init(name: String, durationTotal: Int, color: UIColor) {
@@ -107,6 +109,7 @@ class MulTimer: NSObject, NSCoding {
 		aCoder.encode(vibrationOnly, forKey: PropertyKeys.vibrationOnly)
 		aCoder.encode(lastResumed, forKey: PropertyKeys.lastResumed)
 		aCoder.encode(finished, forKey: PropertyKeys.finished)
+		aCoder.encode(sound, forKey: PropertyKeys.sound)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -127,6 +130,7 @@ class MulTimer: NSObject, NSCoding {
 		self.id = id
 		self.vibrationOnly = aDecoder.decodeBool(forKey: PropertyKeys.vibrationOnly)
 		self.finished = aDecoder.decodeBool(forKey: PropertyKeys.finished)
+		self.sound = aDecoder.decodeObject(forKey: PropertyKeys.sound) as? AlarmSound
 	}
 	
 }

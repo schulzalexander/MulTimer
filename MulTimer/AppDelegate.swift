@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import UserNotifications
 
 @UIApplicationMain
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		TimerManagerArchive.createArchiveBaseDirectories()
 		
 		UNUserNotificationCenter.current().delegate = self
+		
+		FirebaseApp.configure()
 		
 		// Load Code Manager if saved
 		if let savedTimerManager = TimerManagerArchive.loadTimerManager() {

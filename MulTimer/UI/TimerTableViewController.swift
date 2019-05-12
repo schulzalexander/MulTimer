@@ -143,6 +143,10 @@ class TimerTableViewController: UIViewController {
 			closeAddTimerContainer()
 			addTimerContainerHidden = !addTimerContainerHidden
 			rotateAddButton()
+			
+			minuteInputTextField.resignFirstResponder()
+			secondsInputTextField.resignFirstResponder()
+			timerNameTextField.resignFirstResponder()
 		}
 	}
 	
@@ -165,7 +169,7 @@ class TimerTableViewController: UIViewController {
 	private func closeAddTimerContainer() {
 		self.dismissView.isHidden = true
 		self.addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
-		UIView.animate(withDuration: 0.3) {
+		UIView.animate(withDuration: 0.3, animations: {
 			self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultHigh
 			self.addTimerShownAnchor.priority = UILayoutPriority.defaultLow
 			self.view.layoutIfNeeded()
@@ -173,10 +177,14 @@ class TimerTableViewController: UIViewController {
 			self.newTimerButton.layer.opacity = 0
 			self.savedTimerTableView.layer.opacity = 0
 			self.timerNameTextField.layer.opacity = 0
+			self.timeInputContainerView.layer.opacity = 0
 			
 			self.addTimerContainer.layer.shadowColor = UIColor.lightGray.cgColor
 			self.addTimerContainer.layer.shadowRadius = 2
+		}) { (success) in
+			self.newTimerButton.setTitleColor(.darkGray, for: .normal)
 		}
+		
 	}
 	
 	private func rotateAddButton() {
@@ -192,7 +200,7 @@ class TimerTableViewController: UIViewController {
 	}
 	
 	@IBAction func createNewTimer() {
-		self.newTimerButton.setTitle(nil, for: .normal)
+		self.newTimerButton.setTitleColor(.clear, for: .normal)
 		UIView.animate(withDuration: 0.3) {
 			self.timeInputContainerView.layer.opacity = 1.0
 		}
@@ -208,7 +216,7 @@ class TimerTableViewController: UIViewController {
 		minuteInputTextField.resignFirstResponder()
 		secondsInputTextField.resignFirstResponder()
 		
-		newTimerButton.setTitle(NSLocalizedString("NewTimer", comment: ""), for: .normal)
+		newTimerButton.setTitleColor(.darkGray, for: .normal)
 		addTimerContainer.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
 		UIView.animate(withDuration: 0.3) {
 			self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultHigh
@@ -435,14 +443,33 @@ extension TimerTableViewController: UIPopoverPresentationControllerDelegate {
 
 extension TimerTableViewController: UITextFieldDelegate {
 	
+	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+		if textField == minuteInputTextField {
+			timerCreationPhase = .EnterMinutes
+		} else if textField == secondsInputTextField {
+			timerCreationPhase = .EnterSeconds
+		} else if textField == timerNameTextField {
+			timerCreationPhase = .EnterName
+		}
+		return true
+	}
+	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		if timerCreationPhase == .EnterName {
 			let name = timerNameTextField.text ?? ""
 			let minutes = Int(minuteInputTextField.text ?? "") ?? 0
 			let seconds = Int(secondsInputTextField.text ?? "") ?? 0
-			let newTimer = MulTimer(name: name, durationTotal: minutes * 60 + seconds, color: ColorPicker.nextColor())
 			
-			startTimer(timer: newTimer)
+			if minutes != 0 || seconds != 0 {
+				let newTimer = MulTimer(name: name, durationTotal: minutes * 60 + seconds, color: ColorPicker.nextColor())
+				
+				startTimer(timer: newTimer)
+			} else {
+				closeAddTimerContainer()
+				timerCreationPhase = .NotActive
+				addTimerContainerHidden = true
+				rotateAddButton()
+			}
 		}
 		textField.resignFirstResponder()
 		return true

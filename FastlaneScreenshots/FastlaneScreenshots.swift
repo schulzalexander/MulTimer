@@ -32,7 +32,7 @@ class FastlaneScreenshots: XCTestCase {
 		
 		let app = XCUIApplication()
 		app.navigationBars["Timers"].buttons["Item"].tap()
-		app.navigationBars["Settings"].buttons["Timers"].tap()
+		//app.navigationBars["Settings"].buttons["Timers"].tap()
 		
 		snapshot("TimerOverview")
     }

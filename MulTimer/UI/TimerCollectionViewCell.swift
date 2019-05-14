@@ -117,14 +117,12 @@ class TimerCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setComponentsPaused() {
-		nameLabel.layer.opacity = 0
 		timeLabel.layer.opacity = 0
 		playImageView.layer.opacity = 1
 		deleteButton.layer.opacity = 1
 	}
 	
 	func setComponentsActive() {
-		nameLabel.layer.opacity = 1
 		timeLabel.layer.opacity = 1
 		playImageView.layer.opacity = 0
 		deleteButton.layer.opacity = 0

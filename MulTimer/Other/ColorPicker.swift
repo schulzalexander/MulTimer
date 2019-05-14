@@ -22,8 +22,19 @@ class ColorPicker {
 		UIColor(red: 124/255, green: 198/255, blue: 109/255, alpha: 1)]
 	
 	static func nextColor() -> UIColor {
+		return nextColorFromRandom()
+	}
+	
+	static private func nextColorFromSelection() -> UIColor {
 		let index = Int.random(in: 0..<colors.count)
 		return colors[index]
+	}
+	
+	static private func nextColorFromRandom() -> UIColor {
+		let red = Double.random(in: 0...1)
+		let green = Double.random(in: 0...1)
+		let blue = Double.random(in: 0...1)
+		return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1.0)
 	}
 	
 }

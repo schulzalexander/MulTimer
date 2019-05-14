@@ -32,12 +32,10 @@ class TutorialPageViewController: UIPageViewController {
 		
 		let contents = [
 			TutorialPage(title: NSLocalizedString("TutorialMainAddButtonTitle", comment: ""), explanation: NSLocalizedString("TutorialMainAddButtonExplanation", comment: ""), image: UIImage(named: "TutorialMainAddButton") ?? UIImage()),
-			TutorialPage(title: NSLocalizedString("TutorialOpenCodeSettingsTitle", comment: ""), explanation: NSLocalizedString("TutorialOpenCodeSettingsExplanation", comment: ""), image: UIImage(named: "TutorialOpenCodeSettings") ?? UIImage()),
-			TutorialPage(title: NSLocalizedString("TutorialAddCodeTitle", comment: ""), explanation: NSLocalizedString("TutorialAddCodeExplanation", comment: ""), image: UIImage(named: "TutorialAddCode") ?? UIImage()),
-			TutorialPage(title: NSLocalizedString("TutorialMapSelectLocationTitle", comment: ""), explanation: NSLocalizedString("TutorialMapSelectLocationExplanation", comment: ""), image: UIImage(named: "TutorialMapSelectLocation") ?? UIImage()),
-			TutorialPage(title: NSLocalizedString("TutorialMapRadiusTitle", comment: ""), explanation: NSLocalizedString("TutorialMapRadiusExplanation", comment: ""), image: UIImage(named: "TutorialMapRadius") ?? UIImage()),
-			TutorialPage(title: NSLocalizedString("TutorialWidgetShowCodeTitle", comment: ""), explanation: NSLocalizedString("TutorialWidgetShowCodeExplanation", comment: ""), image: UIImage(named: "TutorialWidgetShowCode") ?? UIImage()),
-			TutorialPage(title: NSLocalizedString("TutorialWidgetShowSettingsTitle", comment: ""), explanation: NSLocalizedString("TutorialWidgetShowSettingsExplanation", comment: ""), image: UIImage(named: "TutorialWidgetShowSettings") ?? UIImage())
+			TutorialPage(title: NSLocalizedString("TutorialAddContainerTitle", comment: ""), explanation: NSLocalizedString("TutorialAddContainerExplanation", comment: ""), image: UIImage(named: "TutorialAddContainer") ?? UIImage()),
+			TutorialPage(title: NSLocalizedString("TutorialNamedUnnamedTitle", comment: ""), explanation: NSLocalizedString("TutorialNamedUnnamedExplanation", comment: ""), image: UIImage(named: "TutorialNamedUnnamed") ?? UIImage()),
+			TutorialPage(title: NSLocalizedString("TutorialPauseTimerTitle", comment: ""), explanation: NSLocalizedString("TutorialPauseTimerExplanation", comment: ""), image: UIImage(named: "TutorialPauseTimer") ?? UIImage()),
+			TutorialPage(title: NSLocalizedString("TutorialTimerFinishedTitle", comment: ""), explanation: NSLocalizedString("TutorialTimerFinishedExplanation", comment: ""), image: UIImage(named: "TutorialTimerFinished") ?? UIImage())
 		]
 		controllers = [UIViewController]()
 		for content in contents {

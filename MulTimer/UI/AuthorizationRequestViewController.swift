@@ -35,10 +35,12 @@ class AuthorizationRequestViewController: UIViewController {
 				return
 			}
 			if granted {
-				guard let delegate = self.delegate else {
-					fatalError("Error: delegate of Authorization Request was NOT set!")
-				}
-				delegate.userDidGrantAuthorization()
+				self.dismiss(animated: true, completion: {
+					guard let delegate = self.delegate else {
+						fatalError("Error: delegate of Authorization Request was NOT set!")
+					}
+					delegate.userDidGrantAuthorization()
+				})
 			} else {
 				DispatchQueue.main.async {
 					// user has declined before and we cannot request in-app, so we send him to iOS settings

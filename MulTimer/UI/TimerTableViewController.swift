@@ -43,7 +43,7 @@ class TimerTableViewController: UIViewController {
 		
 		collectionView.delegate = self
 		collectionView.dataSource = self
-		collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height / 2, right: 0)
+		collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
 		savedTimerTableView.delegate = self
 		savedTimerTableView.dataSource = self
 		
@@ -151,18 +151,20 @@ class TimerTableViewController: UIViewController {
 	}
 	
 	private func openAddTimerContainer() {
-		self.dismissView.isHidden = false
-		self.addTimerContainer.backgroundColor = .white
-		UIView.animate(withDuration: 0.3) {
-			self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultLow
-			self.addTimerShownAnchor.priority = UILayoutPriority.defaultHigh
-			self.view.layoutIfNeeded()
-			self.savedLabel.layer.opacity = 1
-			self.newTimerButton.layer.opacity = 1
-			self.savedTimerTableView.layer.opacity = 1
-			
-			self.addTimerContainer.layer.shadowColor = UIColor.black.cgColor
-			self.addTimerContainer.layer.shadowRadius = 5
+		DispatchQueue.main.async {
+			self.dismissView.isHidden = false
+			self.addTimerContainer.backgroundColor = .white
+			UIView.animate(withDuration: 0.3) {
+				self.addTimerHiddenAnchor.priority = UILayoutPriority.defaultLow
+				self.addTimerShownAnchor.priority = UILayoutPriority.defaultHigh
+				self.view.layoutIfNeeded()
+				self.savedLabel.layer.opacity = 1
+				self.newTimerButton.layer.opacity = 1
+				self.savedTimerTableView.layer.opacity = 1
+				
+				self.addTimerContainer.layer.shadowColor = UIColor.black.cgColor
+				self.addTimerContainer.layer.shadowRadius = 5
+			}
 		}
 	}
 	
@@ -188,13 +190,15 @@ class TimerTableViewController: UIViewController {
 	}
 	
 	private func rotateAddButton() {
-		if addTimerContainerHidden {
-			UIView.animate(withDuration: 0.3) {
-				self.addButton.transform = CGAffineTransform(rotationAngle: 0)
-			}
-		} else {
-			UIView.animate(withDuration: 0.3) {
-				self.addButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
+		DispatchQueue.main.async {
+			if self.addTimerContainerHidden {
+				UIView.animate(withDuration: 0.3) {
+					self.addButton.transform = CGAffineTransform(rotationAngle: 0)
+				}
+			} else {
+				UIView.animate(withDuration: 0.3) {
+					self.addButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
+				}
 			}
 		}
 	}

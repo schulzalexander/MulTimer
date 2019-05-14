@@ -23,3 +23,16 @@
 "2ToneAlarm1SoundName" = "1";
 "2ToneAlarm2SoundName" = "2";
 "4ToneAlarm1SoundName" = "3";
+
+//MARK: Tutorial
+"TutorialMainAddButtonTitle" = "Add a Timer";
+"TutorialMainAddButtonExplanation" = "To add a timer, click the '+' on the bottom of the screen.";
+"TutorialAddContainerTitle" = "New or Reuse";
+"TutorialAddContainerExplanation" = "You can either create a new timer, or reuse old ones that you frequently need.";
+"TutorialNamedUnnamedTitle" = "Naming";
+"TutorialNamedUnnamedExplanation" = "If you give a timer a name, it will automatically be in the reuse-list when it is due.";
+"TutorialPauseTimerTitle" = "Pause";
+"TutorialPauseTimerExplanation" = "To pause or resume a timer, just click on it. This will also reveal the delete button.";
+"TutorialTimerFinishedTitle" = "Timer due";
+"TutorialTimerFinishedExplanation" = "When a timer is due, it will show a checkmark and send you a notification. Click on the timer to remove it from the list.";
+

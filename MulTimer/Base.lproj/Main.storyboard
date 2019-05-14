@@ -41,11 +41,10 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPQ-r7-sxs">
                                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dV-hv-Vy1">
-                                                                    <rect key="frame" x="26" y="51" width="88" height="38.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="6dV-hv-Vy1">
+                                                                    <rect key="frame" x="24.5" y="51" width="91" height="38.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="38.5" id="DKt-l3-QWp"/>
-                                                                        <constraint firstAttribute="width" constant="88" id="jJu-J5-LdJ"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                                     <nil key="textColor"/>
@@ -65,6 +64,7 @@
                                                                 <constraint firstItem="h40-ON-v7r" firstAttribute="centerY" secondItem="yPQ-r7-sxs" secondAttribute="centerY" id="DE9-yr-kkF"/>
                                                                 <constraint firstItem="6dV-hv-Vy1" firstAttribute="centerX" secondItem="yPQ-r7-sxs" secondAttribute="centerX" id="Hnb-Ht-22o"/>
                                                                 <constraint firstItem="h40-ON-v7r" firstAttribute="width" secondItem="yPQ-r7-sxs" secondAttribute="width" multiplier="0.5" id="hgy-XZ-wRO"/>
+                                                                <constraint firstItem="6dV-hv-Vy1" firstAttribute="width" secondItem="yPQ-r7-sxs" secondAttribute="width" multiplier="0.65" id="j3y-9i-4eS"/>
                                                                 <constraint firstAttribute="width" secondItem="yPQ-r7-sxs" secondAttribute="height" multiplier="1:1" id="oTi-Ce-vu5"/>
                                                             </constraints>
                                                         </view>

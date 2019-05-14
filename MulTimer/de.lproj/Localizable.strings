@@ -24,3 +24,16 @@
 "2ToneAlarm1SoundName" = "1";
 "2ToneAlarm2SoundName" = "2";
 "4ToneAlarm1SoundName" = "3";
+
+//MARK: Tutorial
+"TutorialMainAddButtonTitle" = "Timer hinzufügen";
+"TutorialMainAddButtonExplanation" = "Um einen Timer hinzuzufügen, klicke auf das '+'.";
+"TutorialAddContainerTitle" = "Neu oder wiederverwenden";
+"TutorialAddContainerExplanation" = "Du kannst entweder einen neuen Timer erstellen, oder aus einer Lister deiner häufig benutzen Timer auswählen.";
+"TutorialNamedUnnamedTitle" = "Namen";
+"TutorialNamedUnnamedExplanation" = "Wenn du einem Timer einen Namen zuweist, wird dieser, sobald er abgelaufen ist, automatisch in der Liste zur Wiederverwendung angezeigt.";
+"TutorialPauseTimerTitle" = "Pause";
+"TutorialPauseTimerExplanation" = "Um einen Timer zu pausieren oder zu aktivieren, klicke einfach darauf. Pausierte Timer können über einen Button gelöscht werden.";
+"TutorialTimerFinishedTitle" = "Timer abgelaufen";
+"TutorialTimerFinishedExplanation" = "Wenn ein Timer abgelaufen ist, wird dieser einen Haken zeigen und dir eine Benachrichtung senden. Ein Klick auf den Timer wird diesen dann aus der Übersicht entfernen.";
+

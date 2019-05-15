@@ -127,16 +127,13 @@ class TimerTableViewController: UIViewController {
 	
 	@objc private func addButtonPressed(_ sender: UIButton) {
 		if addTimerContainerHidden {
-			let center = UNUserNotificationCenter.current()
-			center.getNotificationSettings { (settings) in
-				DispatchQueue.main.async {
-					if settings.authorizationStatus != .authorized {
-						self.showRequestForNotificationAuthorization()
-					} else {
-						self.openAddTimerContainer()
-						self.addTimerContainerHidden = !self.addTimerContainerHidden
-						self.rotateAddButton()
-					}
+			DispatchQueue.main.async {
+				if !Settings.shared.hasRequestedNotifications {
+					self.showRequestForNotificationAuthorization()
+				} else {
+					self.openAddTimerContainer()
+					self.addTimerContainerHidden = !self.addTimerContainerHidden
+					self.rotateAddButton()
 				}
 			}
 		} else {
@@ -335,6 +332,18 @@ class TimerTableViewController: UIViewController {
 extension TimerTableViewController: AuthorizationRequestDelegate {
 	
 	func userDidGrantAuthorization() {
+		openAddContainer()
+		Settings.shared.hasRequestedNotifications = true
+		SettingsArchive.save()
+	}
+	
+	func userDidNotGrantAuthorization() {
+		openAddContainer()
+		Settings.shared.hasRequestedNotifications = true
+		SettingsArchive.save()
+	}
+	
+	private func openAddContainer(){
 		addTimerContainerHidden = !addTimerContainerHidden
 		rotateAddButton()
 		openAddTimerContainer()

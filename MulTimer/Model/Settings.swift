@@ -15,6 +15,7 @@ class Settings: NSObject, NSCoding {
 	var openingCount: Int
 	var vibrationOnly: Bool
 	var defaultAlarmSound: AlarmSound
+	var hasRequestedNotifications: Bool
 	
 	static var shared: Settings = Settings()
 	
@@ -23,6 +24,7 @@ class Settings: NSObject, NSCoding {
 		static let openingCount = "openingCount"
 		static let vibrationOnly = "vibrationOnly"
 		static let defaultAlarmSound = "defaultAlarmSound"
+		static let hasRequestedNotifications = "hasRequestedNotifications"
 	}
 	
 	private override init() {
@@ -30,6 +32,7 @@ class Settings: NSObject, NSCoding {
 		self.openingCount = 0
 		self.vibrationOnly = true
 		self.defaultAlarmSound = SoundTableViewController.sounds.first!
+		self.hasRequestedNotifications = false
 		super.init()
 	}
 	
@@ -38,6 +41,7 @@ class Settings: NSObject, NSCoding {
 		aCoder.encode(openingCount, forKey: PropertyKeys.openingCount)
 		aCoder.encode(vibrationOnly, forKey: PropertyKeys.vibrationOnly)
 		aCoder.encode(defaultAlarmSound, forKey: PropertyKeys.defaultAlarmSound)
+		aCoder.encode(hasRequestedNotifications, forKey: PropertyKeys.hasRequestedNotifications)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -48,6 +52,7 @@ class Settings: NSObject, NSCoding {
 		self.openingCount = aDecoder.decodeInteger(forKey: PropertyKeys.openingCount)
 		self.vibrationOnly = aDecoder.decodeBool(forKey: PropertyKeys.vibrationOnly)
 		self.defaultAlarmSound = defaultAlarmSound
+		self.hasRequestedNotifications = aDecoder.decodeBool(forKey: PropertyKeys.hasRequestedNotifications)
 	}
 	
 }

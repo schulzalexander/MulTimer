@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ajy-c3-J7y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ajy-c3-J7y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -502,7 +502,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pleas allow this app to send you notifications, in order for the timers to start alarms." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1q-GJ-VnO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow this app to send you notifications, in order for the timers to send you alarms." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1q-GJ-VnO">
                                 <rect key="frame" x="30" y="212" width="315" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -526,15 +526,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lat-Iy-O5M">
+                                <rect key="frame" x="144" y="379" width="87" height="30"/>
+                                <state key="normal" title="Don't Enable"/>
+                                <connections>
+                                    <action selector="doNotEnableNotifications:" destination="wTZ-sl-6eG" eventType="touchUpInside" id="sVv-p9-qAV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="lat-Iy-O5M" firstAttribute="centerX" secondItem="Q64-Tt-b4m" secondAttribute="centerX" id="Iqf-VB-S7X"/>
                             <constraint firstItem="NBN-AR-gZB" firstAttribute="leading" secondItem="sEX-mj-jTH" secondAttribute="leading" id="NDf-JB-ZwD"/>
                             <constraint firstItem="kTj-sR-Qxh" firstAttribute="centerX" secondItem="Q64-Tt-b4m" secondAttribute="centerX" id="cvu-Ub-LgZ"/>
                             <constraint firstItem="V1q-GJ-VnO" firstAttribute="top" secondItem="NBN-AR-gZB" secondAttribute="bottom" constant="30" id="eCi-WW-Pxc"/>
                             <constraint firstItem="NBN-AR-gZB" firstAttribute="top" secondItem="sEX-mj-jTH" secondAttribute="top" constant="120" id="eDP-dy-2FD"/>
                             <constraint firstItem="sEX-mj-jTH" firstAttribute="trailing" secondItem="NBN-AR-gZB" secondAttribute="trailing" id="eWp-kd-0OE"/>
                             <constraint firstItem="sEX-mj-jTH" firstAttribute="trailing" secondItem="V1q-GJ-VnO" secondAttribute="trailing" constant="30" id="me5-8Z-iGQ"/>
+                            <constraint firstItem="lat-Iy-O5M" firstAttribute="top" secondItem="kTj-sR-Qxh" secondAttribute="bottom" constant="8" id="q3T-vy-asu"/>
                             <constraint firstItem="kTj-sR-Qxh" firstAttribute="top" secondItem="V1q-GJ-VnO" secondAttribute="bottom" constant="60" id="wN0-rH-yMP"/>
                             <constraint firstItem="V1q-GJ-VnO" firstAttribute="leading" secondItem="sEX-mj-jTH" secondAttribute="leading" constant="30" id="xpa-3x-QMe"/>
                         </constraints>
@@ -664,15 +673,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CheckMark" width="100" height="100"/>
+        <image name="CheckMark" width="50" height="50"/>
         <image name="DeleteButton" width="44" height="44"/>
-        <image name="PlayButton" width="200" height="200"/>
-        <image name="PrivacyPolicyIcon" width="100" height="100"/>
-        <image name="RateIcon" width="100" height="100"/>
-        <image name="ResetIcon" width="100" height="100"/>
-        <image name="SettingsIcon" width="50" height="50"/>
-        <image name="SoundIcon" width="100" height="100"/>
-        <image name="TutorialIcon" width="100" height="100"/>
-        <image name="VibrationIcon" width="100" height="100"/>
+        <image name="PlayButton" width="100" height="100"/>
+        <image name="PrivacyPolicyIcon" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="RateIcon" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="ResetIcon" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="SettingsIcon" width="25" height="25"/>
+        <image name="SoundIcon" width="50" height="50"/>
+        <image name="TutorialIcon" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="VibrationIcon" width="50" height="50"/>
     </resources>
 </document>

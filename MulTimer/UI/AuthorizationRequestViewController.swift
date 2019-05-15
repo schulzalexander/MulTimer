@@ -34,27 +34,38 @@ class AuthorizationRequestViewController: UIViewController {
 				print(error!.localizedDescription)
 				return
 			}
-			if granted {
-				self.dismiss(animated: true, completion: {
-					guard let delegate = self.delegate else {
-						fatalError("Error: delegate of Authorization Request was NOT set!")
-					}
+			self.dismiss(animated: true, completion: {
+				guard let delegate = self.delegate else {
+					fatalError("Error: delegate of Authorization Request was NOT set!")
+				}
+				if granted {
 					delegate.userDidGrantAuthorization()
-				})
-			} else {
-				DispatchQueue.main.async {
-					// user has declined before and we cannot request in-app, so we send him to iOS settings
-					guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-						return
-					}
-					
-					if UIApplication.shared.canOpenURL(settingsUrl) {
-						UIApplication.shared.open(settingsUrl, completionHandler: nil)
-					}
+				} else {
+					delegate.userDidNotGrantAuthorization()
+				}
+			})
+			/*
+			DispatchQueue.main.async {
+				// user has declined before and we cannot request in-app, so we send him to iOS settings
+				guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+					return
+				}
+			
+				if UIApplication.shared.canOpenURL(settingsUrl) {
+					UIApplication.shared.open(settingsUrl, completionHandler: nil)
 				}
 			}
-			// if not granted, do nothing
+			*/
 		}
+	}
+	
+	@IBAction func doNotEnableNotifications(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: {
+			guard let delegate = self.delegate else {
+				fatalError("Error: delegate of Authorization Request was NOT set!")
+			}
+			delegate.userDidNotGrantAuthorization()
+		})
 	}
 	
 	private func setupCancelButton() {
@@ -97,5 +108,6 @@ class AuthorizationRequestViewController: UIViewController {
 protocol AuthorizationRequestDelegate {
 	
 	func userDidGrantAuthorization()
+	func userDidNotGrantAuthorization()
 	
 }

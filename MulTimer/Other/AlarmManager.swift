@@ -22,7 +22,7 @@ class AlarmManager {
 			content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: Settings.shared.defaultAlarmSound.fileName))
 		}
 		
-		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.init(exactly: timer.getTimeLeft()) ?? 0, repeats: false)
+		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (Double.init(exactly: timer.getTimeLeft()) ?? 0) + 0.5, repeats: false)
 		let request = UNNotificationRequest(identifier: timer.id, content: content, trigger: trigger)
 		
 		UNUserNotificationCenter.current().add(request) { (error) in

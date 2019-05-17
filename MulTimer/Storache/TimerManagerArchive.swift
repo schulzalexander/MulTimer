@@ -37,6 +37,7 @@ class TimerManagerArchive {
 	}
 	
 	static func saveTimer(timer: MulTimer) {
+		NSKeyedArchiver.setClassName("MulTimer", for: MulTimer.self)
 		let success = NSKeyedArchiver.archiveRootObject(timer, toFile: timerDir(timerID: timer.id).path)
 		if !success {
 			fatalError("Error while saving timer \(timer.id)!")
@@ -44,6 +45,7 @@ class TimerManagerArchive {
 	}
 	
 	static func loadTimer(id: String) -> MulTimer? {
+		NSKeyedUnarchiver.setClass(MulTimer.self, forClassName: "MulTimer")
 		return NSKeyedUnarchiver.unarchiveObject(withFile: timerDir(timerID: id).path) as? MulTimer
 	}
 	

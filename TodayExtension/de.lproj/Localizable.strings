@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MulTimer
+
+  Created by Alexander Schulz on 17.05.19.
+  Copyright © 2019 Alexander Schulz. All rights reserved.
+*/
+
+
+//MARK: Timer Collection View
+"TimerCollectionViewEmptyMessage" = "Keine Aktiven Timer";

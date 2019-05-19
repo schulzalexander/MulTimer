@@ -35,6 +35,13 @@
 		C9445AC7227ED5E600671B36 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */; };
 		C9445ACB227ED82300671B36 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACA227ED82300671B36 /* TutorialPage.swift */; };
 		C9445ACD227ED84B00671B36 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACC227ED84B00671B36 /* TutorialViewController.swift */; };
+		C9641257228FF8780040A072 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9641256228FF8780040A072 /* IntentHandler.swift */; };
+		C964125F228FF8790040A072 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C964125E228FF8790040A072 /* IntentsUI.framework */; };
+		C9641262228FF8790040A072 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9641261228FF8790040A072 /* IntentViewController.swift */; };
+		C9641265228FF8790040A072 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9641263228FF8790040A072 /* MainInterface.storyboard */; };
+		C9641269228FF8790040A072 /* StartTimerIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C964125D228FF8790040A072 /* StartTimerIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C964126C228FF8790040A072 /* StartTimerIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9641254228FF8780040A072 /* StartTimerIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C9641274228FF8CF0040A072 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C9641273228FF8CF0040A072 /* Intents.intentdefinition */; };
 		C9759BC4228F13AB00ADF382 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */; };
 		C9759BC7228F13AB00ADF382 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9759BC6228F13AB00ADF382 /* TodayViewController.swift */; };
 		C9759BCA228F13AB00ADF382 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9759BC8228F13AB00ADF382 /* MainInterface.storyboard */; };
@@ -98,6 +105,20 @@
 			remoteGlobalIDString = C90601AD22789E9B00D40AE7;
 			remoteInfo = MulTimer;
 		};
+		C9641267228FF8790040A072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C90601A622789E9B00D40AE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C964125C228FF8790040A072;
+			remoteInfo = StartTimerIntentUI;
+		};
+		C964126A228FF8790040A072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C90601A622789E9B00D40AE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9641253228FF8780040A072;
+			remoteInfo = StartTimerIntent;
+		};
 		C9759BCC228F13AB00ADF382 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C90601A622789E9B00D40AE7 /* Project object */;
@@ -122,6 +143,8 @@
 			dstSubfolderSpec = 13;
 			files = (
 				C9759BCE228F13AB00ADF382 /* TodayExtension.appex in Embed App Extensions */,
+				C9641269228FF8790040A072 /* StartTimerIntentUI.appex in Embed App Extensions */,
+				C964126C228FF8790040A072 /* StartTimerIntent.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +191,15 @@
 		C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		C9445ACA227ED82300671B36 /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		C9445ACC227ED84B00671B36 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		C9641254228FF8780040A072 /* StartTimerIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StartTimerIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9641256228FF8780040A072 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		C9641258228FF8780040A072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C964125D228FF8790040A072 /* StartTimerIntentUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StartTimerIntentUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C964125E228FF8790040A072 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		C9641261228FF8790040A072 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		C9641264228FF8790040A072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C9641266228FF8790040A072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9641273228FF8CF0040A072 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		C9759BC2228F13AB00ADF382 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C9759BC6228F13AB00ADF382 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +253,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9641251228FF8780040A072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964125A228FF8790040A072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C964125F228FF8790040A072 /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9759BBF228F13AB00ADF382 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,6 +307,7 @@
 				A818DCB3361E92BA0A020979 /* Pods_MulTimerTests.framework */,
 				CA07A88A895CB11A4C5F4CF0 /* Pods_MulTimerUITests.framework */,
 				C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */,
+				C964125E228FF8790040A072 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,6 +320,8 @@
 				C90601D022789E9D00D40AE7 /* MulTimerUITests */,
 				C987913D22880B46000877D0 /* FastlaneScreenshots */,
 				C9759BC5228F13AB00ADF382 /* TodayExtension */,
+				C9641255228FF8780040A072 /* StartTimerIntent */,
+				C9641260228FF8790040A072 /* StartTimerIntentUI */,
 				C90601AF22789E9B00D40AE7 /* Products */,
 				14FEB02AD9376A36F6780F68 /* Pods */,
 				8EA292FABDC782FC83CBC1D0 /* Frameworks */,
@@ -286,6 +336,8 @@
 				C90601CD22789E9D00D40AE7 /* MulTimerUITests.xctest */,
 				C987913C22880B46000877D0 /* FastlaneScreenshots.xctest */,
 				C9759BC2228F13AB00ADF382 /* TodayExtension.appex */,
+				C9641254228FF8780040A072 /* StartTimerIntent.appex */,
+				C964125D228FF8790040A072 /* StartTimerIntentUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -306,6 +358,7 @@
 				C90601BD22789E9D00D40AE7 /* Info.plist */,
 				C987915322886DEB000877D0 /* GoogleService-Info.plist */,
 				C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */,
+				C9641273228FF8CF0040A072 /* Intents.intentdefinition */,
 			);
 			path = MulTimer;
 			sourceTree = "<group>";
@@ -394,6 +447,25 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
+		C9641255228FF8780040A072 /* StartTimerIntent */ = {
+			isa = PBXGroup;
+			children = (
+				C9641256228FF8780040A072 /* IntentHandler.swift */,
+				C9641258228FF8780040A072 /* Info.plist */,
+			);
+			path = StartTimerIntent;
+			sourceTree = "<group>";
+		};
+		C9641260228FF8790040A072 /* StartTimerIntentUI */ = {
+			isa = PBXGroup;
+			children = (
+				C9641261228FF8790040A072 /* IntentViewController.swift */,
+				C9641263228FF8790040A072 /* MainInterface.storyboard */,
+				C9641266228FF8790040A072 /* Info.plist */,
+			);
+			path = StartTimerIntentUI;
+			sourceTree = "<group>";
+		};
 		C9759BC5228F13AB00ADF382 /* TodayExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +516,8 @@
 			);
 			dependencies = (
 				C9759BCD228F13AB00ADF382 /* PBXTargetDependency */,
+				C9641268228FF8790040A072 /* PBXTargetDependency */,
+				C964126B228FF8790040A072 /* PBXTargetDependency */,
 			);
 			name = MulTimer;
 			productName = MulTimer;
@@ -487,6 +561,40 @@
 			productName = MulTimerUITests;
 			productReference = C90601CD22789E9D00D40AE7 /* MulTimerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		C9641253228FF8780040A072 /* StartTimerIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9641270228FF8790040A072 /* Build configuration list for PBXNativeTarget "StartTimerIntent" */;
+			buildPhases = (
+				C9641250228FF8780040A072 /* Sources */,
+				C9641251228FF8780040A072 /* Frameworks */,
+				C9641252228FF8780040A072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StartTimerIntent;
+			productName = StartTimerIntent;
+			productReference = C9641254228FF8780040A072 /* StartTimerIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C964125C228FF8790040A072 /* StartTimerIntentUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C964126D228FF8790040A072 /* Build configuration list for PBXNativeTarget "StartTimerIntentUI" */;
+			buildPhases = (
+				C9641259228FF8790040A072 /* Sources */,
+				C964125A228FF8790040A072 /* Frameworks */,
+				C964125B228FF8790040A072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StartTimerIntentUI;
+			productName = StartTimerIntentUI;
+			productReference = C964125D228FF8790040A072 /* StartTimerIntentUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		C9759BC1228F13AB00ADF382 /* TodayExtension */ = {
 			isa = PBXNativeTarget;
@@ -539,6 +647,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
 						};
 					};
 					C90601C122789E9D00D40AE7 = {
@@ -548,6 +659,12 @@
 					C90601CC22789E9D00D40AE7 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = C90601AD22789E9B00D40AE7;
+					};
+					C9641253228FF8780040A072 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					C964125C228FF8790040A072 = {
+						CreatedOnToolsVersion = 10.2.1;
 					};
 					C9759BC1228F13AB00ADF382 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -582,6 +699,8 @@
 				C90601CC22789E9D00D40AE7 /* MulTimerUITests */,
 				C987913B22880B46000877D0 /* FastlaneScreenshots */,
 				C9759BC1228F13AB00ADF382 /* TodayExtension */,
+				C9641253228FF8780040A072 /* StartTimerIntent */,
+				C964125C228FF8790040A072 /* StartTimerIntentUI */,
 			);
 		};
 /* End PBXProject section */
@@ -613,6 +732,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9641252228FF8780040A072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C964125B228FF8790040A072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9641265228FF8790040A072 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +873,7 @@
 				C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */,
 				C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */,
 				C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */,
+				C9641274228FF8CF0040A072 /* Intents.intentdefinition in Sources */,
 				C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */,
 				C9445AC7227ED5E600671B36 /* PrivacyPolicyViewController.swift in Sources */,
 				C9445AC5227ED55100671B36 /* TutorialPageViewController.swift in Sources */,
@@ -772,6 +907,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90601D222789E9D00D40AE7 /* MulTimerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9641250228FF8780040A072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9641257228FF8780040A072 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9641259228FF8790040A072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9641262228FF8790040A072 /* IntentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +986,16 @@
 			target = C90601AD22789E9B00D40AE7 /* MulTimer */;
 			targetProxy = C90601CE22789E9D00D40AE7 /* PBXContainerItemProxy */;
 		};
+		C9641268228FF8790040A072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C964125C228FF8790040A072 /* StartTimerIntentUI */;
+			targetProxy = C9641267228FF8790040A072 /* PBXContainerItemProxy */;
+		};
+		C964126B228FF8790040A072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9641253228FF8780040A072 /* StartTimerIntent */;
+			targetProxy = C964126A228FF8790040A072 /* PBXContainerItemProxy */;
+		};
 		C9759BCD228F13AB00ADF382 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C9759BC1228F13AB00ADF382 /* TodayExtension */;
@@ -864,6 +1025,14 @@
 				C9FCD1FA227DFE1D001AA4D0 /* de */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C9641263228FF8790040A072 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9641264228FF8790040A072 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		C9759BC8228F13AB00ADF382 /* MainInterface.storyboard */ = {
@@ -1141,6 +1310,86 @@
 			};
 			name = Release;
 		};
+		C964126E228FF8790040A072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WWSXM777M;
+				INFOPLIST_FILE = StartTimerIntentUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer.StartTimerIntentUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C964126F228FF8790040A072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WWSXM777M;
+				INFOPLIST_FILE = StartTimerIntentUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer.StartTimerIntentUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C9641271228FF8790040A072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WWSXM777M;
+				INFOPLIST_FILE = StartTimerIntent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer.StartTimerIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C9641272228FF8790040A072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WWSXM777M;
+				INFOPLIST_FILE = StartTimerIntent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer.StartTimerIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C9759BCF228F13AB00ADF382 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1256,6 +1505,24 @@
 			buildConfigurations = (
 				C90601DD22789E9D00D40AE7 /* Debug */,
 				C90601DE22789E9D00D40AE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C964126D228FF8790040A072 /* Build configuration list for PBXNativeTarget "StartTimerIntentUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C964126E228FF8790040A072 /* Debug */,
+				C964126F228FF8790040A072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9641270228FF8790040A072 /* Build configuration list for PBXNativeTarget "StartTimerIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9641271228FF8790040A072 /* Debug */,
+				C9641272228FF8790040A072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

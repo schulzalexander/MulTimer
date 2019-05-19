@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import WatchConnectivity
 
 class TimerTableViewController: UIViewController {
 	
@@ -37,7 +38,7 @@ class TimerTableViewController: UIViewController {
 	@IBOutlet weak var minuteInputTextField: UITextField!
 	@IBOutlet weak var secondsInputTextField: UITextField!
 	
-	//MARK: Methos
+	//MARK: Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -65,6 +66,8 @@ class TimerTableViewController: UIViewController {
 		Settings.shared.openingCount += 1
 		SettingsArchive.save()
 		Utils.requestAppStoreRating()
+		
+		sendUpdateToWatch()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -544,6 +547,40 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 		}
 		cell.timer.reset()
 		startTimer(timer: cell.timer)
+	}
+	
+}
+
+extension TimerTableViewController: WCSessionDelegate {
+	
+	private func sendUpdateToWatch() {
+		if WCSession.isSupported() { //makes sure it's not an iPad or iPod
+			let watchSession = WCSession.default
+			watchSession.delegate = self
+			watchSession.activate()
+			if watchSession.isPaired && watchSession.isWatchAppInstalled {
+				do {
+					try watchSession.updateApplicationContext([
+						"savedTimers": MulTimerManager.shared.getSavedTimers(),
+						"visibleTimers": MulTimerManager.shared.getVisibleTimers()
+					])
+				} catch let error as NSError {
+					print(error.description)
+				}
+			}
+		}
+	}
+	
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+		
+	}
+	
+	func sessionDidBecomeInactive(_ session: WCSession) {
+		
+	}
+	
+	func sessionDidDeactivate(_ session: WCSession) {
+		
 	}
 	
 }

@@ -19,6 +19,12 @@ class Settings: NSObject, NSCoding {
 	
 	static var shared: Settings = Settings()
 	
+	static let sounds: [AlarmSound] = [
+		AlarmSound(id: 1, nameLocalizationKey: "2ToneAlarm2SoundName", fileName: "Short_2.mp3"),
+		AlarmSound(id: 2, nameLocalizationKey: "2ToneAlarm1SoundName", fileName: "Short_1.mp3"),
+		AlarmSound(id: 3, nameLocalizationKey: "4ToneAlarm1SoundName", fileName: "Long_1.mp3")
+	]
+	
 	struct PropertyKeys {
 		static let firstAppStart = "firstAppStart"
 		static let openingCount = "openingCount"
@@ -31,7 +37,7 @@ class Settings: NSObject, NSCoding {
 		self.firstAppStart = true
 		self.openingCount = 0
 		self.vibrationOnly = true
-		self.defaultAlarmSound = SoundTableViewController.sounds.first!
+		self.defaultAlarmSound = Settings.sounds.first!
 		self.hasRequestedNotifications = false
 		super.init()
 	}

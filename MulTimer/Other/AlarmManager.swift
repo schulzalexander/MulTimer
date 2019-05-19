@@ -16,11 +16,13 @@ class AlarmManager {
 		content.body = timer.name
 		content.title = "MulTimer"
 		//content.sound = timer.vibrationOnly || Settings.shared.vibrationOnly ? nil : UNNotificationSound.default
+		#if os(iOS)
 		if let sound = timer.sound {
 			content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: sound.fileName))
 		} else {
 			content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: Settings.shared.defaultAlarmSound.fileName))
 		}
+		#endif
 		
 		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (Double.init(exactly: timer.getTimeLeft()) ?? 0) + 0.5, repeats: false)
 		let request = UNNotificationRequest(identifier: timer.id, content: content, trigger: trigger)

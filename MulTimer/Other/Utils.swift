@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if os(iOS)
 import StoreKit
+#endif
 
 class Utils {
 	
@@ -24,6 +26,7 @@ class Utils {
 		return temp
 	}
 	
+	#if os(iOS)
 	static func requestAppStoreRating() {
 		let count = Settings.shared.openingCount
 		switch count {
@@ -39,7 +42,6 @@ class Utils {
 			break
 		}
 	}
-	
-	
+	#endif
 	
 }

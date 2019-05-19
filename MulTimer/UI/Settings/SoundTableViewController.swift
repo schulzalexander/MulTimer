@@ -12,11 +12,6 @@ import AVFoundation
 class SoundTableViewController: UITableViewController {
 
 	//MARK: Properties
-	static let sounds: [AlarmSound] = [
-		AlarmSound(id: 1, nameLocalizationKey: "2ToneAlarm2SoundName", fileName: "Short_2.mp3"),
-		AlarmSound(id: 2, nameLocalizationKey: "2ToneAlarm1SoundName", fileName: "Short_1.mp3"),
-		AlarmSound(id: 3, nameLocalizationKey: "4ToneAlarm1SoundName", fileName: "Long_1.mp3")
-	]
 
 	var player: AVAudioPlayer!
 
@@ -27,7 +22,7 @@ class SoundTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return SoundTableViewController.sounds.count
+		return Settings.sounds.count
     }
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -55,7 +50,7 @@ class SoundTableViewController: UITableViewController {
 			fatalError("Failed to dequeue tableView cell!")
 		}
 		
-		cell.sound = SoundTableViewController.sounds[indexPath.row]
+		cell.sound = Settings.sounds[indexPath.row]
 		
 		return cell
 	}

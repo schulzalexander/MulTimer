@@ -23,8 +23,8 @@
                         </separator>
                         <table alignment="left" id="n4Q-QQ-OZj">
                             <items>
-                                <tableRow identifier="TimerRow" id="swN-xc-2U8">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="lCG-pJ-CjQ">
+                                <tableRow identifier="TimerRow" id="swN-xc-2U8" customClass="TimerRowController" customModule="WatchApp_Extension">
+                                    <group key="rootItem" width="1" alignment="left" layout="vertical" spacing="0.0" id="lCG-pJ-CjQ">
                                         <items>
                                             <group width="131" height="16" alignment="left" spacing="5" id="7xF-qd-Sti">
                                                 <items>
@@ -36,12 +36,18 @@
                                             </group>
                                             <group width="1" alignment="right" id="knr-oe-iqG">
                                                 <items>
-                                                    <timer height="20" alignment="right" id="CdX-z5-RAM"/>
+                                                    <label width="136" alignment="right" text="00:00" textAlignment="right" id="H9s-bN-efF"/>
                                                 </items>
-                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                             </group>
                                         </items>
+                                        <color key="backgroundColor" red="0.1845256979695431" green="0.1845256979695431" blue="0.1845256979695431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
                                     </group>
+                                    <connections>
+                                        <outlet property="colorButton" destination="yNf-cw-u8C" id="Dhy-s7-ecB"/>
+                                        <outlet property="nameLabel" destination="Fuz-F9-6JY" id="zUT-NB-f3Z"/>
+                                        <outlet property="timeLabel" destination="H9s-bN-efF" id="jEC-c8-KEr"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>

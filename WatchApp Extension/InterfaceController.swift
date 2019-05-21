@@ -16,6 +16,7 @@ class InterfaceController: WKInterfaceController {
 	//MARK: Properties
 	var savedTimers: [MulTimer]!
 	var visibleTimers: [MulTimer]!
+	var timer: Timer!
 	
 	//MARK: Outlets
 	@IBOutlet weak var addTimer: WKInterfaceButton!
@@ -29,6 +30,11 @@ class InterfaceController: WKInterfaceController {
         
 		activateWCSession()
 		
+		timer = Timer.scheduledTimer(timeInterval: 1.0,
+									 target: self,
+									 selector: #selector(updateTimeCounters),
+									 userInfo: nil,
+									 repeats: true)
     }
     
     override func willActivate() {
@@ -41,23 +47,37 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 	
-
+	@objc private func updateTimeCounters() {
+		for i in 0..<visibleTimers.count {
+			guard let controller = table.rowController(at: i) as? TimerRowController else {
+				fatalError("Receiver row controller has unknown type.")
+			}
+			controller.updateTimeLabel()
+		}
+	}
+	
 }
 
 extension InterfaceController: WCSessionDelegate {
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		print("Session activated!")
+		
+		didUpdateApplicationContext(applicationContext: session.receivedApplicationContext)
 	}
 	
 	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+		didUpdateApplicationContext(applicationContext: applicationContext)
+	}
+	
+	private func didUpdateApplicationContext(applicationContext: [String: Any]) {
 		let decoder = JSONDecoder()
 		
 		let savedArchived = applicationContext["savedTimers"] as? Data
 		let visibleArchived = applicationContext["visibleTimers"] as? Data
 		
-		var savedTimers = [MulTimer]()
-		var visibleTimers = [MulTimer]()
+		savedTimers = [MulTimer]()
+		visibleTimers = [MulTimer]()
 		
 		if let savedArchived = savedArchived {
 			do {
@@ -75,7 +95,16 @@ extension InterfaceController: WCSessionDelegate {
 			}
 		}
 		
+		// Populate table
+		
 		table.setNumberOfRows(visibleTimers.count, withRowType: "TimerRow")
+		
+		for i in 0..<visibleTimers.count {
+			guard let controller = table.rowController(at: i) as? TimerRowController else {
+				fatalError("Receiver row controller has unknown type.")
+			}
+			controller.timer = visibleTimers[i]
+		}
 	}
 	
 	private func activateWCSession() {

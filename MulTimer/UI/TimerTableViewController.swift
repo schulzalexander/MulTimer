@@ -266,7 +266,7 @@ class TimerTableViewController: UIViewController {
 			guard let cell = cell as? TimerCollectionViewCell else {
 				continue
 			}
-			if cell.timer.active {
+			if cell.timer.active && !cell.timer.finished {
 				let timeLeft = cell.timer.getTimeLeft()
 				cell.timeLabel.text = Utils.secondsToTime(seconds: timeLeft)
 				cell.updateTimeBar()
@@ -564,6 +564,7 @@ extension TimerTableViewController: WCSessionDelegate {
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		if activationState == .activated {
 			let watchSession = WCSession.default
+			//TODO: here
 			if true || watchSession.isPaired && watchSession.isWatchAppInstalled {
 				let encoder = JSONEncoder()
 				do {

@@ -20,14 +20,24 @@ class SettingsArchive {
 	}
 	
 	static func save() {
-		let success = NSKeyedArchiver.archiveRootObject(Settings.shared, toFile: settingDir().path)
-		if !success {
-			fatalError("Error while saving settings!")
+		do {
+			let data = try NSKeyedArchiver.archivedData(withRootObject: Settings.shared, requiringSecureCoding: false)
+			try data.write(to: settingDir())
+		} catch {
+			fatalError(error.localizedDescription)
 		}
 	}
 	
 	static func load() -> Settings? {
-		return NSKeyedUnarchiver.unarchiveObject(withFile: settingDir().path) as? Settings
+		do {
+			let rawdata = try Data(contentsOf: settingDir())
+			if let unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(rawdata) as? Settings {
+				return unarchived
+			}
+		} catch {
+			fatalError(error.localizedDescription)
+		}
+		return nil
 	}
 	
 }

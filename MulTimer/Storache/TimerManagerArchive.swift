@@ -38,15 +38,25 @@ class TimerManagerArchive {
 	
 	static func saveTimer(timer: MulTimer) {
 		NSKeyedArchiver.setClassName("MulTimer", for: MulTimer.self)
-		let success = NSKeyedArchiver.archiveRootObject(timer, toFile: timerDir(timerID: timer.id).path)
-		if !success {
-			fatalError("Error while saving timer \(timer.id)!")
+		do {
+			let data = try NSKeyedArchiver.archivedData(withRootObject: timer, requiringSecureCoding: false)
+			try data.write(to: timerDir(timerID: timer.id))
+		} catch {
+			fatalError(error.localizedDescription)
 		}
 	}
 	
 	static func loadTimer(id: String) -> MulTimer? {
 		NSKeyedUnarchiver.setClass(MulTimer.self, forClassName: "MulTimer")
-		return NSKeyedUnarchiver.unarchiveObject(withFile: timerDir(timerID: id).path) as? MulTimer
+		do {
+			let rawdata = try Data(contentsOf: timerDir(timerID: id))
+			if let unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(rawdata) as? MulTimer {
+				return unarchived
+			}
+		} catch {
+			fatalError(error.localizedDescription)
+		}
+		return nil
 	}
 	
 	static func deleteTimer(id: String) {
@@ -64,15 +74,25 @@ class TimerManagerArchive {
 	
 	static func saveTimerManager() {
 		NSKeyedArchiver.setClassName("MulTimerManager", for: MulTimerManager.self)
-		let success = NSKeyedArchiver.archiveRootObject(MulTimerManager.shared, toFile: timerManagerDir().path)
-		if !success {
-			fatalError("Error while saving task manager!")
+		do {
+			let data = try NSKeyedArchiver.archivedData(withRootObject: MulTimerManager.shared, requiringSecureCoding: false)
+			try data.write(to: timerManagerDir())
+		} catch {
+			fatalError(error.localizedDescription)
 		}
 	}
 	
 	static func loadTimerManager() -> MulTimerManager? {
 		NSKeyedUnarchiver.setClass(MulTimerManager.self, forClassName: "MulTimerManager")
-		return NSKeyedUnarchiver.unarchiveObject(withFile: timerManagerDir().path) as? MulTimerManager
+		do {
+			let rawdata = try Data(contentsOf: timerManagerDir())
+			if let unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(rawdata) as? MulTimerManager {
+				return unarchived
+			}
+		} catch {
+			fatalError(error.localizedDescription)
+		}
+		return nil
 	}
 	
 	

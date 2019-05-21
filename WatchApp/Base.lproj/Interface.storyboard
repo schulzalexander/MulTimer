@@ -28,7 +28,7 @@
                                         <items>
                                             <group width="131" height="16" alignment="left" spacing="5" id="7xF-qd-Sti">
                                                 <items>
-                                                    <button width="13" height="13" alignment="left" id="yNf-cw-u8C">
+                                                    <button width="13" height="13" alignment="left" enabled="NO" id="yNf-cw-u8C">
                                                         <color key="backgroundColor" red="1" green="0.1124867392" blue="0.065501891830000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </button>
                                                     <label width="133" height="15" alignment="left" text="Name" id="Fuz-F9-6JY"/>
@@ -36,10 +36,17 @@
                                             </group>
                                             <group width="1" alignment="right" id="knr-oe-iqG">
                                                 <items>
-                                                    <label width="136" alignment="right" text="00:00" textAlignment="right" id="H9s-bN-efF"/>
+                                                    <label alignment="right" text="00:00" textAlignment="right" id="H9s-bN-efF"/>
                                                 </items>
                                             </group>
                                         </items>
+                                        <gestureRecognizers>
+                                            <longPressGestureRecognizer id="Ao8-4j-XFB">
+                                                <connections>
+                                                    <action selector="didLongPressOnRow:" destination="swN-xc-2U8" id="nmt-5y-dz0"/>
+                                                </connections>
+                                            </longPressGestureRecognizer>
+                                        </gestureRecognizers>
                                         <color key="backgroundColor" red="0.1845256979695431" green="0.1845256979695431" blue="0.1845256979695431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
                                     </group>

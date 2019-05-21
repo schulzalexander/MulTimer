@@ -133,7 +133,5 @@ class MulTimer: NSObject, NSCoding, Codable {
 		self.sound = aDecoder.decodeObject(forKey: PropertyKeys.sound) as? AlarmSound
 	}
 	
-	//MARK: Codable
-	
 }
 

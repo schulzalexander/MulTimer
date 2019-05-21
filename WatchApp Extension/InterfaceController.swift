@@ -52,10 +52,23 @@ class InterfaceController: WKInterfaceController {
 			guard let controller = table.rowController(at: i) as? TimerRowController else {
 				fatalError("Receiver row controller has unknown type.")
 			}
-			controller.updateTimeLabel()
+			if controller.timer.active && !controller.timer.finished {
+				controller.updateTimeLabel()
+				let timeLeft = controller.timer.getTimeLeft()
+				if timeLeft == 0 && !controller.timer.finished {
+					controller.timer.finished = true
+					controller.timerDidFinish()
+				}
+			}
 		}
 	}
 	
+	override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+		guard let controller = table.rowController(at: rowIndex) as? TimerRowController else {
+			fatalError("Receiver row controller has unknown type.")
+		}
+		controller.togglePause()
+	}
 }
 
 extension InterfaceController: WCSessionDelegate {

@@ -27,7 +27,23 @@ class TimerRowController: NSObject {
 	@IBOutlet weak var timeLabel: WKInterfaceLabel!
 	
 	func updateTimeLabel() {
-		timeLabel.setText(Utils.secondsToTime(seconds: timer.getTimeLeft()))
+		if timer.active {
+			timeLabel.setText(Utils.secondsToTime(seconds: timer.getTimeLeft()))
+		} else {
+			timerDidFinish()
+		}
 	}
 	
+	func timerDidFinish() {
+		timeLabel.setText(NSLocalizedString("Done", comment: ""))
+	}
+	
+	func togglePause() {
+		//TODO: Deregister Notification
+		timer.toggle()
+	}
+	
+	@IBAction func didLongPressOnRow(_ sender: Any) {
+		
+	}
 }

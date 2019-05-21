@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class MulTimer: NSObject, NSCoding {
+class MulTimer: NSObject, NSCoding, Codable {
 	
 	//MARK: Properties
 	let created: Date
 	var durationTotal: Int
 	var lastResumed: Date
 	var durationLeftAtLastResume: Int
-	var color: UIColor
+	var color: Color
 	var active: Bool
 	var name: String
 	var id: String
@@ -38,7 +38,7 @@ class MulTimer: NSObject, NSCoding {
 		static let sound = "sound"
 	}
 	
-	init(name: String, durationTotal: Int, color: UIColor) {
+	init(name: String, durationTotal: Int, color: Color) {
 		self.name = name
 		self.durationTotal = durationTotal
 		self.color = color
@@ -62,7 +62,7 @@ class MulTimer: NSObject, NSCoding {
 		self.name = name
 	}
 	
-	func changeColor(color: UIColor) {
+	func changeColor(color: Color) {
 		self.color = color
 	}
 	
@@ -114,7 +114,7 @@ class MulTimer: NSObject, NSCoding {
 	
 	required init?(coder aDecoder: NSCoder) {
 		guard let created = aDecoder.decodeObject(forKey: PropertyKeys.created) as? Date,
-			let color = aDecoder.decodeObject(forKey: PropertyKeys.color) as? UIColor,
+			let color = aDecoder.decodeObject(forKey: PropertyKeys.color) as? Color,
 			let name = aDecoder.decodeObject(forKey: PropertyKeys.name) as? String,
 			let id = aDecoder.decodeObject(forKey: PropertyKeys.id) as? String,
 			let lastResumed = aDecoder.decodeObject(forKey: PropertyKeys.lastResumed) as? Date else {
@@ -132,6 +132,8 @@ class MulTimer: NSObject, NSCoding {
 		self.finished = aDecoder.decodeBool(forKey: PropertyKeys.finished)
 		self.sound = aDecoder.decodeObject(forKey: PropertyKeys.sound) as? AlarmSound
 	}
+	
+	//MARK: Codable
 	
 }
 

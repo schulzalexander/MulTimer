@@ -15,7 +15,7 @@ class SavedTimerTableViewCell: UITableViewCell {
 		didSet {
 			nameLabel.text = timer.name
 			timeLabel.text = Utils.secondsToTime(seconds: timer.durationTotal)
-			colorIndicator.backgroundColor = timer.color
+			colorIndicator.backgroundColor = timer.color.color
 		}
 	}
 	

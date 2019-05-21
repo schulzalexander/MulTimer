@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AlarmSound: NSObject, NSCoding {
+class AlarmSound: NSObject, NSCoding, Codable {
 	
 	var id: Int
 	var nameLocalizationKey: String

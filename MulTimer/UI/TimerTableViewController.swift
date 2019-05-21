@@ -558,21 +558,31 @@ extension TimerTableViewController: WCSessionDelegate {
 			let watchSession = WCSession.default
 			watchSession.delegate = self
 			watchSession.activate()
-			if watchSession.isPaired && watchSession.isWatchAppInstalled {
+		}
+	}
+	
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+		if activationState == .activated {
+			let watchSession = WCSession.default
+			if true || watchSession.isPaired && watchSession.isWatchAppInstalled {
+				let encoder = JSONEncoder()
 				do {
 					try watchSession.updateApplicationContext([
-						"savedTimers": MulTimerManager.shared.getSavedTimers(),
-						"visibleTimers": MulTimerManager.shared.getVisibleTimers()
+						//"savedTimers": try encoder.encode(MulTimerManager.shared.getSavedTimers()),
+						"visibleTimers": try encoder.encode(MulTimerManager.shared.getVisibleTimers())
 					])
+//					let savedTimers = try NSKeyedArchiver.archivedData(withRootObject: MulTimerManager.shared.getSavedTimers(), requiringSecureCoding: false)
+//					let visibleTimers = try NSKeyedArchiver.archivedData(withRootObject: MulTimerManager.shared.getVisibleTimers(), requiringSecureCoding: false)
+//					try watchSession.updateApplicationContext([
+//						"savedTimers": savedTimers,
+//						"visibleTimers": visibleTimers
+//					])
+					print("Updated ApplicationContext from iOS app.")
 				} catch let error as NSError {
 					print(error.description)
 				}
 			}
 		}
-	}
-	
-	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-		
 	}
 	
 	func sessionDidBecomeInactive(_ session: WCSession) {

@@ -87,12 +87,16 @@
 		C98791512288101F000877D0 /* TimerManagerArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E72278B94100D40AE7 /* TimerManagerArchive.swift */; };
 		C987915222881021000877D0 /* SettingsArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F12278BF3200D40AE7 /* SettingsArchive.swift */; };
 		C987915422886DEB000877D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C987915322886DEB000877D0 /* GoogleService-Info.plist */; };
+		C99136402293F782006DCF96 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C991363F2293F782006DCF96 /* Color.swift */; };
+		C99136412293F984006DCF96 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C991363F2293F782006DCF96 /* Color.swift */; };
+		C99136422293F985006DCF96 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C991363F2293F782006DCF96 /* Color.swift */; };
 		C9B78506228F21C400DCBD94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9B78508228F21C400DCBD94 /* Localizable.strings */; };
 		C9B7850A228F22EE00DCBD94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90601B822789E9D00D40AE7 /* Assets.xcassets */; };
 		C9BCDA78228711AE00C53606 /* Short_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7622870F5C00C53606 /* Short_1.mp3 */; };
 		C9BCDA7B22872F4D00C53606 /* Long_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7922872F4D00C53606 /* Long_1.mp3 */; };
 		C9BCDA7C22872F4D00C53606 /* Short_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */; };
 		C9BCDA7E2287482D00C53606 /* AuthorizationRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCDA7D2287482D00C53606 /* AuthorizationRequestViewController.swift */; };
+		C9E23EBF2293FF76004B0CF3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C991363F2293F782006DCF96 /* Color.swift */; };
 		C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 		D6D255CE2F5092DC6AE9EFFC /* Pods_MulTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F0542197753A23769B05EE /* Pods_MulTimer.framework */; };
@@ -241,6 +245,7 @@
 		C987914022880B46000877D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C987914622880B69000877D0 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		C987915322886DEB000877D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C991363F2293F782006DCF96 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C9B78502228F1F5000DCBD94 /* Pods_MulTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MulTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B78507228F21C400DCBD94 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C9B78509228F21C600DCBD94 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -408,6 +413,7 @@
 				C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */,
 				C90601EF2278BE1000D40AE7 /* Settings.swift */,
 				C92886462286B04100D2B17E /* AlarmSound.swift */,
+				C991363F2293F782006DCF96 /* Color.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -895,6 +901,7 @@
 				C9BCDA7E2287482D00C53606 /* AuthorizationRequestViewController.swift in Sources */,
 				C90601E82278B94100D40AE7 /* TimerManagerArchive.swift in Sources */,
 				C90601F42278C4EE00D40AE7 /* TimerCollectionViewCell.swift in Sources */,
+				C99136402293F782006DCF96 /* Color.swift in Sources */,
 				C90601EA2278B9F900D40AE7 /* MulTimer.swift in Sources */,
 				C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */,
 				C9445AC7227ED5E600671B36 /* PrivacyPolicyViewController.swift in Sources */,
@@ -938,6 +945,7 @@
 			files = (
 				C93986AC2291D128008B4A0E /* MulTimerManager.swift in Sources */,
 				C93986A62291CC25008B4A0E /* MulTimer.swift in Sources */,
+				C99136422293F985006DCF96 /* Color.swift in Sources */,
 				C93986AD2291D1F6008B4A0E /* TimerManagerArchive.swift in Sources */,
 				C939868F2291918B008B4A0E /* NotificationController.swift in Sources */,
 				C939868D2291918B008B4A0E /* ExtensionDelegate.swift in Sources */,
@@ -955,6 +963,7 @@
 			files = (
 				C9759BD3228F16D200ADF382 /* MulTimer.swift in Sources */,
 				C9759BDA228F17F600ADF382 /* TimerTableViewController.swift in Sources */,
+				C99136412293F984006DCF96 /* Color.swift in Sources */,
 				C9759BDF228F181C00ADF382 /* SoundTableViewCell.swift in Sources */,
 				C9759BE5228F185D00ADF382 /* TutorialViewController.swift in Sources */,
 				C9759BE2228F185000ADF382 /* TutorialPage.swift in Sources */,
@@ -989,6 +998,7 @@
 				C987914C22880FAF000877D0 /* Utils.swift in Sources */,
 				C987914F22880FD3000877D0 /* SoundTableViewCell.swift in Sources */,
 				C987914722880B69000877D0 /* SnapshotHelper.swift in Sources */,
+				C9E23EBF2293FF76004B0CF3 /* Color.swift in Sources */,
 				C987914A22880DC4000877D0 /* AlarmSound.swift in Sources */,
 				C987914B22880EDF000877D0 /* ColorPicker.swift in Sources */,
 				C98791502288100E000877D0 /* AlarmManager.swift in Sources */,

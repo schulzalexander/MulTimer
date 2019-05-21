@@ -27,9 +27,8 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-		readTimerUpdate()
+		activateWCSession()
 		
-		table.setNumberOfRows(visibleTimers.count, withRowType: "TimerRow")
     }
     
     override func willActivate() {
@@ -48,24 +47,42 @@ class InterfaceController: WKInterfaceController {
 extension InterfaceController: WCSessionDelegate {
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-		
+		print("Session activated!")
 	}
 	
-	private func readTimerUpdate() {
+	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+		let decoder = JSONDecoder()
+		
+		let savedArchived = applicationContext["savedTimers"] as? Data
+		let visibleArchived = applicationContext["visibleTimers"] as? Data
+		
+		var savedTimers = [MulTimer]()
+		var visibleTimers = [MulTimer]()
+		
+		if let savedArchived = savedArchived {
+			do {
+				try savedTimers = decoder.decode([MulTimer].self, from: savedArchived)
+			} catch {
+				print(error.localizedDescription)
+			}
+		}
+		
+		if let visibleArchived = visibleArchived {
+			do {
+				try visibleTimers = decoder.decode([MulTimer].self, from: visibleArchived)
+			} catch {
+				print(error.localizedDescription)
+			}
+		}
+		
+		table.setNumberOfRows(visibleTimers.count, withRowType: "TimerRow")
+	}
+	
+	private func activateWCSession() {
 		if WCSession.isSupported() { //makes sure it's not an iPad or iPod
 			let watchSession = WCSession.default
 			watchSession.delegate = self
 			watchSession.activate()
-			if let savedTimers = watchSession.applicationContext["savedTimers"] as? [MulTimer] {
-				self.savedTimers = savedTimers
-			} else {
-				self.savedTimers = [MulTimer]()
-			}
-			if let visibleTimers = watchSession.applicationContext["visibleTimers"] as? [MulTimer] {
-				self.visibleTimers = visibleTimers
-			} else {
-				self.visibleTimers = [MulTimer]()
-			}
 		}
 	}
 	

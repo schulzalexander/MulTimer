@@ -9,14 +9,77 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
+        <!--AddTimerInterfaceController-->
+        <scene sceneID="Ete-Fd-udi">
+            <objects>
+                <controller identifier="AddTimerInterfaceController" id="ELJ-V8-uDU" customClass="AddTimerInterfaceController" customModule="WatchApp_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="ugf-bx-Kvz">
+                            <items>
+                                <button width="1" alignment="center" title="New" id="nrm-ha-T7D">
+                                    <color key="backgroundColor" red="1" green="0.76590568370000001" blue="0.2360139862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <segue destination="DVG-Ae-NzB" kind="modal" id="0Sq-M8-T7D"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <table alignment="left" id="3TQ-Ld-Akp">
+                            <items>
+                                <tableRow identifier="TimerRowController" id="mrS-hd-euE" customClass="TimerRowController" customModule="WatchApp_Extension">
+                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="2qA-eo-wHY">
+                                        <items>
+                                            <group width="131" height="16" alignment="left" spacing="5" id="tEP-CM-0PR">
+                                                <items>
+                                                    <button width="13" height="13" alignment="left" enabled="NO" id="8UM-ha-lwc">
+                                                        <color key="backgroundColor" red="1" green="0.1124867392" blue="0.065501891830000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </button>
+                                                    <label width="133" height="15" alignment="left" text="Name" id="V1G-Cu-lJu"/>
+                                                </items>
+                                            </group>
+                                            <group width="1" alignment="right" id="571-1o-4Nn">
+                                                <items>
+                                                    <label alignment="right" text="00:00" textAlignment="right" id="hlj-yY-oX4"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" red="0.18452569799999999" green="0.18452569799999999" blue="0.18452569799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="colorButton" destination="8UM-ha-lwc" id="STS-eQ-qgq"/>
+                                        <outlet property="nameLabel" destination="V1G-Cu-lJu" id="KHz-Ta-D5X"/>
+                                        <outlet property="timeLabel" destination="hlj-yY-oX4" id="Kyr-Xv-pQH"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="newButton" destination="nrm-ha-T7D" id="LfY-me-Ogw"/>
+                        <outlet property="table" destination="3TQ-Ld-Akp" id="Dul-qL-zUE"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="-116"/>
+        </scene>
         <!--Interface Controller-->
+        <scene sceneID="mSI-e9-rzq">
+            <objects>
+                <controller id="DVG-Ae-NzB"/>
+            </objects>
+            <point key="canvasLocation" x="808" y="-116"/>
+        </scene>
+        <!--Active Timer Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchApp" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="ActiveTimerInterfaceController" customModule="WatchApp" customModuleProvider="target">
                     <items>
                         <button width="1" alignment="left" title="Add Timer" id="grX-Pd-sPl">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             <color key="backgroundColor" red="1" green="0.76590568370000001" blue="0.2360139862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didPressAddTimerButton" destination="AgC-eL-Hgc" id="egM-0h-94U"/>
+                            </connections>
                         </button>
                         <separator alignment="left" id="U0X-Ws-GhF">
                             <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,13 +103,6 @@
                                                 </items>
                                             </group>
                                         </items>
-                                        <gestureRecognizers>
-                                            <longPressGestureRecognizer id="Ao8-4j-XFB">
-                                                <connections>
-                                                    <action selector="didLongPressOnRow:" destination="swN-xc-2U8" id="nmt-5y-dz0"/>
-                                                </connections>
-                                            </longPressGestureRecognizer>
-                                        </gestureRecognizers>
                                         <color key="backgroundColor" red="0.1845256979695431" green="0.1845256979695431" blue="0.1845256979695431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
                                     </group>
@@ -65,7 +121,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="121" y="-116"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

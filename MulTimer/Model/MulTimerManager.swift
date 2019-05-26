@@ -46,6 +46,55 @@ class MulTimerManager: NSObject, NSCoding {
 		return savedTimers.count
 	}
 	
+	func setTimers(visibleTimers: [MulTimer], savedTimers: [MulTimer]) {
+		let newVisibleIDs = visibleTimers.map { (timer) -> String in
+			return timer.id
+		}
+		let newSavedIDs = savedTimers.map { (timer) -> String in
+			return timer.id
+		}
+		
+		// Delete those timers from the archive that were removed
+		for id in self.visibleTimers {
+			if !newVisibleIDs.contains(id) {
+				TimerManagerArchive.deleteTimer(id: id)
+			}
+		}
+		for id in self.savedTimers {
+			if !newSavedIDs.contains(id) {
+				TimerManagerArchive.deleteTimer(id: id)
+			}
+		}
+		
+		self.allTimers.removeAll()
+		self.visibleTimers.removeAll()
+		self.savedTimers.removeAll()
+		
+		for id in newVisibleIDs {
+			guard let timer = visibleTimers.first(where: { (t) -> Bool in
+				return t.id == id
+			}) else {
+				fatalError("Error: Inconsistency of IDs for new timers.")
+			}
+			
+			self.allTimers[id] = timer
+			self.visibleTimers.append(id)
+		}
+		for id in newSavedIDs {
+			guard let timer = savedTimers.first(where: { (t) -> Bool in
+				return t.id == id
+			}) else {
+				fatalError("Error: Inconsistency of IDs for new timers.")
+			}
+			
+			self.allTimers[id] = timer
+			self.savedTimers.append(id)
+		}
+		
+		AlarmManager.updateAllAlarms()
+		TimerManagerArchive.saveTimerManager()
+	}
+	
 	func getVisibleTimers() -> [MulTimer] {
 		var res = [MulTimer]()
 		for id in visibleTimers {
@@ -70,12 +119,8 @@ class MulTimerManager: NSObject, NSCoding {
 	
 	func deleteTimer(id: String) {
 		removeTimerFromVisibles(id: id)
-		for i in 0..<savedTimers.count {
-			if savedTimers[i] == id {
-				savedTimers.remove(at: i)
-				break
-			}
-		}
+		removeTimerFromSaved(id: id)
+		
 		allTimers.removeValue(forKey: id)
 		AlarmManager.removeAlarm(id: id)
 		TimerManagerArchive.saveTimerManager()

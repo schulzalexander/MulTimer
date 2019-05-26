@@ -27,13 +27,17 @@
 		C90601F62278DCAF00D40AE7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601F52278DCAF00D40AE7 /* AlarmManager.swift */; };
 		C91D3778227A02D900C21512 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3777227A02D900C21512 /* Extensions.swift */; };
 		C91D377A227A09E500C21512 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
+		C9241AAD2296F5DD00F4E778 /* AddTimerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AAC2296F5DD00F4E778 /* AddTimerInterfaceController.swift */; };
+		C9241AAF22994DAE00F4E778 /* MulTimerWatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AAE22994DAE00F4E778 /* MulTimerWatchManager.swift */; };
+		C9241AB12299535100F4E778 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AB02299535100F4E778 /* WatchSessionManager.swift */; };
+		C9241AB42299545B00F4E778 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AB02299535100F4E778 /* WatchSessionManager.swift */; };
 		C92886432286AC9000D2B17E /* SoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886422286AC9000D2B17E /* SoundTableViewController.swift */; };
 		C92886452286ACB000D2B17E /* SoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886442286ACB000D2B17E /* SoundTableViewCell.swift */; };
 		C92886472286B04100D2B17E /* AlarmSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886462286B04100D2B17E /* AlarmSound.swift */; };
 		C939867D22919188008B4A0E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C939867B22919188008B4A0E /* Interface.storyboard */; };
 		C939867F2291918A008B4A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C939867E2291918A008B4A0E /* Assets.xcassets */; };
 		C93986862291918B008B4A0E /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C93986852291918A008B4A0E /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C939868B2291918B008B4A0E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C939868A2291918B008B4A0E /* InterfaceController.swift */; };
+		C939868B2291918B008B4A0E /* ActiveTimerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C939868A2291918B008B4A0E /* ActiveTimerInterfaceController.swift */; };
 		C939868D2291918B008B4A0E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C939868C2291918B008B4A0E /* ExtensionDelegate.swift */; };
 		C939868F2291918B008B4A0E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C939868E2291918B008B4A0E /* NotificationController.swift */; };
 		C93986912291918B008B4A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C93986902291918B008B4A0E /* Assets.xcassets */; };
@@ -73,6 +77,7 @@
 		C9759BE3228F185000ADF382 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9759BE4228F185000ADF382 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
 		C9759BE5228F185D00ADF382 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACC227ED84B00671B36 /* TutorialViewController.swift */; };
+		C9799F5A229982C600A723A8 /* WatchSessionWatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */; };
 		C987913F22880B46000877D0 /* FastlaneScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C987913E22880B46000877D0 /* FastlaneScreenshots.swift */; };
 		C987914722880B69000877D0 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C987914622880B69000877D0 /* SnapshotHelper.swift */; };
 		C987914822880DBA000877D0 /* MulTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */; };
@@ -217,6 +222,9 @@
 		C90601F72278E2E200D40AE7 /* MulTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MulTimer.entitlements; sourceTree = "<group>"; };
 		C91D3777227A02D900C21512 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C91D3779227A09E500C21512 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		C9241AAC2296F5DD00F4E778 /* AddTimerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerInterfaceController.swift; sourceTree = "<group>"; };
+		C9241AAE22994DAE00F4E778 /* MulTimerWatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulTimerWatchManager.swift; sourceTree = "<group>"; };
+		C9241AB02299535100F4E778 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		C92886422286AC9000D2B17E /* SoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewController.swift; sourceTree = "<group>"; };
 		C92886442286ACB000D2B17E /* SoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewCell.swift; sourceTree = "<group>"; };
 		C92886462286B04100D2B17E /* AlarmSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSound.swift; sourceTree = "<group>"; };
@@ -225,7 +233,7 @@
 		C939867E2291918A008B4A0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C93986802291918A008B4A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C93986852291918A008B4A0E /* WatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C939868A2291918B008B4A0E /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		C939868A2291918B008B4A0E /* ActiveTimerInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTimerInterfaceController.swift; sourceTree = "<group>"; };
 		C939868C2291918B008B4A0E /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		C939868E2291918B008B4A0E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C93986902291918B008B4A0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,6 +250,7 @@
 		C9759BC9228F13AB00ADF382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C9759BCB228F13AB00ADF382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9759BE6228F1D1800ADF382 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
+		C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionWatchManager.swift; sourceTree = "<group>"; };
 		C987913C22880B46000877D0 /* FastlaneScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastlaneScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C987913E22880B46000877D0 /* FastlaneScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneScreenshots.swift; sourceTree = "<group>"; };
 		C987914022880B46000877D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -431,6 +440,7 @@
 				C90601F52278DCAF00D40AE7 /* AlarmManager.swift */,
 				C91D3777227A02D900C21512 /* Extensions.swift */,
 				C91D3779227A09E500C21512 /* ColorPicker.swift */,
+				C9241AB02299535100F4E778 /* WatchSessionManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -471,11 +481,11 @@
 		C93986892291918B008B4A0E /* WatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C9799F5C22998E2100A723A8 /* Model */,
+				C9799F5B22998E0200A723A8 /* UI */,
 				C9E23EC822942264004B0CF3 /* WatchApp Extension.entitlements */,
-				C939868A2291918B008B4A0E /* InterfaceController.swift */,
 				C939868C2291918B008B4A0E /* ExtensionDelegate.swift */,
 				C939868E2291918B008B4A0E /* NotificationController.swift */,
-				C9E23EC02294059F004B0CF3 /* TimerRowController.swift */,
 				C93986902291918B008B4A0E /* Assets.xcassets */,
 				C93986922291918B008B4A0E /* Info.plist */,
 				C93986932291918B008B4A0E /* PushNotificationPayload.apns */,
@@ -515,6 +525,25 @@
 				C9B78508228F21C400DCBD94 /* Localizable.strings */,
 			);
 			path = TodayExtension;
+			sourceTree = "<group>";
+		};
+		C9799F5B22998E0200A723A8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C939868A2291918B008B4A0E /* ActiveTimerInterfaceController.swift */,
+				C9E23EC02294059F004B0CF3 /* TimerRowController.swift */,
+				C9241AAC2296F5DD00F4E778 /* AddTimerInterfaceController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C9799F5C22998E2100A723A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9241AAE22994DAE00F4E778 /* MulTimerWatchManager.swift */,
+				C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C987913D22880B46000877D0 /* FastlaneScreenshots */ = {
@@ -925,6 +954,7 @@
 				C9445ACD227ED84B00671B36 /* TutorialViewController.swift in Sources */,
 				C92886432286AC9000D2B17E /* SoundTableViewController.swift in Sources */,
 				C9445ACB227ED82300671B36 /* TutorialPage.swift in Sources */,
+				C9241AB12299535100F4E778 /* WatchSessionManager.swift in Sources */,
 				C90601B422789E9B00D40AE7 /* TimerTableViewController.swift in Sources */,
 				C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */,
 				C90601EC2278BA0800D40AE7 /* MulTimerManager.swift in Sources */,
@@ -961,10 +991,13 @@
 				C93986AC2291D128008B4A0E /* MulTimerManager.swift in Sources */,
 				C93986A62291CC25008B4A0E /* MulTimer.swift in Sources */,
 				C99136422293F985006DCF96 /* Color.swift in Sources */,
+				C9799F5A229982C600A723A8 /* WatchSessionWatchManager.swift in Sources */,
 				C93986AD2291D1F6008B4A0E /* TimerManagerArchive.swift in Sources */,
 				C939868F2291918B008B4A0E /* NotificationController.swift in Sources */,
 				C939868D2291918B008B4A0E /* ExtensionDelegate.swift in Sources */,
-				C939868B2291918B008B4A0E /* InterfaceController.swift in Sources */,
+				C939868B2291918B008B4A0E /* ActiveTimerInterfaceController.swift in Sources */,
+				C9241AAD2296F5DD00F4E778 /* AddTimerInterfaceController.swift in Sources */,
+				C9241AAF22994DAE00F4E778 /* MulTimerWatchManager.swift in Sources */,
 				C93986A92291CF38008B4A0E /* Settings.swift in Sources */,
 				C93986A72291CC2C008B4A0E /* AlarmSound.swift in Sources */,
 				C93986A82291CF38008B4A0E /* Utils.swift in Sources */,
@@ -985,6 +1018,7 @@
 				C9759BE2228F185000ADF382 /* TutorialPage.swift in Sources */,
 				C9759BD5228F16E400ADF382 /* TimerCollectionViewCell.swift in Sources */,
 				C9759BD8228F16FC00ADF382 /* AlarmSound.swift in Sources */,
+				C9241AB42299545B00F4E778 /* WatchSessionManager.swift in Sources */,
 				C9759BE0228F181C00ADF382 /* AuthorizationRequestViewController.swift in Sources */,
 				C9759BE1228F185000ADF382 /* TutorialPageViewController.swift in Sources */,
 				C9759BDE228F181C00ADF382 /* SoundTableViewController.swift in Sources */,

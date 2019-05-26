@@ -97,6 +97,10 @@ class TimerCollectionViewCell: UICollectionViewCell {
 			collectionViewController.updateCollectionViewEmptyMessage(count: collecionView.visibleCells.count)
 			collectionViewController.updateTableViewEmptyMessage(count: collectionViewController.savedTimerTableView.visibleCells.count)
 		}
+		
+		#if os(iOS)
+		WatchSessionManager.shared.sendUpdateToWatch()
+		#endif
 	}
 	
 	private func initCellBackground() {

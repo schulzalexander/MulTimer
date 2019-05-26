@@ -48,6 +48,9 @@ class TimerTableViewController: UIViewController {
 		savedTimerTableView.delegate = self
 		savedTimerTableView.dataSource = self
 		
+		WatchSessionManager.shared.delegate = self
+		WatchSessionManager.shared.activateWCSession()
+		
 		timer = Timer.scheduledTimer(timeInterval: 1.0,
 									 target: self,
 									 selector: #selector(updateTimeCounters),
@@ -66,8 +69,6 @@ class TimerTableViewController: UIViewController {
 		Settings.shared.openingCount += 1
 		SettingsArchive.save()
 		Utils.requestAppStoreRating()
-		
-		sendUpdateToWatch()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -405,9 +406,19 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 			collectionView.deleteItems(at: [indexPath])
 			savedTimerTableView.reloadData()
 			
+			#if os(iOS)
+			WatchSessionManager.shared.sendUpdateToWatch()
+			#endif
+			
 			return
 		}
 		cell.timer.toggle()
+		TimerManagerArchive.saveTimer(timer: cell.timer)
+		
+		#if os(iOS)
+		WatchSessionManager.shared.sendUpdateToWatch()
+		#endif
+		
 		cell.isUserInteractionEnabled = false
 		if cell.timer.active {
 			UIView.animate(withDuration: 0.2, animations: {
@@ -486,6 +497,10 @@ extension TimerTableViewController: UITextFieldDelegate {
 				addTimerContainerHidden = true
 				rotateAddButton()
 			}
+			
+			#if os(iOS)
+			WatchSessionManager.shared.sendUpdateToWatch()
+			#endif
 		}
 		textField.resignFirstResponder()
 		return true
@@ -538,6 +553,10 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 		if (editingStyle == UITableViewCell.EditingStyle.delete) {
 			MulTimerManager.shared.deleteTimer(id: cell.timer.id)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
+			
+			#if os(iOS)
+			WatchSessionManager.shared.sendUpdateToWatch()
+			#endif
 		}
 	}
 	
@@ -547,51 +566,21 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 		}
 		cell.timer.reset()
 		startTimer(timer: cell.timer)
+		
+		#if os(iOS)
+		WatchSessionManager.shared.sendUpdateToWatch()
+		#endif
 	}
 	
 }
 
-extension TimerTableViewController: WCSessionDelegate {
+extension TimerTableViewController: WatchSessionManagerDelegate {
 	
-	private func sendUpdateToWatch() {
-		if WCSession.isSupported() { //makes sure it's not an iPad or iPod
-			let watchSession = WCSession.default
-			watchSession.delegate = self
-			watchSession.activate()
+	func didUpdateTimerManager() {
+		DispatchQueue.main.async {
+			self.savedTimerTableView.reloadData()
+			self.collectionView.reloadData()
 		}
-	}
-	
-	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-		if activationState == .activated {
-			let watchSession = WCSession.default
-			//TODO: here
-			if true || watchSession.isPaired && watchSession.isWatchAppInstalled {
-				let encoder = JSONEncoder()
-				do {
-					try watchSession.updateApplicationContext([
-						//"savedTimers": try encoder.encode(MulTimerManager.shared.getSavedTimers()),
-						"visibleTimers": try encoder.encode(MulTimerManager.shared.getVisibleTimers())
-					])
-//					let savedTimers = try NSKeyedArchiver.archivedData(withRootObject: MulTimerManager.shared.getSavedTimers(), requiringSecureCoding: false)
-//					let visibleTimers = try NSKeyedArchiver.archivedData(withRootObject: MulTimerManager.shared.getVisibleTimers(), requiringSecureCoding: false)
-//					try watchSession.updateApplicationContext([
-//						"savedTimers": savedTimers,
-//						"visibleTimers": visibleTimers
-//					])
-					print("Updated ApplicationContext from iOS app.")
-				} catch let error as NSError {
-					print(error.description)
-				}
-			}
-		}
-	}
-	
-	func sessionDidBecomeInactive(_ session: WCSession) {
-		
-	}
-	
-	func sessionDidDeactivate(_ session: WCSession) {
-		
 	}
 	
 }

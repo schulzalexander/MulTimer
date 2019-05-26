@@ -36,9 +36,9 @@ class AlarmManager {
 	}
 	
 	static func updateAllAlarms() {
+		removeAllAlarms()
 		for timer in MulTimerManager.shared.getVisibleTimers() {
 			if timer.active {
-				removeAlarm(id: timer.id)
 				addAlarm(timer: timer)
 			}
 		}

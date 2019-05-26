@@ -11,11 +11,9 @@ import WatchConnectivity
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class ActiveTimerInterfaceController: WKInterfaceController {
 
 	//MARK: Properties
-	var savedTimers: [MulTimer]!
-	var visibleTimers: [MulTimer]!
 	var timer: Timer!
 	
 	//MARK: Outlets
@@ -27,8 +25,8 @@ class InterfaceController: WKInterfaceController {
 	
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-		activateWCSession()
+		
+		WatchSessionWatchManager.shared.activateWCSession()
 		
 		timer = Timer.scheduledTimer(timeInterval: 1.0,
 									 target: self,
@@ -40,6 +38,12 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+		
+		WatchSessionWatchManager.shared.delegate = self
+		
+		if table.numberOfRows != MulTimerWatchManager.shared.getVisibleTimers().count {
+			populateTable()
+		}
     }
     
     override func didDeactivate() {
@@ -47,15 +51,19 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 	
+	@IBAction func didPressAddTimerButton() {
+		presentController(withName: "AddTimerInterfaceController", context: MulTimerWatchManager.shared.getSavedTimers())
+	}
+	
 	@objc private func updateTimeCounters() {
-		for i in 0..<visibleTimers.count {
+		for i in 0..<table.numberOfRows {
 			guard let controller = table.rowController(at: i) as? TimerRowController else {
 				fatalError("Receiver row controller has unknown type.")
 			}
 			if controller.timer.active && !controller.timer.finished {
 				controller.updateTimeLabel()
 				let timeLeft = controller.timer.getTimeLeft()
-				if timeLeft == 0 && !controller.timer.finished {
+				if timeLeft == 0 {
 					controller.timer.finished = true
 					controller.timerDidFinish()
 				}
@@ -68,48 +76,11 @@ class InterfaceController: WKInterfaceController {
 			fatalError("Receiver row controller has unknown type.")
 		}
 		controller.togglePause()
-	}
-}
-
-extension InterfaceController: WCSessionDelegate {
-	
-	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-		print("Session activated!")
-		
-		didUpdateApplicationContext(applicationContext: session.receivedApplicationContext)
+		WatchSessionWatchManager.shared.sendUpdateToPhone()
 	}
 	
-	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-		didUpdateApplicationContext(applicationContext: applicationContext)
-	}
-	
-	private func didUpdateApplicationContext(applicationContext: [String: Any]) {
-		let decoder = JSONDecoder()
-		
-		let savedArchived = applicationContext["savedTimers"] as? Data
-		let visibleArchived = applicationContext["visibleTimers"] as? Data
-		
-		savedTimers = [MulTimer]()
-		visibleTimers = [MulTimer]()
-		
-		if let savedArchived = savedArchived {
-			do {
-				try savedTimers = decoder.decode([MulTimer].self, from: savedArchived)
-			} catch {
-				print(error.localizedDescription)
-			}
-		}
-		
-		if let visibleArchived = visibleArchived {
-			do {
-				try visibleTimers = decoder.decode([MulTimer].self, from: visibleArchived)
-			} catch {
-				print(error.localizedDescription)
-			}
-		}
-		
-		// Populate table
-		
+	private func populateTable() {
+		let visibleTimers = MulTimerWatchManager.shared.getVisibleTimers()
 		table.setNumberOfRows(visibleTimers.count, withRowType: "TimerRow")
 		
 		for i in 0..<visibleTimers.count {
@@ -119,13 +90,12 @@ extension InterfaceController: WCSessionDelegate {
 			controller.timer = visibleTimers[i]
 		}
 	}
+}
+
+extension ActiveTimerInterfaceController: WatchSessionWatchManagerDelegate {
 	
-	private func activateWCSession() {
-		if WCSession.isSupported() { //makes sure it's not an iPad or iPod
-			let watchSession = WCSession.default
-			watchSession.delegate = self
-			watchSession.activate()
-		}
+	func didUpdateTimerManager() {
+		populateTable()
 	}
 	
 }

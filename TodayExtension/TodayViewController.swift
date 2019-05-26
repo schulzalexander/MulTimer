@@ -162,6 +162,8 @@ extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSou
 			return
 		}
 		cell.timer.toggle()
+		TimerManagerArchive.saveTimer(timer: cell.timer)
+		
 		cell.isUserInteractionEnabled = false
 		if cell.timer.active {
 			UIView.animate(withDuration: 0.2, animations: {

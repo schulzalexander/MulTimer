@@ -78,7 +78,12 @@ class MulTimer: NSObject, NSCoding, Codable {
 			lastResumed = Date()
 			AlarmManager.addAlarm(timer: self)
 		}
-		TimerManagerArchive.saveTimer(timer: self)
+	}
+	
+	func hasChanged(from timer: MulTimer) -> Bool {
+		return active != timer.active || lastResumed != timer.lastResumed ||
+			vibrationOnly != timer.vibrationOnly || finished != timer.finished
+			|| color != timer.color || durationLeftAtLastResume != timer.durationLeftAtLastResume
 	}
 	
 	func setVibrationOnly(enabled: Bool) {

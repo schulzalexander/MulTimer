@@ -35,7 +35,7 @@ class SettingsArchive {
 				return unarchived
 			}
 		} catch {
-			fatalError(error.localizedDescription)
+			return nil
 		}
 		return nil
 	}

@@ -75,7 +75,16 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 		guard let controller = table.rowController(at: rowIndex) as? TimerRowController else {
 			fatalError("Receiver row controller has unknown type.")
 		}
-		controller.togglePause()
+		if controller.timer.finished {
+			if controller.timer.name.count == 0 {
+				MulTimerWatchManager.shared.removeVisibleTimer(timer: controller.timer)
+			} else {
+				MulTimerWatchManager.shared.setTimerState(timer: controller.timer, state: .saved)
+			}
+			populateTable()
+		} else {
+			controller.togglePause()
+		}
 		WatchSessionWatchManager.shared.sendUpdateToPhone()
 	}
 	

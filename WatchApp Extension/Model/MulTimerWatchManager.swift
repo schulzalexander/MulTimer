@@ -10,7 +10,7 @@ import Foundation
 
 class MulTimerWatchManager {
 	
-	enum TimerStatus {
+	public enum TimerStatus {
 		case visible, saved
 	}
 	
@@ -35,6 +35,12 @@ class MulTimerWatchManager {
 				return curr.id == timer.id
 			}
 			savedTimers.append(timer)
+		}
+	}
+	
+	func removeVisibleTimer(timer: MulTimer) {
+		visibleTimers.removeAll { (curr) -> Bool in
+			return curr.id == timer.id
 		}
 	}
 	

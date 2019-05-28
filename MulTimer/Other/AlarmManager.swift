@@ -15,6 +15,7 @@ class AlarmManager {
 		let content = UNMutableNotificationContent()
 		content.body = timer.name
 		content.title = "MulTimer"
+		
 		//content.sound = timer.vibrationOnly || Settings.shared.vibrationOnly ? nil : UNNotificationSound.default
 		#if os(iOS)
 		if let sound = timer.sound {

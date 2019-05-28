@@ -68,6 +68,19 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 					controller.timerDidFinish()
 				}
 			}
+			if !controller.timer.active {
+				DispatchQueue.main.async {
+					self.animate(withDuration: 0.5) {
+						controller.colorButton.setAlpha(0)
+					}
+				}
+				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+					self.animate(withDuration: 0.5) {
+						controller.colorButton.setAlpha(1)
+					}
+				}
+				
+			}
 		}
 	}
 	

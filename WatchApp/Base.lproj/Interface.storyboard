@@ -27,14 +27,14 @@
                         <table alignment="left" id="3TQ-Ld-Akp">
                             <items>
                                 <tableRow identifier="TimerRowController" id="mrS-hd-euE" customClass="TimerRowController" customModule="WatchApp_Extension">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="2qA-eo-wHY">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="0.0" id="2qA-eo-wHY">
                                         <items>
-                                            <group width="131" height="16" alignment="left" spacing="5" id="tEP-CM-0PR">
+                                            <group width="1" alignment="left" spacing="5" id="tEP-CM-0PR">
                                                 <items>
-                                                    <button width="13" height="13" alignment="left" enabled="NO" id="8UM-ha-lwc">
+                                                    <button width="13" height="13" alignment="left" verticalAlignment="center" enabled="NO" id="8UM-ha-lwc">
                                                         <color key="backgroundColor" red="1" green="0.1124867392" blue="0.065501891830000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </button>
-                                                    <label width="133" height="15" alignment="left" text="Name" id="V1G-Cu-lJu"/>
+                                                    <label alignment="left" text="Name" id="V1G-Cu-lJu"/>
                                                 </items>
                                             </group>
                                             <group width="1" alignment="right" id="571-1o-4Nn">
@@ -44,6 +44,7 @@
                                             </group>
                                         </items>
                                         <color key="backgroundColor" red="0.18452569799999999" green="0.18452569799999999" blue="0.18452569799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
                                     </group>
                                     <connections>
                                         <outlet property="colorButton" destination="8UM-ha-lwc" id="STS-eQ-qgq"/>
@@ -87,14 +88,14 @@
                         <table alignment="left" id="n4Q-QQ-OZj">
                             <items>
                                 <tableRow identifier="TimerRow" id="swN-xc-2U8" customClass="TimerRowController" customModule="WatchApp_Extension">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" spacing="0.0" id="lCG-pJ-CjQ">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="0.0" id="lCG-pJ-CjQ">
                                         <items>
-                                            <group width="131" height="16" alignment="left" spacing="5" id="7xF-qd-Sti">
+                                            <group width="1" alignment="left" spacing="5" id="7xF-qd-Sti">
                                                 <items>
-                                                    <button width="13" height="13" alignment="left" enabled="NO" id="yNf-cw-u8C">
+                                                    <button width="13" height="13" alignment="left" verticalAlignment="center" enabled="NO" id="yNf-cw-u8C">
                                                         <color key="backgroundColor" red="1" green="0.1124867392" blue="0.065501891830000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </button>
-                                                    <label width="133" height="15" alignment="left" text="Name" id="Fuz-F9-6JY"/>
+                                                    <label alignment="left" text="Name" id="Fuz-F9-6JY"/>
                                                 </items>
                                             </group>
                                             <group width="1" alignment="right" id="knr-oe-iqG">

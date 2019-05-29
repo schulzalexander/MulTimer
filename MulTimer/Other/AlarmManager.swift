@@ -11,7 +11,15 @@ import UserNotifications
 
 class AlarmManager {
 	
+	static private var activeAlarms = [String: String]()
+	
 	static func addAlarm(timer: MulTimer) {
+		guard let timeLeft = Double.init(exactly: timer.getTimeLeft()),
+			timeLeft > 0 else {
+			fatalError("Tried to set alarm for timer with remaining time undefined or 0!")
+		}
+		
+		let id = "\(timer.id)_\(Date().timeIntervalSince1970)"
 		let content = UNMutableNotificationContent()
 		content.body = timer.name
 		content.title = "MulTimer"
@@ -23,23 +31,26 @@ class AlarmManager {
 		} else {
 			content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: Settings.shared.defaultAlarmSound.fileName))
 		}
+		#else
+		content.sound = UNNotificationSound.default
 		#endif
 		
-		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (Double.init(exactly: timer.getTimeLeft()) ?? 0) + 0.5, repeats: false)
-		let request = UNNotificationRequest(identifier: timer.id, content: content, trigger: trigger)
+		let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeLeft, repeats: false)
+		let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 		
 		UNUserNotificationCenter.current().add(request) { (error) in
 			guard error == nil else {
 				print("Error during task reminder notification: \(error!.localizedDescription).")
 				return
 			}
+			timer.alarmID = id
 		}
 	}
 	
 	static func updateAllAlarms() {
 		removeAllAlarms()
 		for timer in MulTimerManager.shared.getVisibleTimers() {
-			if timer.active {
+			if timer.active && !timer.finished {
 				addAlarm(timer: timer)
 			}
 		}

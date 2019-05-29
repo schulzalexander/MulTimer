@@ -54,7 +54,7 @@ class TimerManagerArchive {
 				return unarchived
 			}
 		} catch {
-			fatalError(error.localizedDescription)
+			print(error.localizedDescription)
 		}
 		return nil
 	}

@@ -72,3 +72,35 @@ extension UITableView {
 	}
 	
 }
+
+extension UIViewController {
+	
+	// https://stackoverflow.com/a/35130932/10123286
+	func showToast(message: String) {
+		
+		let toastLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 50, height: 300))
+		toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+		toastLabel.textColor = UIColor.white
+		toastLabel.textAlignment = .center;
+		toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+		toastLabel.text = message
+		toastLabel.alpha = 1.0
+		toastLabel.layer.cornerRadius = 10;
+		toastLabel.clipsToBounds  =  true
+		toastLabel.numberOfLines = 0
+		toastLabel.sizeToFit()
+		toastLabel.frame.size.height += 20
+		toastLabel.frame.size.width += 10
+		toastLabel.center = CGPoint(x: view.center.x, y: view.frame.height - toastLabel.frame.height - 15)
+		
+		self.view.addSubview(toastLabel)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+			UIView.animate(withDuration: 2.5, delay: 0.3, options: .curveEaseOut, animations: {
+				toastLabel.alpha = 0.0
+			}, completion: {(isCompleted) in
+				toastLabel.removeFromSuperview()
+			})
+		}
+	}
+	
+}

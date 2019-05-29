@@ -18,10 +18,17 @@ class MulTimer: NSObject, NSCoding, Codable {
 	var durationLeftAtLastResume: Int
 	var color: Color
 	var active: Bool
+	var alarmID: String?
 	var name: String
 	var id: String
 	var vibrationOnly: Bool
-	var finished: Bool
+	var finished: Bool {
+		didSet {
+			if finished {
+				active = false
+			}
+		}
+	}
 	var sound: AlarmSound?
 	
 	struct PropertyKeys {
@@ -30,6 +37,7 @@ class MulTimer: NSObject, NSCoding, Codable {
 		static let durationLeftAtLastResume = "durationLeft"
 		static let color = "color"
 		static let active = "active"
+		static let alarmID = "alarmID"
 		static let name = "name"
 		static let id = "id"
 		static let vibrationOnly = "vibrationOnly"
@@ -70,9 +78,12 @@ class MulTimer: NSObject, NSCoding, Codable {
 		active = !active
 		if !active {
 			// Timer has been paused
+			guard let alarmID = alarmID else {
+				fatalError("Alarm id is not set for active alarm!")
+			}
 			let durationSinceLastResume = Date().timeIntervalSince(lastResumed)
 			durationLeftAtLastResume -= Int(floor(durationSinceLastResume))
-			AlarmManager.removeAlarm(id: id)
+			AlarmManager.removeAlarm(id: alarmID)
 		} else {
 			//Timer has been resumed
 			lastResumed = Date()
@@ -107,8 +118,9 @@ class MulTimer: NSObject, NSCoding, Codable {
 		aCoder.encode(created, forKey: PropertyKeys.created)
 		aCoder.encode(durationTotal, forKey: PropertyKeys.durationTotal)
 		aCoder.encode(durationLeftAtLastResume, forKey: PropertyKeys.durationLeftAtLastResume)
-		aCoder.encode(color, forKey: PropertyKeys.color)
+		aCoder.encode(color.color, forKey: PropertyKeys.color)
 		aCoder.encode(active, forKey: PropertyKeys.active)
+		aCoder.encode(alarmID, forKey: PropertyKeys.alarmID)
 		aCoder.encode(name, forKey: PropertyKeys.name)
 		aCoder.encode(id, forKey: PropertyKeys.id)
 		aCoder.encode(vibrationOnly, forKey: PropertyKeys.vibrationOnly)
@@ -119,7 +131,7 @@ class MulTimer: NSObject, NSCoding, Codable {
 	
 	required init?(coder aDecoder: NSCoder) {
 		guard let created = aDecoder.decodeObject(forKey: PropertyKeys.created) as? Date,
-			let color = aDecoder.decodeObject(forKey: PropertyKeys.color) as? Color,
+			let color = aDecoder.decodeObject(forKey: PropertyKeys.color) as? UIColor,
 			let name = aDecoder.decodeObject(forKey: PropertyKeys.name) as? String,
 			let id = aDecoder.decodeObject(forKey: PropertyKeys.id) as? String,
 			let lastResumed = aDecoder.decodeObject(forKey: PropertyKeys.lastResumed) as? Date else {
@@ -129,8 +141,9 @@ class MulTimer: NSObject, NSCoding, Codable {
 		self.lastResumed = lastResumed
 		self.durationTotal = aDecoder.decodeInteger(forKey: PropertyKeys.durationTotal)
 		self.durationLeftAtLastResume = aDecoder.decodeInteger(forKey: PropertyKeys.durationLeftAtLastResume)
-		self.color = color
+		self.color = Color(color)
 		self.active = aDecoder.decodeBool(forKey: PropertyKeys.active)
+		self.alarmID = aDecoder.decodeObject(forKey: PropertyKeys.alarmID) as? String
 		self.name = name
 		self.id = id
 		self.vibrationOnly = aDecoder.decodeBool(forKey: PropertyKeys.vibrationOnly)

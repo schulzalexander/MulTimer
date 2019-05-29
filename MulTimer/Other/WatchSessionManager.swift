@@ -50,7 +50,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 			let decoder = JSONDecoder()
 			guard let savedTimersData = applicatoinContext["savedTimers"] as? Data,
 				let visibleTimersData = applicatoinContext["visibleTimers"] as? Data else {
-					fatalError("Error: Unsupported element sent with application context!")
+					return
 			}
 			
 			do {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MulTimerManager: NSObject, NSCoding {
 	
@@ -118,11 +119,19 @@ class MulTimerManager: NSObject, NSCoding {
 	}
 	
 	func deleteTimer(id: String) {
+		guard let timer = getTimer(id: id) else {
+			fatalError("Could not find timer that should be deleted!")
+		}
 		removeTimerFromVisibles(id: id)
 		removeTimerFromSaved(id: id)
-		
+
+		if timer.active {
+			guard let alarmID = timer.alarmID else {
+				fatalError("No alarmID set for active timer!")
+			}
+			AlarmManager.removeAlarm(id: alarmID)
+		}
 		allTimers.removeValue(forKey: id)
-		AlarmManager.removeAlarm(id: id)
 		TimerManagerArchive.saveTimerManager()
 		TimerManagerArchive.deleteTimer(id: id)
 	}
@@ -215,6 +224,7 @@ class MulTimerManager: NSObject, NSCoding {
 		self.visibleTimers = visibleTimers
 		self.savedTimers = savedTimers
 		self.allTimers = [String: MulTimer]()
+		
 		for id in allTimers {
 			guard let timer = TimerManagerArchive.loadTimer(id: id) else {
 				continue

@@ -81,8 +81,11 @@ class TimerCollectionViewCell: UICollectionViewCell {
 		}
 		
 		if timer.name.count > 0 {
+			guard let alarmID = timer.alarmID else {
+				fatalError("No alarmID set for active timer!")
+			}
 			MulTimerManager.shared.updateTimerState(id: timer.id, state: .saved)
-			AlarmManager.removeAlarm(id: timer.id)
+			AlarmManager.removeAlarm(id: alarmID)
 		} else {
 			MulTimerManager.shared.deleteTimer(id: timer.id)
 		}

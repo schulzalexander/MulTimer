@@ -60,26 +60,26 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 			guard let controller = table.rowController(at: i) as? TimerRowController else {
 				fatalError("Receiver row controller has unknown type.")
 			}
-			if controller.timer.active && !controller.timer.finished {
-				controller.updateTimeLabel()
-				let timeLeft = controller.timer.getTimeLeft()
-				if timeLeft == 0 {
-					controller.timer.finished = true
-					controller.timerDidFinish()
-				}
-			}
-			if !controller.timer.active {
-				DispatchQueue.main.async {
-					self.animate(withDuration: 0.5) {
-						controller.colorButton.setAlpha(0)
+			if !controller.timer.finished {
+				if controller.timer.active {
+					controller.updateTimeLabel()
+					let timeLeft = controller.timer.getTimeLeft()
+					if timeLeft == 0 {
+						controller.timer.finished = true
+						controller.timerDidFinish()
+					}
+				} else {
+					DispatchQueue.main.async {
+						self.animate(withDuration: 0.5) {
+							controller.colorButton?.setAlpha(0)
+						}
+					}
+					DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+						self.animate(withDuration: 0.5) {
+							controller.colorButton?.setAlpha(1)
+						}
 					}
 				}
-				DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-					self.animate(withDuration: 0.5) {
-						controller.colorButton.setAlpha(1)
-					}
-				}
-				
 			}
 		}
 	}

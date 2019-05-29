@@ -80,7 +80,6 @@
 		C9799F5A229982C600A723A8 /* WatchSessionWatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */; };
 		C987913F22880B46000877D0 /* FastlaneScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C987913E22880B46000877D0 /* FastlaneScreenshots.swift */; };
 		C987914722880B69000877D0 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C987914622880B69000877D0 /* SnapshotHelper.swift */; };
-		C987914822880DBA000877D0 /* MulTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */; };
 		C987914922880DBD000877D0 /* MulTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E92278B9F900D40AE7 /* MulTimer.swift */; };
 		C987914A22880DC4000877D0 /* AlarmSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886462286B04100D2B17E /* AlarmSound.swift */; };
 		C987914B22880EDF000877D0 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
@@ -1044,7 +1043,6 @@
 				C987913F22880B46000877D0 /* FastlaneScreenshots.swift in Sources */,
 				C98791512288101F000877D0 /* TimerManagerArchive.swift in Sources */,
 				C987914D22880FBB000877D0 /* Settings.swift in Sources */,
-				C987914822880DBA000877D0 /* MulTimerManager.swift in Sources */,
 				C987914C22880FAF000877D0 /* Utils.swift in Sources */,
 				C987914F22880FD3000877D0 /* SoundTableViewCell.swift in Sources */,
 				C987914722880B69000877D0 /* SnapshotHelper.swift in Sources */,

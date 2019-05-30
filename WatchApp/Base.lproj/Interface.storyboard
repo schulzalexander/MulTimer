@@ -17,6 +17,7 @@
                         <group width="1" alignment="left" id="ugf-bx-Kvz">
                             <items>
                                 <button width="1" alignment="center" title="New" id="nrm-ha-T7D">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="1" green="0.76590568370000001" blue="0.2360139862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <segue destination="DVG-Ae-NzB" kind="modal" id="0Sq-M8-T7D"/>
@@ -24,6 +25,10 @@
                                 </button>
                             </items>
                         </group>
+                        <separator alignment="left" id="FcS-Lk-Htl">
+                            <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </separator>
+                        <label alignment="left" text="Saved Timers" id="8FM-zP-9gY"/>
                         <table alignment="left" id="3TQ-Ld-Akp">
                             <items>
                                 <tableRow identifier="TimerRowController" id="mrS-hd-euE" customClass="TimerRowController" customModule="WatchApp_Extension">
@@ -63,28 +68,72 @@
             </objects>
             <point key="canvasLocation" x="468" y="-116"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Custom Timer Time Interface Controller-->
         <scene sceneID="mSI-e9-rzq">
             <objects>
-                <controller id="DVG-Ae-NzB"/>
-            </objects>
-            <point key="canvasLocation" x="808" y="-116"/>
-        </scene>
-        <!--Active Timer Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="ActiveTimerInterfaceController" customModule="WatchApp" customModuleProvider="target">
+                <controller id="DVG-Ae-NzB" customClass="CustomTimerTimeInterfaceController" customModule="WatchApp_Extension">
                     <items>
-                        <button width="1" alignment="left" title="Add Timer" id="grX-Pd-sPl">
-                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <color key="backgroundColor" red="1" green="0.76590568370000001" blue="0.2360139862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <label alignment="left" text="Minutes" id="SG3-Qo-XTb"/>
+                        <button width="1" height="30" alignment="left" title="00" id="AuT-vE-Klp">
                             <connections>
-                                <action selector="didPressAddTimerButton" destination="AgC-eL-Hgc" id="egM-0h-94U"/>
+                                <action selector="didClickMinuteButton" destination="DVG-Ae-NzB" id="J7b-Yv-i9o"/>
                             </connections>
                         </button>
-                        <separator alignment="left" id="U0X-Ws-GhF">
-                            <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </separator>
+                        <label alignment="left" text="Seconds" id="0XB-du-xLs"/>
+                        <button width="1" height="30" alignment="left" title="00" id="UFe-gb-7kW">
+                            <connections>
+                                <action selector="didClickSecondsButton" destination="DVG-Ae-NzB" id="TrG-9D-lgf"/>
+                            </connections>
+                        </button>
+                        <button width="1" height="35" alignment="left" title="Continue" id="sbF-DW-xPY">
+                            <color key="titleColor" red="1" green="0.76590568370000001" blue="0.2360139862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didClickDoneButton" destination="DVG-Ae-NzB" id="dxp-gt-Cmx"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="doneButton" destination="sbF-DW-xPY" id="cYP-ql-PTL"/>
+                        <outlet property="minuteButton" destination="AuT-vE-Klp" id="IgE-fe-EN0"/>
+                        <outlet property="secondsButton" destination="UFe-gb-7kW" id="gRQ-6B-PcA"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="813" y="-116"/>
+        </scene>
+        <!--CustomTimerNameInterfaceController-->
+        <scene sceneID="l4h-ba-A6l">
+            <objects>
+                <controller identifier="CustomTimerNameInterfaceController" id="MNg-Tj-tSD" customClass="CustomTimerNameInterfaceController" customModule="WatchApp_Extension">
+                    <items>
+                        <button width="1" alignment="left" title="Name (optional)" id="XwN-vp-Vlv">
+                            <connections>
+                                <action selector="didClickNameButton" destination="MNg-Tj-tSD" id="TNU-pT-8X2"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Create" id="JSJ-rO-ydK">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.03896030145573802" green="0.48134121192893398" blue="0.1093028563482793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didClickCreateButton" destination="MNg-Tj-tSD" id="ffq-23-xEk"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="createButton" destination="JSJ-rO-ydK" id="B1g-fm-N1k"/>
+                        <outlet property="nameButton" destination="XwN-vp-Vlv" id="qV6-Bf-92N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1152" y="-116"/>
+        </scene>
+        <!--ActiveTimerInterfaceController-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="ActiveTimerInterfaceController" id="AgC-eL-Hgc" customClass="ActiveTimerInterfaceController" customModule="WatchApp" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Active Timers" id="ZAQ-nG-2XJ"/>
                         <table alignment="left" id="n4Q-QQ-OZj">
                             <items>
                                 <tableRow identifier="TimerRow" id="swN-xc-2U8" customClass="TimerRowController" customModule="WatchApp_Extension">
@@ -117,12 +166,12 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="addTimer" destination="grX-Pd-sPl" id="yzz-sc-kbo"/>
                         <outlet property="table" destination="n4Q-QQ-OZj" id="e83-os-3g2"/>
+                        <segue destination="ELJ-V8-uDU" kind="relationship" relationship="nextPage" id="5BU-da-mH6"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="121" y="-116"/>
+            <point key="canvasLocation" x="116" y="-116"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

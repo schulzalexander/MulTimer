@@ -26,7 +26,7 @@ class ActiveTimerInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 		
-		WatchSessionWatchManager.shared.activateWCSession()
+		WatchSessionManager.shared.activateWCSession()
 		
 		timer = Timer.scheduledTimer(timeInterval: 1.0,
 									 target: self,
@@ -39,7 +39,7 @@ class ActiveTimerInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
 		
-		WatchSessionWatchManager.shared.delegate = self
+		WatchSessionManager.shared.delegate = self
 		
 		if table.numberOfRows != MulTimerWatchManager.shared.getVisibleTimers().count {
 			populateTable()
@@ -98,7 +98,7 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 		} else {
 			controller.togglePause()
 		}
-		WatchSessionWatchManager.shared.sendUpdateToPhone()
+		WatchSessionManager.shared.sendUpdate()
 	}
 	
 	private func populateTable() {
@@ -114,7 +114,7 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 	}
 }
 
-extension ActiveTimerInterfaceController: WatchSessionWatchManagerDelegate {
+extension ActiveTimerInterfaceController: WatchSessionManagerDelegate {
 	
 	func didUpdateTimerManager() {
 		populateTable()

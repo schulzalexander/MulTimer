@@ -28,47 +28,77 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 		}
 	}
 	
-	func sendUpdateToWatch() {
+	func sendUpdate() {
 		let session = WCSession.default
+		#if os(iOS)
 		if true || session.isPaired && session.isWatchAppInstalled {
-			let encoder = JSONEncoder()
-			do {
-				try session.updateApplicationContext([
-					"savedTimers": try encoder.encode(MulTimerManager.shared.getSavedTimers()),
-					"visibleTimers": try encoder.encode(MulTimerManager.shared.getVisibleTimers())
+			send(session: session)
+		}
+		#else
+		send(session: session)
+		#endif
+	}
+	
+	private func send(session: WCSession) {
+		let encoder = JSONEncoder()
+		do {
+			#if os(iOS)
+			try session.updateApplicationContext([
+				"savedTimers": try encoder.encode(MulTimerManager.shared.getSavedTimers()),
+				"visibleTimers": try encoder.encode(MulTimerManager.shared.getVisibleTimers())
+				
 				])
-				print("Updated ApplicationContext from iOS app.")
-			} catch let error as NSError {
-				print(error.description)
-			}
+			#else
+			try session.updateApplicationContext([
+				"savedTimers": try encoder.encode(MulTimerWatchManager.shared.getSavedTimers()),
+				"visibleTimers": try encoder.encode(MulTimerWatchManager.shared.getVisibleTimers())
+				])
+			#endif
+			print("Updated ApplicationContext from iOS app.")
+		} catch let error as NSError {
+			print(error.description)
 		}
 	}
 	
-	func receiveUpdateFromWatch(applicatoinContext: [String: Any]) {
+	func receiveUpdate(applicationContext: [String: Any]) {
 		let session = WCSession.default
+		#if os(iOS)
 		if true || session.isPaired && session.isWatchAppInstalled {
-			let decoder = JSONDecoder()
-			guard let savedTimersData = applicatoinContext["savedTimers"] as? Data,
-				let visibleTimersData = applicatoinContext["visibleTimers"] as? Data else {
-					return
-			}
+			receive(applicationContext: applicationContext)
+		}
+		#else
+		receive(applicationContext: applicationContext)
+		#endif
+	}
+	
+	private func receive(applicationContext: [String: Any]) {
+		let decoder = JSONDecoder()
+		guard let savedTimersData = applicationContext["savedTimers"] as? Data,
+			let visibleTimersData = applicationContext["visibleTimers"] as? Data else {
+				return
+		}
+		
+		do {
+			let savedTimers = try decoder.decode([MulTimer].self, from: savedTimersData)
+			let visibleTimers = try decoder.decode([MulTimer].self, from: visibleTimersData)
 			
-			do {
-				let savedTimers = try decoder.decode([MulTimer].self, from: savedTimersData)
-				let visibleTimers = try decoder.decode([MulTimer].self, from: visibleTimersData)
-				MulTimerManager.shared.setTimers(visibleTimers: visibleTimers, savedTimers: savedTimers)
-				
-				delegate?.didUpdateTimerManager()
-				
-				print("Received update in phone app.")
-			} catch let error as NSError {
-				print(error.description)
-			}
+			#if os(iOS)
+			MulTimerManager.shared.setTimers(visibleTimers: visibleTimers, savedTimers: savedTimers)
+			#else
+			MulTimerWatchManager.shared.setSavedTimers(timers: savedTimers)
+			MulTimerWatchManager.shared.setVisibleTimers(timers: visibleTimers)
+			#endif
+			
+			delegate?.didUpdateTimerManager()
+			
+			print("Received update in phone app.")
+		} catch let error as NSError {
+			print(error.description)
 		}
 	}
 	
 	func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-		receiveUpdateFromWatch(applicatoinContext: applicationContext)
+		receiveUpdate(applicationContext: applicationContext)
 	}
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -77,6 +107,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 		}
 	}
 	
+	#if os(iOS)
 	func sessionDidBecomeInactive(_ session: WCSession) {
 		
 	}
@@ -84,7 +115,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 	func sessionDidDeactivate(_ session: WCSession) {
 		
 	}
-	
+	#endif
 }
 
 protocol WatchSessionManagerDelegate {

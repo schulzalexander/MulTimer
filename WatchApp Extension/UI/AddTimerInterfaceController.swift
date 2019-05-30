@@ -29,7 +29,7 @@ class AddTimerInterfaceController: WKInterfaceController {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()
 		
-		WatchSessionWatchManager.shared.delegate = self
+		WatchSessionManager.shared.delegate = self
 	}
 	
 	//MARK: InterfaceTable
@@ -54,12 +54,12 @@ class AddTimerInterfaceController: WKInterfaceController {
 		controller.timer.reset()
 		AlarmManager.addAlarm(timer: controller.timer)
 		MulTimerWatchManager.shared.setTimerState(timer: controller.timer, state: .visible)
-		WatchSessionWatchManager.shared.sendUpdateToPhone()
-		dismiss()
+		WatchSessionManager.shared.sendUpdate()
+		presentController(withName: "ActiveTimerInterfaceController", context: nil)
 	}
 }
 
-extension AddTimerInterfaceController: WatchSessionWatchManagerDelegate {
+extension AddTimerInterfaceController: WatchSessionManagerDelegate {
 	
 	func didUpdateTimerManager() {
 		populateTable()

@@ -30,7 +30,6 @@
 		C9241AAD2296F5DD00F4E778 /* AddTimerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AAC2296F5DD00F4E778 /* AddTimerInterfaceController.swift */; };
 		C9241AAF22994DAE00F4E778 /* MulTimerWatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AAE22994DAE00F4E778 /* MulTimerWatchManager.swift */; };
 		C9241AB12299535100F4E778 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AB02299535100F4E778 /* WatchSessionManager.swift */; };
-		C9241AB42299545B00F4E778 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AB02299535100F4E778 /* WatchSessionManager.swift */; };
 		C92886432286AC9000D2B17E /* SoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886422286AC9000D2B17E /* SoundTableViewController.swift */; };
 		C92886452286ACB000D2B17E /* SoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886442286ACB000D2B17E /* SoundTableViewCell.swift */; };
 		C92886472286B04100D2B17E /* AlarmSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92886462286B04100D2B17E /* AlarmSound.swift */; };
@@ -54,6 +53,10 @@
 		C9445AC7227ED5E600671B36 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */; };
 		C9445ACB227ED82300671B36 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACA227ED82300671B36 /* TutorialPage.swift */; };
 		C9445ACD227ED84B00671B36 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACC227ED84B00671B36 /* TutorialViewController.swift */; };
+		C95A7D12229EDB19006A57D9 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9241AB02299535100F4E778 /* WatchSessionManager.swift */; };
+		C95A7D15229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95A7D14229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift */; };
+		C95A7D17229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95A7D16229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift */; };
+		C95A7D18229FD2CE006A57D9 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
 		C9759BC4228F13AB00ADF382 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */; };
 		C9759BC7228F13AB00ADF382 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9759BC6228F13AB00ADF382 /* TodayViewController.swift */; };
 		C9759BCA228F13AB00ADF382 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9759BC8228F13AB00ADF382 /* MainInterface.storyboard */; };
@@ -243,6 +246,9 @@
 		C9445AC6227ED5E600671B36 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		C9445ACA227ED82300671B36 /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
 		C9445ACC227ED84B00671B36 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		C95A7D13229EE186006A57D9 /* WatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchApp.entitlements; sourceTree = "<group>"; };
+		C95A7D14229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimerTimeInterfaceController.swift; sourceTree = "<group>"; };
+		C95A7D16229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimerNameInterfaceController.swift; sourceTree = "<group>"; };
 		C9759BC2228F13AB00ADF382 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C9759BC6228F13AB00ADF382 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -470,6 +476,7 @@
 		C939867A22919188008B4A0E /* WatchApp */ = {
 			isa = PBXGroup;
 			children = (
+				C95A7D13229EE186006A57D9 /* WatchApp.entitlements */,
 				C939867B22919188008B4A0E /* Interface.storyboard */,
 				C939867E2291918A008B4A0E /* Assets.xcassets */,
 				C93986802291918A008B4A0E /* Info.plist */,
@@ -532,6 +539,8 @@
 				C939868A2291918B008B4A0E /* ActiveTimerInterfaceController.swift */,
 				C9E23EC02294059F004B0CF3 /* TimerRowController.swift */,
 				C9241AAC2296F5DD00F4E778 /* AddTimerInterfaceController.swift */,
+				C95A7D14229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift */,
+				C95A7D16229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -726,12 +735,17 @@
 					};
 					C939867822919188008B4A0E = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					C93986842291918A008B4A0E = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -989,14 +1003,18 @@
 			files = (
 				C93986AC2291D128008B4A0E /* MulTimerManager.swift in Sources */,
 				C93986A62291CC25008B4A0E /* MulTimer.swift in Sources */,
+				C95A7D15229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift in Sources */,
 				C99136422293F985006DCF96 /* Color.swift in Sources */,
 				C9799F5A229982C600A723A8 /* WatchSessionWatchManager.swift in Sources */,
+				C95A7D17229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift in Sources */,
 				C93986AD2291D1F6008B4A0E /* TimerManagerArchive.swift in Sources */,
 				C939868F2291918B008B4A0E /* NotificationController.swift in Sources */,
 				C939868D2291918B008B4A0E /* ExtensionDelegate.swift in Sources */,
 				C939868B2291918B008B4A0E /* ActiveTimerInterfaceController.swift in Sources */,
 				C9241AAD2296F5DD00F4E778 /* AddTimerInterfaceController.swift in Sources */,
+				C95A7D18229FD2CE006A57D9 /* ColorPicker.swift in Sources */,
 				C9241AAF22994DAE00F4E778 /* MulTimerWatchManager.swift in Sources */,
+				C95A7D12229EDB19006A57D9 /* WatchSessionManager.swift in Sources */,
 				C93986A92291CF38008B4A0E /* Settings.swift in Sources */,
 				C93986A72291CC2C008B4A0E /* AlarmSound.swift in Sources */,
 				C93986A82291CF38008B4A0E /* Utils.swift in Sources */,
@@ -1017,7 +1035,6 @@
 				C9759BE2228F185000ADF382 /* TutorialPage.swift in Sources */,
 				C9759BD5228F16E400ADF382 /* TimerCollectionViewCell.swift in Sources */,
 				C9759BD8228F16FC00ADF382 /* AlarmSound.swift in Sources */,
-				C9241AB42299545B00F4E778 /* WatchSessionManager.swift in Sources */,
 				C9759BE0228F181C00ADF382 /* AuthorizationRequestViewController.swift in Sources */,
 				C9759BE1228F185000ADF382 /* TutorialPageViewController.swift in Sources */,
 				C9759BDE228F181C00ADF382 /* SoundTableViewController.swift in Sources */,
@@ -1286,6 +1303,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-D MulTimer";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1307,6 +1325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-D MulTimer";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1442,7 +1461,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WWSXM777M;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
@@ -1465,7 +1483,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9WWSXM777M;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";

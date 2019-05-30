@@ -90,6 +90,7 @@ class TimerManagerArchive {
 				return unarchived
 			}
 		} catch {
+			print(error.localizedDescription)
 			return nil
 		}
 		return nil

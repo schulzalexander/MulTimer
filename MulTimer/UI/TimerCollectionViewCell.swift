@@ -101,8 +101,8 @@ class TimerCollectionViewCell: UICollectionViewCell {
 			collectionViewController.updateTableViewEmptyMessage(count: collectionViewController.savedTimerTableView.visibleCells.count)
 		}
 		
-		#if os(iOS)
-		WatchSessionManager.shared.sendUpdateToWatch()
+		#if MulTimer
+		WatchSessionManager.shared.sendUpdate()
 		#endif
 	}
 	

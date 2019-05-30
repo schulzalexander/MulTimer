@@ -52,6 +52,7 @@ class WatchSessionWatchManager: NSObject, WCSessionDelegate {
 		do {
 			let savedTimers = try decoder.decode([MulTimer].self, from: savedTimersData)
 			let visibleTimers = try decoder.decode([MulTimer].self, from: visibleTimersData)
+			
 			MulTimerWatchManager.shared.setSavedTimers(timers: savedTimers)
 			MulTimerWatchManager.shared.setVisibleTimers(timers: visibleTimers)
 			

@@ -48,8 +48,10 @@ class TimerTableViewController: UIViewController {
 		savedTimerTableView.delegate = self
 		savedTimerTableView.dataSource = self
 		
+		#if MulTimer
 		WatchSessionManager.shared.delegate = self
 		WatchSessionManager.shared.activateWCSession()
+		#endif
 		
 		timer = Timer.scheduledTimer(timeInterval: 1.0,
 									 target: self,
@@ -406,8 +408,8 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 			collectionView.deleteItems(at: [indexPath])
 			savedTimerTableView.reloadData()
 			
-			#if os(iOS)
-			WatchSessionManager.shared.sendUpdateToWatch()
+			#if MulTimer
+			WatchSessionManager.shared.sendUpdate()
 			#endif
 			
 			return
@@ -415,8 +417,8 @@ extension TimerTableViewController: UICollectionViewDelegate, UICollectionViewDa
 		cell.timer.toggle()
 		TimerManagerArchive.saveTimer(timer: cell.timer)
 		
-		#if os(iOS)
-		WatchSessionManager.shared.sendUpdateToWatch()
+		#if MulTimer
+		WatchSessionManager.shared.sendUpdate()
 		#endif
 		
 		cell.isUserInteractionEnabled = false
@@ -498,8 +500,8 @@ extension TimerTableViewController: UITextFieldDelegate {
 				rotateAddButton()
 			}
 			
-			#if os(iOS)
-			WatchSessionManager.shared.sendUpdateToWatch()
+			#if MulTimer
+			WatchSessionManager.shared.sendUpdate()
 			#endif
 		}
 		textField.resignFirstResponder()
@@ -554,8 +556,8 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 			MulTimerManager.shared.deleteTimer(id: cell.timer.id)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 			
-			#if os(iOS)
-			WatchSessionManager.shared.sendUpdateToWatch()
+			#if MulTimer
+			WatchSessionManager.shared.sendUpdate()
 			#endif
 		}
 	}
@@ -567,13 +569,14 @@ extension TimerTableViewController: UITableViewDelegate, UITableViewDataSource {
 		cell.timer.reset()
 		startTimer(timer: cell.timer)
 		
-		#if os(iOS)
-		WatchSessionManager.shared.sendUpdateToWatch()
+		#if MulTimer
+		WatchSessionManager.shared.sendUpdate()
 		#endif
 	}
 	
 }
 
+#if MulTimer
 extension TimerTableViewController: WatchSessionManagerDelegate {
 	
 	func didUpdateTimerManager() {
@@ -584,3 +587,4 @@ extension TimerTableViewController: WatchSessionManagerDelegate {
 	}
 	
 }
+#endif

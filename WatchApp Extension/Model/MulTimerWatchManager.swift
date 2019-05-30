@@ -24,6 +24,14 @@ class MulTimerWatchManager {
 		visibleTimers = [MulTimer]()
 	}
 	
+	func addTimer(timer: MulTimer, state: TimerStatus) {
+		if state == .visible {
+			visibleTimers.append(timer)
+		} else {
+			savedTimers.append(timer)
+		}
+	}
+	
 	func setTimerState(timer: MulTimer, state: TimerStatus) {
 		if state == .visible {
 			savedTimers.removeAll { (curr) -> Bool in

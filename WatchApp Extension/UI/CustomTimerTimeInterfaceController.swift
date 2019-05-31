@@ -20,6 +20,21 @@ class CustomTimerTimeInterfaceController: WKInterfaceController {
 	@IBOutlet weak var secondsButton: WKInterfaceButton!
 	@IBOutlet weak var doneButton: WKInterfaceButton!
 	
+	//MARK: Methods
+	override func awake(withContext context: Any?) {
+		super.awake(withContext: context)
+		
+		updateDoneButton()
+	}
+	
+	override func willActivate() {
+		if minutes != 0 || seconds != 0 {
+			// this means, that the name-input interface controller did dismiss
+			// -> also pop this one
+			dismiss()
+		}
+	}
+	
 	@IBAction func didClickMinuteButton() {
 		presentTextInputController(withSuggestions: ["1", "2", "5", "10"], allowedInputMode: .plain) { (result) in
 			guard let result = result, let minutes = result.first as? String else {
@@ -31,6 +46,8 @@ class CustomTimerTimeInterfaceController: WKInterfaceController {
 				}
 				self.minuteButton.setTitle(minutes)
 				self.minutes = minutesInt
+				
+				self.updateDoneButton()
 			}
 		}
 	}
@@ -46,6 +63,8 @@ class CustomTimerTimeInterfaceController: WKInterfaceController {
 				}
 				self.secondsButton.setTitle(seconds)
 				self.seconds = secondsInt
+				
+				self.updateDoneButton()
 			}
 		}
 	}
@@ -54,10 +73,15 @@ class CustomTimerTimeInterfaceController: WKInterfaceController {
 		let context = ["minutes": minutes, "seconds": seconds]
 		presentController(withName: "CustomTimerNameInterfaceController",
 						  context: context)
+		
 	}
 	
 	private func isValidNumber(input: String) -> Bool {
 		return Int.init(input) != nil
+	}
+	
+	private func updateDoneButton() {
+		doneButton.setEnabled(seconds != 0 || minutes != 0)
 	}
 	
 }

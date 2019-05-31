@@ -121,11 +121,12 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		if activationState == .activated {
-			receiveUpdate(applicationContext: session.receivedApplicationContext)
+			receiveUpdate(applicationContext: session.applicationContext)
 		}
 	}
 	
 	#if os(iOS)
+	//TODO: handle watch change?
 	func sessionDidBecomeInactive(_ session: WCSession) {
 		
 	}

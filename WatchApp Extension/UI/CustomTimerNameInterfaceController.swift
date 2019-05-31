@@ -49,7 +49,7 @@ class CustomTimerNameInterfaceController: WKInterfaceController {
 		AlarmManager.addAlarm(timer: timer)
 		MulTimerWatchManager.shared.addTimer(timer: timer, state: .visible)
 		WatchSessionManager.shared.sendUpdate()
-		popToRootController()
+		dismiss()
 	}
 	
 }

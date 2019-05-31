@@ -28,7 +28,17 @@
                         <separator alignment="left" id="FcS-Lk-Htl">
                             <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </separator>
-                        <label alignment="left" text="Saved Timers" id="8FM-zP-9gY"/>
+                        <group width="1" alignment="left" layout="vertical" spacing="0.0" id="pR4-vW-own">
+                            <items>
+                                <label alignment="left" text="Saved Timers" id="8FM-zP-9gY">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label alignment="left" text="  Timer" id="EOx-iF-sbW">
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                            </items>
+                        </group>
                         <table alignment="left" id="3TQ-Ld-Akp">
                             <items>
                                 <tableRow identifier="TimerRowController" id="mrS-hd-euE" customClass="TimerRowController" customModule="WatchApp_Extension">
@@ -37,9 +47,9 @@
                                             <group width="1" alignment="left" spacing="5" id="tEP-CM-0PR">
                                                 <items>
                                                     <button width="13" height="13" alignment="left" verticalAlignment="center" enabled="NO" id="8UM-ha-lwc">
-                                                        <color key="backgroundColor" red="1" green="0.1124867392" blue="0.065501891830000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </button>
-                                                    <label alignment="left" text="Name" id="V1G-Cu-lJu"/>
+                                                    <label alignment="left" id="V1G-Cu-lJu"/>
                                                 </items>
                                             </group>
                                             <group width="1" alignment="right" id="571-1o-4Nn">
@@ -63,6 +73,7 @@
                     <connections>
                         <outlet property="newButton" destination="nrm-ha-T7D" id="LfY-me-Ogw"/>
                         <outlet property="table" destination="3TQ-Ld-Akp" id="Dul-qL-zUE"/>
+                        <outlet property="timerCountLabel" destination="EOx-iF-sbW" id="O6K-Ef-kCc"/>
                     </connections>
                 </controller>
             </objects>
@@ -114,7 +125,7 @@
                         </button>
                         <button width="1" alignment="left" title="Create" id="JSJ-rO-ydK">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" red="0.03896030145573802" green="0.48134121192893398" blue="0.1093028563482793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="didClickCreateButton" destination="MNg-Tj-tSD" id="ffq-23-xEk"/>
                             </connections>
@@ -131,9 +142,19 @@
         <!--ActiveTimerInterfaceController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="ActiveTimerInterfaceController" id="AgC-eL-Hgc" customClass="ActiveTimerInterfaceController" customModule="WatchApp" customModuleProvider="target">
+                <controller identifier="ActiveTimerInterfaceController" spacing="4" id="AgC-eL-Hgc" customClass="ActiveTimerInterfaceController" customModule="WatchApp" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Active Timers" id="ZAQ-nG-2XJ"/>
+                        <group width="1" alignment="left" layout="vertical" spacing="0.0" id="M8J-V5-zRg">
+                            <items>
+                                <label alignment="left" text="Active Timers" id="ZAQ-nG-2XJ">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label alignment="left" text="  Timer" id="CPj-4G-are">
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                            </items>
+                        </group>
                         <table alignment="left" id="n4Q-QQ-OZj">
                             <items>
                                 <tableRow identifier="TimerRow" id="swN-xc-2U8" customClass="TimerRowController" customModule="WatchApp_Extension">
@@ -142,9 +163,9 @@
                                             <group width="1" alignment="left" spacing="5" id="7xF-qd-Sti">
                                                 <items>
                                                     <button width="13" height="13" alignment="left" verticalAlignment="center" enabled="NO" id="yNf-cw-u8C">
-                                                        <color key="backgroundColor" red="1" green="0.1124867392" blue="0.065501891830000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </button>
-                                                    <label alignment="left" text="Name" id="Fuz-F9-6JY"/>
+                                                    <label alignment="left" id="Fuz-F9-6JY"/>
                                                 </items>
                                             </group>
                                             <group width="1" alignment="right" id="knr-oe-iqG">
@@ -167,6 +188,7 @@
                     </items>
                     <connections>
                         <outlet property="table" destination="n4Q-QQ-OZj" id="e83-os-3g2"/>
+                        <outlet property="timerCountLabel" destination="CPj-4G-are" id="lIN-NN-KIp"/>
                         <segue destination="ELJ-V8-uDU" kind="relationship" relationship="nextPage" id="5BU-da-mH6"/>
                     </connections>
                 </controller>

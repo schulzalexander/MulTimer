@@ -17,8 +17,8 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 	var timer: Timer!
 	
 	//MARK: Outlets
-	@IBOutlet weak var addTimer: WKInterfaceButton!
 	@IBOutlet weak var table: WKInterfaceTable!
+	@IBOutlet weak var timerCountLabel: WKInterfaceLabel!
 	
 	
 	//MARK: Methods
@@ -50,10 +50,6 @@ class ActiveTimerInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-	
-	@IBAction func didPressAddTimerButton() {
-		presentController(withName: "AddTimerInterfaceController", context: MulTimerWatchManager.shared.getSavedTimers())
-	}
 	
 	@objc private func updateTimeCounters() {
 		for i in 0..<table.numberOfRows {
@@ -104,6 +100,7 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 	private func populateTable() {
 		let visibleTimers = MulTimerWatchManager.shared.getVisibleTimers()
 		table.setNumberOfRows(visibleTimers.count, withRowType: "TimerRow")
+		timerCountLabel.setText("\(visibleTimers.count) Timer")
 		
 		for i in 0..<visibleTimers.count {
 			guard let controller = table.rowController(at: i) as? TimerRowController else {

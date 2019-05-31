@@ -14,6 +14,7 @@ class AddTimerInterfaceController: WKInterfaceController {
 	//MARK: Outlet
 	@IBOutlet weak var table: WKInterfaceTable!
 	@IBOutlet weak var newButton: WKInterfaceButton!
+	@IBOutlet weak var timerCountLabel: WKInterfaceLabel!
 	
 	
 	//MARK: Methods
@@ -41,6 +42,7 @@ class AddTimerInterfaceController: WKInterfaceController {
 	private func populateTable() {
 		let savedTimers = MulTimerWatchManager.shared.getSavedTimers()
 		table.setNumberOfRows(savedTimers.count, withRowType: "TimerRowController")
+		timerCountLabel.setText("\(savedTimers.count) Timer")
 		
 		for i in 0..<savedTimers.count {
 			guard let controller = table.rowController(at: i) as? TimerRowController else {

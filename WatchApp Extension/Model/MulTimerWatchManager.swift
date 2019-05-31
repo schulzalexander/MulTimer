@@ -16,12 +16,14 @@ class MulTimerWatchManager {
 	
 	private var savedTimers: [MulTimer]
 	private var visibleTimers: [MulTimer]
+	private var lastUpdateTimestamp: Double
 	
 	static var shared = MulTimerWatchManager()
 	
 	private init() {
 		savedTimers = [MulTimer]()
 		visibleTimers = [MulTimer]()
+		lastUpdateTimestamp = 0
 	}
 	
 	func addTimer(timer: MulTimer, state: TimerStatus) {
@@ -30,6 +32,14 @@ class MulTimerWatchManager {
 		} else {
 			savedTimers.append(timer)
 		}
+	}
+	
+	func getLastUpdateTimestamp() -> Double {
+		return lastUpdateTimestamp
+	}
+	
+	func setLastUpdateTimestamp(timestamp: Double) {
+		lastUpdateTimestamp = timestamp
 	}
 	
 	func setTimerState(timer: MulTimer, state: TimerStatus) {

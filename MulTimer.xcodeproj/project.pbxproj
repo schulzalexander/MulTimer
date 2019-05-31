@@ -80,7 +80,6 @@
 		C9759BE3228F185000ADF382 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9759BE4228F185000ADF382 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
 		C9759BE5228F185D00ADF382 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9445ACC227ED84B00671B36 /* TutorialViewController.swift */; };
-		C9799F5A229982C600A723A8 /* WatchSessionWatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */; };
 		C987913F22880B46000877D0 /* FastlaneScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C987913E22880B46000877D0 /* FastlaneScreenshots.swift */; };
 		C987914722880B69000877D0 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C987914622880B69000877D0 /* SnapshotHelper.swift */; };
 		C987914922880DBD000877D0 /* MulTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601E92278B9F900D40AE7 /* MulTimer.swift */; };
@@ -255,7 +254,6 @@
 		C9759BC9228F13AB00ADF382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C9759BCB228F13AB00ADF382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9759BE6228F1D1800ADF382 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
-		C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionWatchManager.swift; sourceTree = "<group>"; };
 		C987913C22880B46000877D0 /* FastlaneScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastlaneScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C987913E22880B46000877D0 /* FastlaneScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneScreenshots.swift; sourceTree = "<group>"; };
 		C987914022880B46000877D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -549,7 +547,6 @@
 			isa = PBXGroup;
 			children = (
 				C9241AAE22994DAE00F4E778 /* MulTimerWatchManager.swift */,
-				C9799F59229982C600A723A8 /* WatchSessionWatchManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1005,7 +1002,6 @@
 				C93986A62291CC25008B4A0E /* MulTimer.swift in Sources */,
 				C95A7D15229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift in Sources */,
 				C99136422293F985006DCF96 /* Color.swift in Sources */,
-				C9799F5A229982C600A723A8 /* WatchSessionWatchManager.swift in Sources */,
 				C95A7D17229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift in Sources */,
 				C93986AD2291D1F6008B4A0E /* TimerManagerArchive.swift in Sources */,
 				C939868F2291918B008B4A0E /* NotificationController.swift in Sources */,

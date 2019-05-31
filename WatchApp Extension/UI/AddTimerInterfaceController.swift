@@ -30,6 +30,10 @@ class AddTimerInterfaceController: WKInterfaceController {
 		super.willActivate()
 		
 		WatchSessionManager.shared.delegate = self
+		
+		if table.numberOfRows != MulTimerWatchManager.shared.getSavedTimers().count {
+			populateTable()
+		}
 	}
 	
 	//MARK: InterfaceTable
@@ -55,7 +59,10 @@ class AddTimerInterfaceController: WKInterfaceController {
 		AlarmManager.addAlarm(timer: controller.timer)
 		MulTimerWatchManager.shared.setTimerState(timer: controller.timer, state: .visible)
 		WatchSessionManager.shared.sendUpdate()
-		presentController(withName: "ActiveTimerInterfaceController", context: nil)
+		guard let activeTimersController = WKExtension.shared().rootInterfaceController as? ActiveTimerInterfaceController else {
+			return
+		}
+		activeTimersController.becomeCurrentPage()
 	}
 }
 

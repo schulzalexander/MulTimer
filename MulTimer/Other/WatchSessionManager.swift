@@ -41,20 +41,24 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 	
 	private func send(session: WCSession) {
 		let encoder = JSONEncoder()
+		let timestamp = Date().timeIntervalSince1970
 		do {
 			#if os(iOS)
 			try session.updateApplicationContext([
 				"savedTimers": try encoder.encode(MulTimerManager.shared.getSavedTimers()),
-				"visibleTimers": try encoder.encode(MulTimerManager.shared.getVisibleTimers())
-				
+				"visibleTimers": try encoder.encode(MulTimerManager.shared.getVisibleTimers()),
+				"timestamp": timestamp
 				])
+			MulTimerManager.shared.setLastUpdateTimestamp(timestamp: timestamp)
 			#else
 			try session.updateApplicationContext([
 				"savedTimers": try encoder.encode(MulTimerWatchManager.shared.getSavedTimers()),
-				"visibleTimers": try encoder.encode(MulTimerWatchManager.shared.getVisibleTimers())
+				"visibleTimers": try encoder.encode(MulTimerWatchManager.shared.getVisibleTimers()),
+				"timestamp": timestamp
 				])
+			MulTimerWatchManager.shared.setLastUpdateTimestamp(timestamp: timestamp)
 			#endif
-			print("Updated ApplicationContext from iOS app.")
+			print("Updated ApplicationContext.")
 		} catch let error as NSError {
 			print(error.description)
 		}
@@ -74,9 +78,21 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 	private func receive(applicationContext: [String: Any]) {
 		let decoder = JSONDecoder()
 		guard let savedTimersData = applicationContext["savedTimers"] as? Data,
-			let visibleTimersData = applicationContext["visibleTimers"] as? Data else {
+			let visibleTimersData = applicationContext["visibleTimers"] as? Data,
+			let timestamp = applicationContext["timestamp"] as? Double else {
 				return
 		}
+		
+		// Check if we already have the current version
+		#if os(iOS)
+		if timestamp <= MulTimerManager.shared.getLastUpdateTimestamp() {
+			return
+		}
+		#else
+		if timestamp <= MulTimerWatchManager.shared.getLastUpdateTimestamp() {
+			return
+		}
+		#endif
 		
 		do {
 			let savedTimers = try decoder.decode([MulTimer].self, from: savedTimersData)
@@ -84,14 +100,16 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 			
 			#if os(iOS)
 			MulTimerManager.shared.setTimers(visibleTimers: visibleTimers, savedTimers: savedTimers)
+			MulTimerManager.shared.setLastUpdateTimestamp(timestamp: timestamp)
 			#else
 			MulTimerWatchManager.shared.setSavedTimers(timers: savedTimers)
 			MulTimerWatchManager.shared.setVisibleTimers(timers: visibleTimers)
+			MulTimerWatchManager.shared.setLastUpdateTimestamp(timestamp: timestamp)
 			#endif
 			
 			delegate?.didUpdateTimerManager()
 			
-			print("Received update in phone app.")
+			print("Received update.")
 		} catch let error as NSError {
 			print(error.description)
 		}
@@ -103,7 +121,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 	
 	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 		if activationState == .activated {
-			//TODO: test if receive is already called
+			receiveUpdate(applicationContext: session.receivedApplicationContext)
 		}
 	}
 	

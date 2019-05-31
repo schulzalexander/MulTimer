@@ -21,17 +21,20 @@ class MulTimerManager: NSObject, NSCoding {
 	private var visibleTimers: [String]
 	private var savedTimers: [String]
 	private var allTimers: [String: MulTimer]
+	private var lastUpdateTimestamp: Double
 	
 	struct PropertyKeys {
 		static let visibleTimers = "visibleTimers"
 		static let savedTimers = "savedTimers"
 		static let allTimers = "allTimers"
+		static let lastUpdateTimestamp = "lastUpdateTimestamp"
 	}
 	
 	private override init() {
 		visibleTimers = [String]()
 		savedTimers = [String]()
 		allTimers = [String: MulTimer]()
+		lastUpdateTimestamp = Date().timeIntervalSince1970.binade
 		super.init()
 	}
 	
@@ -45,6 +48,14 @@ class MulTimerManager: NSObject, NSCoding {
 	
 	func savedTimerCount() -> Int {
 		return savedTimers.count
+	}
+	
+	func getLastUpdateTimestamp() -> Double {
+		return lastUpdateTimestamp
+	}
+	
+	func setLastUpdateTimestamp(timestamp: Double) {
+		lastUpdateTimestamp = timestamp
 	}
 	
 	func setTimers(visibleTimers: [MulTimer], savedTimers: [MulTimer]) {
@@ -213,6 +224,7 @@ class MulTimerManager: NSObject, NSCoding {
 		for pair in allTimers {
 			TimerManagerArchive.saveTimer(timer: pair.value)
 		}
+		aCoder.encode(lastUpdateTimestamp, forKey: PropertyKeys.lastUpdateTimestamp)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -223,6 +235,7 @@ class MulTimerManager: NSObject, NSCoding {
 		}
 		self.visibleTimers = visibleTimers
 		self.savedTimers = savedTimers
+		self.lastUpdateTimestamp = aDecoder.decodeDouble(forKey: PropertyKeys.lastUpdateTimestamp)
 		self.allTimers = [String: MulTimer]()
 		
 		for id in allTimers {

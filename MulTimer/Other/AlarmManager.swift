@@ -22,7 +22,7 @@ class AlarmManager {
 		let id = "\(timer.id)_\(Date().timeIntervalSince1970)"
 		let content = UNMutableNotificationContent()
 		content.body = timer.name
-		content.title = "MulTimer"
+		content.title = NSLocalizedString("TimerNotificationTitle", comment: "")
 		
 		//content.sound = timer.vibrationOnly || Settings.shared.vibrationOnly ? nil : UNNotificationSound.default
 		#if os(iOS)

@@ -6,9 +6,12 @@
   Copyright © 2019 Alexander Schulz. All rights reserved.
 */
 
-
+"Done" = "Fertig";
 "Continue" = "Weiter";
 "Cancel" = "Abbrechen";
+
+//MARK: Timer Notification
+"TimerNotificationTitle" = "Timer Abgeflaufen";
 
 //MARK: Timer Collection View
 "TimerCollectionViewEmptyMessage" = "Keine Aktiven Timer";

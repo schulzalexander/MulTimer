@@ -60,6 +60,7 @@
 		C96C66F922A2A50700020104 /* Long_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7922872F4D00C53606 /* Long_1.mp3 */; };
 		C96C66FA22A2A50700020104 /* Short_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */; };
 		C96C66FB22A2A50700020104 /* Short_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7622870F5C00C53606 /* Short_1.mp3 */; };
+		C96C66FC22A2E87000020104 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 		C9759BC4228F13AB00ADF382 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */; };
 		C9759BC7228F13AB00ADF382 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9759BC6228F13AB00ADF382 /* TodayViewController.swift */; };
 		C9759BCA228F13AB00ADF382 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9759BC8228F13AB00ADF382 /* MainInterface.storyboard */; };
@@ -107,7 +108,6 @@
 		C9BCDA7E2287482D00C53606 /* AuthorizationRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BCDA7D2287482D00C53606 /* AuthorizationRequestViewController.swift */; };
 		C9E23EBF2293FF76004B0CF3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C991363F2293F782006DCF96 /* Color.swift */; };
 		C9E23EC12294059F004B0CF3 /* TimerRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E23EC02294059F004B0CF3 /* TimerRowController.swift */; };
-		C9E23EC4229414B0004B0CF3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9E23EC6229414B0004B0CF3 /* Localizable.strings */; };
 		C9FCD1F6227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */; };
 		C9FCD1FB227DFE2B001AA4D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
 		D6D255CE2F5092DC6AE9EFFC /* Pods_MulTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F0542197753A23769B05EE /* Pods_MulTimer.framework */; };
@@ -271,8 +271,6 @@
 		C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Short_2.mp3; sourceTree = "<group>"; };
 		C9BCDA7D2287482D00C53606 /* AuthorizationRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestViewController.swift; sourceTree = "<group>"; };
 		C9E23EC02294059F004B0CF3 /* TimerRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRowController.swift; sourceTree = "<group>"; };
-		C9E23EC5229414B0004B0CF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C9E23EC7229414B4004B0CF3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C9E23EC822942264004B0CF3 /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
 		C9FCD1F5227DD8CD001AA4D0 /* SavedTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTimerTableViewCell.swift; sourceTree = "<group>"; };
 		C9FCD1F9227DFE1C001AA4D0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -496,7 +494,6 @@
 				C93986902291918B008B4A0E /* Assets.xcassets */,
 				C93986922291918B008B4A0E /* Info.plist */,
 				C93986932291918B008B4A0E /* PushNotificationPayload.apns */,
-				C9E23EC6229414B0004B0CF3 /* Localizable.strings */,
 			);
 			path = "WatchApp Extension";
 			sourceTree = "<group>";
@@ -832,10 +829,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C96C66F922A2A50700020104 /* Long_1.mp3 in Resources */,
+				C96C66FC22A2E87000020104 /* Localizable.strings in Resources */,
 				C96C66FA22A2A50700020104 /* Short_2.mp3 in Resources */,
 				C96C66FB22A2A50700020104 /* Short_1.mp3 in Resources */,
 				C93986912291918B008B4A0E /* Assets.xcassets in Resources */,
-				C9E23EC4229414B0004B0CF3 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,15 +1145,6 @@
 			children = (
 				C9B78507228F21C400DCBD94 /* en */,
 				C9B78509228F21C600DCBD94 /* de */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		C9E23EC6229414B0004B0CF3 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9E23EC5229414B0004B0CF3 /* en */,
-				C9E23EC7229414B4004B0CF3 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

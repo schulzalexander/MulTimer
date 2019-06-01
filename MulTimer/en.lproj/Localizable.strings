@@ -6,8 +6,12 @@
   Copyright © 2019 Alexander Schulz. All rights reserved.
 */
 
+"Done" = "Done";
 "Continue" = "Continue";
 "Cancel" = "Cancel";
+
+//MARK: Timer Notification
+"TimerNotificationTitle" = "Timer Expired";
 
 //MARK: Timer Collection View
 "TimerCollectionViewEmptyMessage" = "No Active Timers";

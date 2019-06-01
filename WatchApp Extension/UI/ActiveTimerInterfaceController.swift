@@ -9,6 +9,7 @@
 import WatchKit
 import WatchConnectivity
 import Foundation
+import UserNotifications
 
 
 class ActiveTimerInterfaceController: WKInterfaceController {
@@ -33,6 +34,8 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 									 selector: #selector(updateTimeCounters),
 									 userInfo: nil,
 									 repeats: true)
+		
+		UNUserNotificationCenter.current().delegate = self
     }
     
     override func willActivate() {
@@ -116,6 +119,15 @@ extension ActiveTimerInterfaceController: WatchSessionManagerDelegate {
 	
 	func didUpdateTimerManager() {
 		populateTable()
+	}
+	
+}
+
+extension ActiveTimerInterfaceController: UNUserNotificationCenterDelegate {
+	
+	//MARK: UNUserNotificationCenterDelegate
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+		completionHandler([.alert, .sound])
 	}
 	
 }

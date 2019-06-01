@@ -93,6 +93,8 @@ class SettingsTableViewController: UITableViewController {
 				return
 			}
 			MulTimerManager.shared.deleteAllTimers()
+			WatchSessionManager.shared.sendUpdate()
+			
 			timerTable.collectionView.reloadData()
 			timerTable.savedTimerTableView.reloadData()
 			self.navigationController?.popToRootViewController(animated: true)

@@ -105,6 +105,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 			MulTimerWatchManager.shared.setSavedTimers(timers: savedTimers)
 			MulTimerWatchManager.shared.setVisibleTimers(timers: visibleTimers)
 			MulTimerWatchManager.shared.setLastUpdateTimestamp(timestamp: timestamp)
+			AlarmManager.updateAllAlarms()
 			#endif
 			
 			delegate?.didUpdateTimerManager()

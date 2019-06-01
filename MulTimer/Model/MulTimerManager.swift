@@ -89,6 +89,9 @@ class MulTimerManager: NSObject, NSCoding {
 				fatalError("Error: Inconsistency of IDs for new timers.")
 			}
 			
+			// If timer did already finish, update its status parameters
+			timer.finished = timer.getTimeLeft() <= 0
+			
 			self.allTimers[id] = timer
 			self.visibleTimers.append(id)
 		}

@@ -57,6 +57,9 @@
 		C95A7D15229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95A7D14229FC94C006A57D9 /* CustomTimerTimeInterfaceController.swift */; };
 		C95A7D17229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95A7D16229FCCE3006A57D9 /* CustomTimerNameInterfaceController.swift */; };
 		C95A7D18229FD2CE006A57D9 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D3779227A09E500C21512 /* ColorPicker.swift */; };
+		C96C66F922A2A50700020104 /* Long_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7922872F4D00C53606 /* Long_1.mp3 */; };
+		C96C66FA22A2A50700020104 /* Short_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */; };
+		C96C66FB22A2A50700020104 /* Short_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7622870F5C00C53606 /* Short_1.mp3 */; };
 		C9759BC4228F13AB00ADF382 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */; };
 		C9759BC7228F13AB00ADF382 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9759BC6228F13AB00ADF382 /* TodayViewController.swift */; };
 		C9759BCA228F13AB00ADF382 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9759BC8228F13AB00ADF382 /* MainInterface.storyboard */; };
@@ -828,6 +831,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96C66F922A2A50700020104 /* Long_1.mp3 in Resources */,
+				C96C66FA22A2A50700020104 /* Short_2.mp3 in Resources */,
+				C96C66FB22A2A50700020104 /* Short_1.mp3 in Resources */,
 				C93986912291918B008B4A0E /* Assets.xcassets in Resources */,
 				C9E23EC4229414B0004B0CF3 /* Localizable.strings in Resources */,
 			);

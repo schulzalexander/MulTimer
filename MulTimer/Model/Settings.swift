@@ -20,6 +20,7 @@ class Settings: NSObject, NSCoding {
 	static var shared: Settings = Settings()
 	
 	static let sounds: [AlarmSound] = [
+		AlarmSound(id: 0, nameLocalizationKey: "DefaultAlarmSound", fileName: nil), // this will play the default sound
 		AlarmSound(id: 1, nameLocalizationKey: "2ToneAlarm2SoundName", fileName: "Short_2.mp3"),
 		AlarmSound(id: 2, nameLocalizationKey: "2ToneAlarm1SoundName", fileName: "Short_1.mp3"),
 		AlarmSound(id: 3, nameLocalizationKey: "4ToneAlarm1SoundName", fileName: "Long_1.mp3")

@@ -26,10 +26,14 @@ class AlarmManager {
 		
 		//content.sound = timer.vibrationOnly || Settings.shared.vibrationOnly ? nil : UNNotificationSound.default
 		#if os(iOS)
-		if let sound = timer.sound {
-			content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: sound.fileName))
+		if let file = Settings.shared.defaultAlarmSound.fileName {
+			if let customSoundFile = timer.sound?.fileName {
+				content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: customSoundFile))
+			} else {
+				content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: file))
+			}
 		} else {
-			content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: Settings.shared.defaultAlarmSound.fileName))
+			content.sound = UNNotificationSound.default
 		}
 		#else
 		content.sound = UNNotificationSound.default

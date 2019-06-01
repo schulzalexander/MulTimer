@@ -62,6 +62,7 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 					let timeLeft = controller.timer.getTimeLeft()
 					if timeLeft == 0 {
 						controller.timer.finished = true
+						controller.timer.active = false
 						controller.timerDidFinish()
 					} else {
 						DispatchQueue.main.async {
@@ -75,8 +76,8 @@ class ActiveTimerInterfaceController: WKInterfaceController {
 							}
 						}
 					}
-				}
-			}
+				} //active
+			} // finished
 		}
 	}
 	

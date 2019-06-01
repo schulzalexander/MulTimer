@@ -61,6 +61,7 @@
 		C96C66FA22A2A50700020104 /* Short_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7A22872F4D00C53606 /* Short_2.mp3 */; };
 		C96C66FB22A2A50700020104 /* Short_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BCDA7622870F5C00C53606 /* Short_1.mp3 */; };
 		C96C66FC22A2E87000020104 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FCD1FD227DFE2B001AA4D0 /* Localizable.strings */; };
+		C96C66FD22A2FE8E00020104 /* MulTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90601EB2278BA0800D40AE7 /* MulTimerManager.swift */; };
 		C9759BC4228F13AB00ADF382 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9759BC3228F13AB00ADF382 /* NotificationCenter.framework */; };
 		C9759BC7228F13AB00ADF382 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9759BC6228F13AB00ADF382 /* TodayViewController.swift */; };
 		C9759BCA228F13AB00ADF382 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9759BC8228F13AB00ADF382 /* MainInterface.storyboard */; };
@@ -716,6 +717,7 @@
 				TargetAttributes = {
 					C90601AD22789E9B00D40AE7 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -756,6 +758,7 @@
 					};
 					C987913B22880B46000877D0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = C90601AD22789E9B00D40AE7;
 					};
 				};
@@ -1062,6 +1065,7 @@
 				C987914C22880FAF000877D0 /* Utils.swift in Sources */,
 				C987914F22880FD3000877D0 /* SoundTableViewCell.swift in Sources */,
 				C987914722880B69000877D0 /* SnapshotHelper.swift in Sources */,
+				C96C66FD22A2FE8E00020104 /* MulTimerManager.swift in Sources */,
 				C9E23EBF2293FF76004B0CF3 /* Color.swift in Sources */,
 				C987914A22880DC4000877D0 /* AlarmSound.swift in Sources */,
 				C987914B22880EDF000877D0 /* ColorPicker.swift in Sources */,
@@ -1296,7 +1300,7 @@
 				OTHER_SWIFT_FLAGS = "-D MulTimer";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1318,7 +1322,7 @@
 				OTHER_SWIFT_FLAGS = "-D MulTimer";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1546,7 +1550,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.FastlaneScreenshots;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MulTimer;
 			};
@@ -1565,7 +1569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexanderschulz.FastlaneScreenshots;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MulTimer;
 			};
